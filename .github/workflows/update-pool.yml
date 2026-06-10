@@ -1,0 +1,36 @@
+# Auto-update voor de Breukelen-bookmaker pool.
+# Draait een paar keer per dag, haalt nieuwe uitslagen op, herrekent de
+# stand en commit data.json + index.html. De odds-snapshot wordt NIET
+# aangeraakt; die is eenmalig bevroren.
+name: update-pool
+
+on:
+  schedule:
+    - cron: "0 6,12,18,22 * * *"   # 4x per dag (UTC); pas aan naar speeldagen
+  workflow_dispatch: {}            # handmatig te starten
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install xlrd numpy scipy
+      - name: Haal uitslagen op (openfootball, geen sleutel nodig)
+        run: python results_fetch.py
+      - name: Herbouw stand en pagina
+        run: |
+          python build_pool.py        # productie-build: leest formulieren + odds.json + results_state.json
+          python build_page.py
+      - name: Commit indien gewijzigd
+        run: |
+          git config user.name "pool-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data.json index.html results_state.json
+          git diff --cached --quiet || git commit -m "update stand $(date -u +%FT%TZ)"
+          git push
