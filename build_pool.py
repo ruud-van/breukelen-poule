@@ -75,7 +75,7 @@ for m in matches:
 print("Gekoppeld:", sum(1 for x in models if x), "/ 72 | niet gekoppeld:", unmatched or "geen")
 
 # ---- 3. odds.json bevriezen ----------------------------------------------
-frozen = {"frozen_at": datetime.datetime.utcnow().isoformat() + "Z", "matches": {}}
+frozen = {"frozen_at": datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "matches": {}}
 for m, mm in zip(matches, models):
     if not mm: continue
     cs = {f"{i}-{j}": round(float(mm["marg"][i, j]), 2)
@@ -180,12 +180,22 @@ for i, p in enumerate(parts): p["rank"] = i + 1
 riser = max(parts, key=lambda p: p["delta_last_day"])
 faller = min(parts, key=lambda p: p["delta_last_day"])
 
+# odds (toto-uitbetaling + correct-score 0..5) per wedstrijd, voor de hover-popover
+CS_MAX = 5
+def _odds_for(m):
+    fm = frozen["matches"].get(f'{m["home"]}|{m["away"]}')
+    if not fm:
+        return None
+    cs = {k: v for k, v in fm["correct_score"].items()
+          if int(k.split("-")[0]) <= CS_MAX and int(k.split("-")[1]) <= CS_MAX}
+    return {"toto": fm["toto"], "cs": cs}
+
 # ---- 9. data.json voor de pagina -----------------------------------------
 data = {
     "title": "Breukelen-bookmaker poule", "subtitle": "WK 2026 · groepsfase",
     "demo": False,
     "demo_note": "echte deelnemers, echte odds en echte uitslagen",
-    "updated_at": datetime.datetime.utcnow().isoformat() + "Z",
+    "updated_at": datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     "start_budget": START, "n_participants": len(parts), "n_matches": 72,
     "n_played": len(results), "last_matchday": last_day,
     "played_labels": [f'{matches[mi]["home"]}-{matches[mi]["away"]}' for mi in played_idx],
@@ -196,11 +206,12 @@ data = {
                    "cold": max(parts, key=lambda p: p["longest_wrong"])},
     "results": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
                  "datetime": matches[mi]["datetime"], "h": ah, "a": aa,
-                 "toto": toto_of(ah, aa)}
+                 "toto": toto_of(ah, aa),
+                 "odds": _odds_for(matches[mi])}
                 for (mi, ah, aa) in results],
     "upcoming": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
                   "datetime": matches[mi]["datetime"],
-                  "odds": frozen["matches"][f'{matches[mi]["home"]}|{matches[mi]["away"]}']["toto"]}
+                  "odds": _odds_for(matches[mi])}
                  for mi in range(72)
                  if f'{matches[mi]["home"]}|{matches[mi]["away"]}' in frozen["matches"]
                  and f'{matches[mi]["home"]}|{matches[mi]["away"]}' not in played_keys][:8],

@@ -6,7 +6,10 @@ name: update-pool
 
 on:
   schedule:
-    - cron: "0 6,12,18,22 * * *"   # 4x per dag (UTC); pas aan naar speeldagen
+    # tijden in UTC; NL = UTC+2 (zomer). Afgestemd op WK-2026-speeldagen:
+    # 00:00 UTC = 02:00 NL (na de avondduels), 03:00 UTC = 05:00 NL (na de late duels),
+    # 06:00 UTC = 08:00 NL (ochtendverversing), 13:00 UTC = 15:00 NL, 21:00 UTC = 23:00 NL.
+    - cron: "0 0,3,6,13,21 * * *"
   workflow_dispatch: {}            # handmatig te starten
 
 permissions:

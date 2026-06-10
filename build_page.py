@@ -36,9 +36,9 @@ body{background:var(--paper);color:var(--ink);
 .titlerow{display:flex;align-items:center;gap:15px}
 .ball{width:48px;height:48px;flex:none}
 .intro{background:#fff;border:1px solid var(--rule);border-left:4px solid var(--felt);
-  border-radius:3px;padding:16px 20px;margin-top:22px;font-size:13.5px;line-height:1.65;color:#3c372f}
+  border-radius:3px;padding:18px 22px;margin-top:22px;font-size:15px;line-height:1.7;color:#3c372f}
 .intro .nb{color:inherit;font-weight:400}
-.intro .los{display:block;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.intro .los{display:block;margin-top:8px;font-size:13.5px;color:var(--muted)}
 .upd{margin-top:10px;font-size:12.5px;color:var(--muted)}
 .odhint{padding:2px 16px 12px;font-size:11.5px;color:var(--muted);line-height:1.5}
 .chartbtns{display:flex;gap:6px}
@@ -108,11 +108,32 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 .side .panel + .panel{margin-top:16px}
 .rrow{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;
   border-bottom:1px solid var(--rule);font-size:13px}
+.rrow.odp{cursor:pointer}
 .rrow:last-child{border-bottom:0}
+.rrow.odp:hover{background:#FBF9F2}
 .rrow .sc{font-family:"Space Mono",monospace;font-weight:700}
 .rrow .od{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted)}
 .t1{color:var(--up)} .t2{color:var(--down)} .tx{color:var(--brass)}
 .note{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--rule);padding-top:14px}
+
+/* odds-popover */
+.odtip{position:fixed;z-index:60;background:#fff;border:1px solid var(--ink);border-radius:4px;
+  box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;width:308px;max-width:calc(100vw - 24px);
+  font-size:12px;display:none}
+.odtip.show{display:block}
+.odtip-h{font-family:"Archivo",sans-serif;font-weight:700;font-size:14px;margin-bottom:2px}
+.odtip-sec{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin:11px 0 5px}
+.odtip-toto{width:100%;border-collapse:collapse;font-family:"Space Mono",monospace}
+.odtip-toto td{padding:3px 4px;border-bottom:1px solid var(--rule)}
+.odtip-toto td.r{text-align:right}
+.odtip-toto td.o{color:var(--muted)}
+.odtip-toto td.p{font-weight:700}
+.odtip-cs{border-collapse:collapse;font-family:"Space Mono",monospace;font-size:10px;width:100%}
+.odtip-cs td,.odtip-cs th{border:1px solid var(--rule);padding:2px 0;text-align:center;font-weight:400}
+.odtip-cs th{color:var(--muted);background:var(--chip);font-size:9px}
+.odtip-cs td.diag{background:#FBF6E7}
+.odtip-cap{font-size:9.5px;color:var(--muted);margin-top:5px;line-height:1.4}
 @media(max-width:860px){
   .cols{grid-template-columns:1fr} .tickets{grid-template-columns:repeat(2,1fr)}
   .meta{text-align:left}
@@ -172,8 +193,8 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 </div></div>
 
 <div class="wrap">
-  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 25 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2500 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span><span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule.</span></div>
-  <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt.</div>
+  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 25 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2500 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule. Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
+  <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt - fingers crossed!</div>
   <div class="tickets" id="tickets"></div>
 
   <div class="panel">
@@ -203,18 +224,19 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
       <div class="panel">
         <div class="head"><h2>Straks te spelen</h2><span class="hint">toto-odds</span></div>
         <div id="upcoming" style="padding:4px 0 6px"></div>
-        <div class="odhint">De drie getallen zijn de odds voor winst, gelijkspel en verlies van de thuisploeg. Odds van 14 betekent dat 100 euro inzet 1400 euro oplevert als die uitslag uitkomt.</div>
+        <div class="odhint">De drie getallen zijn de odds voor winst, gelijkspel en verlies van de thuisploeg. Beweeg met de muis over een wedstrijd (of tik erop) voor alle odds en wat elke uitslag zou opleveren.</div>
       </div>
     </div>
   </div>
 
   <div class="note" id="note"></div>
 </div>
+<div id="odtip" class="odtip" role="tooltip"></div>
 
 <script>
 const DATA = __DATA__;
-const eur = n => "\u20ac" + Math.round(n).toLocaleString("nl-NL");
-const sgn = n => (n>=0?"+":"\u2212") + "\u20ac" + Math.abs(Math.round(n)).toLocaleString("nl-NL");
+const eur = n => "€" + Math.round(n).toLocaleString("nl-NL");
+const sgn = n => (n>=0?"+":"−") + "€" + Math.abs(Math.round(n)).toLocaleString("nl-NL");
 const fmtOdd = o => (Number(o)>=10 ? Number(o).toFixed(1) : Number(o).toFixed(2));
 
 document.getElementById("title").textContent = DATA.title;
@@ -223,7 +245,7 @@ document.getElementById("demotag").style.display = DATA.demo ? "inline-block":"n
 document.getElementById("meta").innerHTML =
   `<div class="m"><b>${DATA.n_participants}</b><span>deelnemers</span></div>`+
   `<div class="m"><b>${DATA.n_played}/${DATA.n_matches}</b><span>gespeeld</span></div>`+
-  `<div class="m"><b>${DATA.last_matchday||"\u2013"}</b><span>verwerkt t/m</span></div>`;
+  `<div class="m"><b>${DATA.last_matchday||"–"}</b><span>verwerkt t/m</span></div>`;
 document.getElementById("clab").textContent = `alle ${DATA.n_participants} deelnemers`;
 document.getElementById("reslab").textContent = DATA.last_matchday||"";
 
@@ -266,15 +288,88 @@ document.getElementById("rows").innerHTML = DATA.participants.map(p=>{
   </tr>`;
 }).join("");
 
+// ---- odds-popover -------------------------------------------------------
+const STAKE_TOTO = 100, STAKE_SCORE = 25, CS_MAX = 5;
+const tip = document.getElementById("odtip");
+let tipRow = null;
+
+function tipContent(title, od){
+  const T = od.toto;
+  let s = `<div class="odtip-h">${title}</div>`;
+  s += `<div class="odtip-sec">Toto &middot; inzet &euro;${STAKE_TOTO}</div>`;
+  s += `<table class="odtip-toto">`+
+       [["1","thuis wint"],["X","gelijkspel"],["2","uit wint"]].map(([k,lab])=>
+         `<tr><td>${k} &middot; ${lab}</td><td class="r o">${fmtOdd(T[k])}</td>`+
+         `<td class="r p">${eur(T[k]*STAKE_TOTO)}</td></tr>`).join("")+`</table>`;
+  if(od.cs){
+    s += `<div class="odtip-sec">Exacte eindstand &middot; odds</div>`;
+    s += `<table class="odtip-cs"><tr><th>th\\uit</th>`;
+    for(let a=0;a<=CS_MAX;a++) s += `<th>${a}</th>`;
+    s += `</tr>`;
+    for(let hg=0;hg<=CS_MAX;hg++){
+      s += `<tr><th>${hg}</th>`;
+      for(let ag=0;ag<=CS_MAX;ag++){
+        const o = od.cs[hg+"-"+ag];
+        s += `<td class="${hg===ag?'diag':''}">${o?fmtOdd(o):"–"}</td>`;
+      }
+      s += `</tr>`;
+    }
+    s += `</table>`;
+    s += `<div class="odtip-cap">Eindstand-odd &times; &euro;${STAKE_SCORE} inzet = uitbetaling. Bv. odd 7,0 &rarr; ${eur(7*STAKE_SCORE)}.</div>`;
+  }
+  return s;
+}
+function placeTip(row){
+  const r = row.getBoundingClientRect();
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = r.left - tw - 10, top = r.top;
+  if(left < 8){ left = Math.min(r.left, window.innerWidth - tw - 8); top = r.bottom + 8; }
+  if(top + th > window.innerHeight - 8) top = Math.max(8, window.innerHeight - th - 8);
+  tip.style.left = Math.max(8,left) + "px";
+  tip.style.top = top + "px";
+}
+function showTip(row, title, od){
+  tip.innerHTML = tipContent(title, od);
+  tip.classList.add("show");
+  placeTip(row);
+  tipRow = row;
+}
+function hideTip(){ tip.classList.remove("show"); tipRow = null; }
+
+function fillRows(id, items){
+  const el = document.getElementById(id);
+  el.innerHTML = items.length
+    ? items.map(it=>`<div class="rrow odp">${it.left}${it.right}</div>`).join("")
+    : `<div class="rrow"><span>nog geen uitslagen</span></div>`;
+  [...el.querySelectorAll(".rrow.odp")].forEach((row,i)=>{
+    const it = items[i];
+    if(!it || !it.odds) return;
+    row.addEventListener("mouseenter", ()=>showTip(row, it.title, it.odds));
+    row.addEventListener("mouseleave", ()=>{ if(tipRow===row) hideTip(); });
+    row.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      if(tipRow===row) hideTip(); else showTip(row, it.title, it.odds);
+    });
+  });
+}
+document.addEventListener("click", ()=>hideTip());
+window.addEventListener("resize", hideTip);
+window.addEventListener("scroll", ()=>{ if(tipRow) placeTip(tipRow); }, true);
+
 // results + upcoming
-document.getElementById("results").innerHTML = DATA.results.slice().reverse()
+const resItems = DATA.results.slice().reverse()
   .filter(r=>r.datetime.split(" ").slice(0,2).join(" ")===DATA.last_matchday)
-  .map(r=>`<div class="rrow"><span>${r.home} \u2013 ${r.away}</span>
-    <span class="sc t${r.toto.toLowerCase()==='x'?'x':r.toto}">${r.h}\u2013${r.a}</span></div>`).join("")
-  || `<div class="rrow"><span>nog geen uitslagen</span></div>`;
-document.getElementById("upcoming").innerHTML = DATA.upcoming.map(u=>
-  `<div class="rrow"><span>${u.home} \u2013 ${u.away}</span>
-   <span class="od">${fmtOdd(u.odds["1"])} / ${fmtOdd(u.odds["X"])} / ${fmtOdd(u.odds["2"])}</span></div>`).join("");
+  .map(r=>({
+    title:`${r.home} – ${r.away}`, odds:r.odds,
+    left:`<span>${r.home} – ${r.away}</span>`,
+    right:`<span class="sc t${r.toto.toLowerCase()==='x'?'x':r.toto}">${r.h}–${r.a}</span>`}));
+fillRows("results", resItems);
+
+const upItems = DATA.upcoming.map(u=>({
+  title:`${u.home} – ${u.away}`, odds:u.odds,
+  left:`<span>${u.home} – ${u.away}</span>`,
+  right:`<span class="od">${fmtOdd(u.odds.toto["1"])} / ${fmtOdd(u.odds.toto["X"])} / ${fmtOdd(u.odds.toto["2"])}</span>`}));
+fillRows("upcoming", upItems);
 
 document.getElementById("note").innerHTML =
   (DATA.demo_note ? DATA.demo_note.charAt(0).toUpperCase()+DATA.demo_note.slice(1)+"." : "");
@@ -322,20 +417,6 @@ function setBtn(id){ document.querySelectorAll(".cbtn").forEach(b=>b.classList.t
 document.getElementById("bAll").onclick=()=>{ setBtn("bAll"); renderAll(); };
 document.getElementById("bTop").onclick=()=>{ setBtn("bTop"); renderTop(); };
 renderAll();
-ds.push({label:"start", data:labels.map(()=>DATA.start_budget),
-  borderColor:"#1A1714", borderWidth:1, borderDash:[4,4], pointRadius:0, order:0});
-new Chart(document.getElementById("chart"),{
-  type:"line", data:{labels, datasets:ds},
-  options:{responsive:true,maintainAspectRatio:false,
-    interaction:{mode:"nearest",intersect:false},
-    plugins:{legend:{display:true,labels:{filter:i=>topN.includes(i.text)||i.text==="start",
-      font:{family:"Public Sans",size:11},boxWidth:14,usePointStyle:true}},
-      tooltip:{callbacks:{label:c=>c.dataset.label+": "+eur(c.parsed.y)}}},
-    scales:{y:{ticks:{callback:v=>eur(v),font:{family:"Space Mono",size:10}},
-        grid:{color:"#EEE9DB"}},
-      x:{ticks:{maxTicksLimit:8,font:{family:"Space Mono",size:9},color:"#897F70"},
-        grid:{display:false}}}}
-});
 </script>
 </body>
 </html>"""
