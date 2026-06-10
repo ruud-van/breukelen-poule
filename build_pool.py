@@ -195,7 +195,6 @@ data = {
     "title": "Breukelen-bookmaker poule", "subtitle": "WK 2026 · groepsfase",
     "demo": False,
     "demo_note": "echte deelnemers, echte odds en echte uitslagen",
-    "updated_at": datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     "start_budget": START, "n_participants": len(parts), "n_matches": 72,
     "n_played": len(results), "last_matchday": last_day,
     "played_labels": [f'{matches[mi]["home"]}-{matches[mi]["away"]}' for mi in played_idx],
