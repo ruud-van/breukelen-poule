@@ -215,6 +215,22 @@ data = {
                  if f'{matches[mi]["home"]}|{matches[mi]["away"]}' in frozen["matches"]
                  and f'{matches[mi]["home"]}|{matches[mi]["away"]}' not in played_keys][:8],
 }
+# ---- 10. voorspellingen per wedstrijd (voor het 'Voorspellingen'-tabblad) --
+# wedstrijden in canonieke (= chronologische schema-)volgorde; per wedstrijd
+# alle deelnemers met hun voorspelde score, plus de echte uitslag indien gespeeld.
+played_map = {mi: (ah, aa) for (mi, ah, aa) in results}
+predictions = []
+for mi, m in enumerate(matches):
+    entry = {"home": m["home"], "away": m["away"], "datetime": m["datetime"],
+             "played": mi in played_map}
+    if mi in played_map:
+        ah, aa = played_map[mi]
+        entry.update({"h": ah, "a": aa, "toto": toto_of(ah, aa)})
+    entry["preds"] = [{"n": n, "h": int(pred_h[pi, mi]), "a": int(pred_a[pi, mi])}
+                      for pi, n in enumerate(names)]
+    predictions.append(entry)
+data["predictions"] = predictions
+
 json.dump(data, open("data.json", "w"), ensure_ascii=False, indent=1)
 print(f"\ndata.json geschreven. Gespeeld: {len(results)}/72.",
       ("Leider: %s %.0f | hekkensluiter: %s %.0f"

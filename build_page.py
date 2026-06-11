@@ -138,6 +138,47 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   padding-top:10px;line-height:1.5}
 @media(max-width:860px){.rules-grid{grid-template-columns:1fr}}
 
+/* tabs */
+.tabs{display:flex;gap:8px;margin-top:22px}
+.tab{font-family:"Archivo",sans-serif;font-weight:700;font-size:14px;border:1px solid var(--rule);
+  background:#fff;color:var(--muted);padding:8px 16px;border-radius:3px;cursor:pointer}
+.tab.on{background:var(--felt);color:#F2EEDF;border-color:var(--felt)}
+
+/* voorspellingen-tab */
+.pred-tools{display:flex;gap:8px;align-items:center;padding:12px 16px 6px;flex-wrap:wrap}
+.pred-tools input{flex:1;min-width:160px;font-family:"Public Sans",sans-serif;font-size:13px;
+  padding:7px 10px;border:1px solid var(--rule);border-radius:3px}
+.pred-day{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--felt);font-weight:700;margin:14px 16px 4px;border-bottom:1px solid var(--rule);padding-bottom:5px}
+.pred-match{border-bottom:1px solid var(--rule)}
+.pred-match summary{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;
+  list-style:none;font-size:13px}
+.pred-match summary::-webkit-details-marker{display:none}
+.pred-match summary:hover{background:#FBF9F2}
+.pred-tm{font-weight:600}
+.pred-res{font-family:"Space Mono",monospace;font-weight:700;background:var(--chip);padding:1px 7px;border-radius:2px}
+.pred-meta{margin-left:auto;font-size:11px;color:var(--muted)}
+.pred-body{padding:2px 16px 12px}
+.pred-grp{display:grid;grid-template-columns:46px 84px 36px 1fr;align-items:center;gap:8px;padding:6px 0;
+  border-top:1px dashed var(--rule);font-size:12.5px}
+.pred-score{font-family:"Space Mono",monospace;font-weight:700}
+.pred-bar{height:8px;background:var(--chip);border-radius:4px;overflow:hidden}
+.pred-bar span{display:block;height:100%;background:var(--muted);border-radius:4px}
+.pred-cnt{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted)}
+.pred-names{color:#3c372f;line-height:1.6}
+.pred-grp.toto .pred-bar span{background:var(--up)}
+.pred-grp.exact{background:#FBF6E7}
+.pred-grp.exact .pred-bar span{background:var(--brass)}
+.pred-grp.exact .pred-score{color:var(--brass)}
+.pred-legend{font-size:11px;color:var(--muted);padding:8px 16px 0;line-height:1.5}
+.pn{display:inline-block}
+.pn.hit{background:var(--brass);color:#fff;border-radius:2px;padding:0 4px}
+.pn.dim{opacity:.28}
+@media(max-width:600px){
+  .pred-grp{grid-template-columns:46px 1fr 36px;grid-auto-rows:auto}
+  .pred-grp .pred-names{grid-column:1/-1}
+}
+
 /* odds-popover */
 .odtip{position:fixed;z-index:60;background:#fff;border:1px solid var(--ink);border-radius:4px;
   box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;width:308px;max-width:calc(100vw - 24px);
@@ -215,6 +256,11 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 </div></div>
 
 <div class="wrap">
+  <div class="tabs">
+    <button id="tabStand" class="tab on">Stand</button>
+    <button id="tabPreds" class="tab">Voorspellingen</button>
+  </div>
+  <div id="view-stand">
   <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 25 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2500 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule. Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
   <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt - fingers crossed!</div>
   <div class="tickets" id="tickets"></div>
@@ -290,6 +336,20 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   </details>
 
   <div class="note" id="note"></div>
+  </div><!-- /view-stand -->
+
+  <div id="view-preds" hidden>
+    <div class="panel" style="margin-top:18px">
+      <div class="head"><h2>Voorspellingen per wedstrijd</h2><span class="hint" id="predcount"></span></div>
+      <div class="pred-tools">
+        <input id="predFilter" type="search" placeholder="Filter op naam…" autocomplete="off">
+        <button id="predExpand" class="cbtn">Alles open</button>
+        <button id="predCollapse" class="cbtn on">Alles dicht</button>
+      </div>
+      <div class="pred-legend">Per wedstrijd staan de voorspellingen gegroepeerd per uitslag (meest gekozen bovenaan). Bij gespeelde wedstrijden is de <b style="color:var(--brass)">exacte score</b> goudkleurig en een <b style="color:var(--up)">goede toto</b> groen.</div>
+      <div id="preds"></div>
+    </div>
+  </div>
 </div>
 <div id="odtip" class="odtip" role="tooltip"></div>
 
@@ -477,6 +537,69 @@ function setBtn(id){ document.querySelectorAll(".cbtn").forEach(b=>b.classList.t
 document.getElementById("bAll").onclick=()=>{ setBtn("bAll"); renderAll(); };
 document.getElementById("bTop").onclick=()=>{ setBtn("bTop"); renderTop(); };
 renderAll();
+
+// ---- voorspellingen-tab -------------------------------------------------
+function totoOf(hh,aa){ return hh>aa?"1":(aa>hh?"2":"X"); }
+function renderPreds(){
+  const box = document.getElementById("preds");
+  const P = DATA.predictions || [];
+  let html = "", curday = null;
+  P.forEach(m=>{
+    const day = m.datetime.split(" ").slice(0,2).join(" ");
+    if(day !== curday){ curday = day; html += `<div class="pred-day">${day}</div>`; }
+    const g = {};
+    m.preds.forEach(p=>{ const k = p.h+"-"+p.a; (g[k] = g[k] || []).push(p.n); });
+    const groups = Object.entries(g).map(([k,ns])=>{
+      const [hh,aa] = k.split("-").map(Number);
+      return {hh, aa, ns, n:ns.length, tt:totoOf(hh,aa)};
+    }).sort((a,b)=> b.n-a.n || a.hh-b.hh || a.aa-b.aa);
+    const maxn = groups.length ? groups[0].n : 1;
+    let body = "";
+    groups.forEach(gr=>{
+      let cls = "pred-grp";
+      if(m.played){
+        if(gr.hh===m.h && gr.aa===m.a) cls += " exact";
+        else if(gr.tt===m.toto) cls += " toto";
+      }
+      const names = gr.ns.slice().sort((a,b)=>a.localeCompare(b,"nl"))
+        .map(n=>`<span class="pn" data-n="${n.toLowerCase()}">${n}</span>`).join(", ");
+      body += `<div class="${cls}"><div class="pred-score">${gr.hh}–${gr.aa}</div>`+
+        `<div class="pred-bar"><span style="width:${Math.round(100*gr.n/maxn)}%"></span></div>`+
+        `<div class="pred-cnt">${gr.n}×</div><div class="pred-names">${names}</div></div>`;
+    });
+    const res = m.played ? `<span class="pred-res">${m.h}–${m.a}</span>` : "";
+    html += `<details class="pred-match"><summary><span class="pred-tm">${m.home} – ${m.away}</span>`+
+      `${res}<span class="pred-meta">${groups.length} verschillende</span></summary>`+
+      `<div class="pred-body">${body}</div></details>`;
+  });
+  box.innerHTML = html;
+  document.getElementById("predcount").textContent =
+    `${P.length} wedstrijden · ${DATA.n_participants} deelnemers`;
+}
+const predFilter = document.getElementById("predFilter");
+predFilter.addEventListener("input", ()=>{
+  const q = predFilter.value.trim().toLowerCase();
+  document.querySelectorAll("#preds .pn").forEach(s=>{
+    const hit = q && s.dataset.n.includes(q);
+    s.classList.toggle("hit", !!hit);
+    s.classList.toggle("dim", !!q && !hit);
+  });
+});
+document.getElementById("predExpand").onclick = ()=>
+  document.querySelectorAll(".pred-match").forEach(d=>d.open = true);
+document.getElementById("predCollapse").onclick = ()=>
+  document.querySelectorAll(".pred-match").forEach(d=>d.open = false);
+
+let predsRendered = false;
+function showView(v){
+  document.getElementById("view-stand").hidden = v !== "stand";
+  document.getElementById("view-preds").hidden = v !== "preds";
+  document.getElementById("tabStand").classList.toggle("on", v==="stand");
+  document.getElementById("tabPreds").classList.toggle("on", v==="preds");
+  if(v==="preds" && !predsRendered){ renderPreds(); predsRendered = true; }
+}
+document.getElementById("tabStand").onclick = ()=>showView("stand");
+document.getElementById("tabPreds").onclick = ()=>showView("preds");
 </script>
 </body>
 </html>"""
