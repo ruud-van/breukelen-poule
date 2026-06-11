@@ -116,6 +116,26 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 .t1{color:var(--up)} .t2{color:var(--down)} .tx{color:var(--brass)}
 .note{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--rule);padding-top:14px}
 
+/* spelregels */
+.rules{margin-top:22px}
+.rules summary{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:16px 18px;cursor:pointer;list-style:none}
+.rules summary::-webkit-details-marker{display:none}
+.rules summary h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:16px;margin:0;letter-spacing:-.01em}
+.rules summary .rh{font-size:11.5px;color:var(--muted)}
+.rules-body{padding:0 18px 18px}
+.rules-intro{font-size:13px;color:#3c372f;margin:0 0 12px;line-height:1.6}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rule{border:1px solid var(--rule);border-radius:3px;padding:12px 14px;font-size:12.5px;
+  line-height:1.55;color:#3c372f;background:#FBF9F2}
+.rule-h{font-family:"Archivo",sans-serif;font-weight:700;font-size:13.5px;margin-bottom:4px;color:var(--ink)}
+.rules-src{font-size:12px;margin-top:14px}
+.rules-src a{color:var(--felt);font-weight:600;text-decoration:none}
+.rules-src a:hover{text-decoration:underline}
+.rules-note{font-size:11.5px;color:var(--muted);margin-top:12px;border-top:1px solid var(--rule);
+  padding-top:10px;line-height:1.5}
+@media(max-width:860px){.rules-grid{grid-template-columns:1fr}}
+
 /* odds-popover */
 .odtip{position:fixed;z-index:60;background:#fff;border:1px solid var(--ink);border-radius:4px;
   box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;width:308px;max-width:calc(100vw - 24px);
@@ -228,6 +248,23 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
       </div>
     </div>
   </div>
+
+  <details class="rules panel" open>
+    <summary><h2>Nieuwe spelregels WK 2026</h2><span class="rh">geverifieerd &middot; IFAB / FIFA</span></summary>
+    <div class="rules-body">
+      <p class="rules-intro">De officiële wijzigingen voor dit toernooi, uit de <b>IFAB Laws of the Game 2025/26</b> en de door <b>FIFA</b> bevestigde WK-vernieuwingen. (De focus ligt op meer effectieve speeltijd, minder tijdrekken en meer transparantie.)</p>
+      <div class="rules-grid">
+        <div class="rule"><div class="rule-h">Keeper: 8-secondenregel</div>De keeper mag de bal nog maximaal 8 seconden vasthouden; de scheidsrechter telt de laatste 5 seconden af met een opgestoken hand. Te lang? Hoekschop voor de tegenstander (voorheen indirecte vrije trap na 6 seconden).</div>
+        <div class="rule"><div class="rule-h">Alleen de aanvoerder spreekt</div>Bij een dispuut mag alleen de aanvoerder de scheidsrechter benaderen. Andere spelers die de zone (±4 m) in komen om te protesteren, riskeren een gele kaart.</div>
+        <div class="rule"><div class="rule-h">Semi-automatisch buitenspel</div>Duidelijke buitenspelsituaties gaan via een audiosignaal direct naar de assistent-scheidsrechter, voor snellere beslissingen. Alle spelers zijn vooraf 3D-gescand.</div>
+        <div class="rule"><div class="rule-h">Bodycams &amp; omgeroepen VAR</div>Bodycams op de scheidsrechter zijn toegestaan in de spelregels, en VAR-beslissingen worden voortaan in het stadion omgeroepen door de scheidsrechter.</div>
+        <div class="rule"><div class="rule-h">Strafschop-procedure</div>De assistent blijft op de zijlijn ter hoogte van de strafschopstip; de VAR let apart op of de keeper te vroeg van zijn lijn komt.</div>
+        <div class="rule"><div class="rule-h">Dropbal</div>Bij een onderbreking gaat de dropbal naar het team dat het balbezit zou hebben gehad (i.p.v. een neutrale bal).</div>
+      </div>
+      <p class="rules-src">Officiële bronnen: <a href="https://www.theifab.com/laws/" target="_blank" rel="noopener">IFAB &ndash; Laws of the Game 2025/26</a> &middot; <a href="https://inside.fifa.com/news/offside-decisions-referee-body-cams-innovation-world-cup-2026" target="_blank" rel="noopener">FIFA &ndash; vernieuwingen WK 2026</a></p>
+      <p class="rules-note">NB: niet alles wat rondgaat klopt. Veelgenoemde "regels" als een 5-secondenregel voor doeltrappen of inworpen, een rode kaart voor het afschermen van de mond, VAR-ingrepen bij een tweede gele kaart, of vaste drinkpauzes ongeacht het weer, staan <b>niet</b> in de officiële IFAB- of FIFA-regels.</p>
+    </div>
+  </details>
 
   <div class="note" id="note"></div>
 </div>
