@@ -17,6 +17,7 @@ EN_TO_NL = {en: nl for nl, (en, _iso) in TEAMS_NL_EN.items()}
 FEED_ALIASES = {
     "Czech Republic": "Tsjechië",
     "Bosnia & Herzegovina": "Bosnië&Herz.",
+    "Bosnia-Herzegovina": "Bosnië&Herz.",  # ESPN-schrijfwijze
     "USA": "VS",
     "Curaçao": "Curacao",
     # defensief, voor nog niet geziene varianten:

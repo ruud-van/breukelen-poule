@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install xlrd numpy scipy
-      - name: Haal uitslagen op (openfootball, geen sleutel nodig)
+      - name: Haal uitslagen op (ESPN, geen sleutel nodig)
         run: python results_fetch.py
       - name: Herbouw stand en pagina
         run: |

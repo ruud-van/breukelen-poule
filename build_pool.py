@@ -75,7 +75,7 @@ for m in matches:
 print("Gekoppeld:", sum(1 for x in models if x), "/ 72 | niet gekoppeld:", unmatched or "geen")
 
 # ---- 3. odds.json bevriezen ----------------------------------------------
-frozen = {"frozen_at": datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "matches": {}}
+frozen = {"frozen_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "matches": {}}
 for m, mm in zip(matches, models):
     if not mm: continue
     cs = {f"{i}-{j}": round(float(mm["marg"][i, j]), 2)
