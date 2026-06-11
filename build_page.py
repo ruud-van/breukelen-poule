@@ -418,7 +418,7 @@ document.getElementById("demotag").style.display = DATA.demo ? "inline-block":"n
 document.getElementById("meta").innerHTML =
   `<div class="m"><b>${DATA.n_participants}</b><span>deelnemers</span></div>`+
   `<div class="m"><b>${DATA.n_played}/${DATA.n_matches}</b><span>gespeeld</span></div>`+
-  `<div class="m"><b>${DATA.last_matchday||"–"}</b><span>verwerkt t/m</span></div>`;
+  `<div class="m"><b>${DATA.last_matchtime||DATA.last_matchday||"–"}</b><span>verwerkt t/m</span></div>`;
 document.getElementById("clab").textContent = `alle ${DATA.n_participants} deelnemers`;
 document.getElementById("reslab").textContent = DATA.last_matchday||"";
 
