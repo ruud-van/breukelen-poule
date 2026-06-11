@@ -231,29 +231,53 @@ for mi, m in enumerate(matches):
     predictions.append(entry)
 data["predictions"] = predictions
 
-# ---- 11. gelijkenis-matrices (toto + exacte score) ------------------------
+# ---- 11. gelijkenis: MDS-netwerk + top-5 lijsten (toto + exacte score) ----
 # per paar deelnemers: % wedstrijden met dezelfde toto (1/X/2) resp. exacte score.
-# Namen geordend via hiërarchische clustering zodat gelijkende mensen naast
-# elkaar komen (rode blokken in de heatmap).
-from scipy.cluster.hierarchy import linkage, leaves_list
-from scipy.spatial.distance import squareform
-
-def _order(sim):
-    if len(sim) < 3:
-        return list(range(len(sim)))
-    d = 1.0 - sim
-    np.fill_diagonal(d, 0.0)
-    d = (d + d.T) / 2
-    return [int(i) for i in leaves_list(linkage(squareform(d, checks=False), method="average"))]
-
+# Posities via klassieke MDS op de dissimilariteit -> gelijkgestemden clusteren.
 toto_sim = (pred_toto[:, None, :] == pred_toto[None, :, :]).mean(2)
 score_sim = ((pred_h[:, None, :] == pred_h[None, :, :]) &
              (pred_a[:, None, :] == pred_a[None, :, :])).mean(2)
 
+def _mds(sim):
+    n = len(sim)
+    D2 = (1.0 - sim) ** 2
+    J = np.eye(n) - np.ones((n, n)) / n
+    B = -0.5 * J.dot(D2).dot(J)
+    w, V = np.linalg.eigh(B)
+    top = np.argsort(w)[::-1][:2]
+    coords = V[:, top] * np.sqrt(np.maximum(w[top], 0))
+    mn, mx = coords.min(0), coords.max(0)
+    rng = np.where(mx - mn > 0, mx - mn, 1)
+    return (coords - mn) / rng
+
+def _edges(sim):
+    n = len(sim); seen = set(); out = []
+    for i in range(n):
+        for j in np.argsort(sim[i])[::-1]:
+            if int(j) != i:
+                a, b = sorted((i, int(j)))
+                if (a, b) not in seen:
+                    seen.add((a, b))
+                    out.append([a, b, int(round(100 * sim[a, b]))])
+                break
+    return out
+
+def _toplists(sim):
+    n = len(sim)
+    pairs = [(int(round(100 * sim[i, j])), i, j)
+             for i in range(n) for j in range(i + 1, n)]
+    pairs.sort(reverse=True)
+    most = [[names[i], names[j], p] for (p, i, j) in pairs[:5]]
+    least = [[names[i], names[j], p] for (p, i, j) in pairs[-5:][::-1]]
+    return most, least
+
 def _pack(sim):
-    order = _order(sim)
-    return {"names": [names[i] for i in order],
-            "matrix": [[int(round(100 * sim[i, j])) for j in order] for i in order]}
+    coords = _mds(sim)
+    most, least = _toplists(sim)
+    return {"names": names,
+            "nodes": [[round(float(coords[i, 0]), 4), round(float(coords[i, 1]), 4)]
+                      for i in range(len(names))],
+            "edges": _edges(sim), "most": most, "least": least}
 
 data["similarity"] = {"toto": _pack(toto_sim), "score": _pack(score_sim)}
 

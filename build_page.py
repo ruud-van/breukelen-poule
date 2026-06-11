@@ -55,6 +55,16 @@ body{background:var(--paper);color:var(--ink);
 .demo-tag{display:inline-block;margin-top:14px;font-family:"Space Mono",monospace;
   font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--felt);
   background:var(--brass);padding:3px 9px;border-radius:2px}
+.legends{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:6px 20px 22px;
+  display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.legends .lg{display:inline-block;width:84px;height:84px;border-radius:50%;overflow:hidden;
+  border:2px solid #F2EEDF;background:#0d4427;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.legends .lg img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;
+  transform:scale(1.28);transform-origin:50% 14%;display:block}
+.legends .lg-bk img{transform:scale(1.12);transform-origin:50% 22%;object-position:50% 22%}
+.legends-credit{position:relative;z-index:2;text-align:center;padding:0 20px 16px;
+  font-size:10px;color:#A9C2B5}
+.legends-credit a{color:#CFE0D5}
 
 /* tickets */
 .tickets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
@@ -179,16 +189,23 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   .pred-grp .pred-names{grid-column:1/-1}
 }
 
-/* gelijkenis-heatmap */
+/* gelijkenis-netwerk */
 .sim-legend{display:flex;align-items:center;gap:10px;padding:10px 16px 0;font-size:11.5px;
   color:var(--muted);flex-wrap:wrap}
-.sim-grad{width:120px;height:10px;border-radius:2px;
-  background:linear-gradient(90deg,hsl(6,68%,96%),hsl(6,72%,42%));border:1px solid var(--rule)}
-#simReadout{font-family:"Space Mono",monospace;color:var(--ink);margin-left:auto}
-.sim-wrap{padding:12px 16px 16px;overflow:auto}
-.simsvg{max-width:100%;height:auto;display:block}
-.simsvg rect{shape-rendering:crispEdges}
-.simsvg rect:hover{stroke:var(--ink);stroke-width:1}
+#simReadout{font-family:"Space Mono",monospace;color:var(--ink)}
+.sim-wrap{padding:8px 12px 8px}
+.simnet{width:100%;height:auto;display:block;touch-action:none}
+.simnet line{stroke:#C9BFAB}
+.simnet text{font-size:8.5px;fill:#3c372f;font-family:"Public Sans",sans-serif;
+  text-anchor:middle;dominant-baseline:middle;cursor:pointer;paint-order:stroke;
+  stroke:var(--paper);stroke-width:2.4px}
+.simnet .nd:hover text{fill:var(--brass);font-weight:700;font-size:11px}
+.sim-tops{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:6px 16px 16px}
+.sim-top h3{font-family:"Archivo",sans-serif;font-size:13px;margin:0 0 6px}
+.sim-top ol{margin:0;padding-left:20px;font-size:12.5px;line-height:1.8}
+.sim-top li{color:#3c372f}
+.sim-top .pct{font-family:"Space Mono",monospace;color:var(--muted);float:right}
+@media(max-width:600px){.sim-tops{grid-template-columns:1fr}}
 
 /* odds-popover */
 .odtip{position:fixed;z-index:60;background:#fff;border:1px solid var(--ink);border-radius:4px;
@@ -264,7 +281,16 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <div class="demo-tag" id="demotag">voorbeeld &middot; uitslagen nog gesimuleerd</div>
   </div>
   <div class="meta" id="meta"></div>
-</div></div>
+</div>
+  <div class="legends">
+    <span class="lg" title="Ruud van Nistelrooij"><img src="img/nistelrooy.jpg" alt="Ruud van Nistelrooij"></span>
+    <span class="lg" title="Ruud Gullit"><img src="img/gullit.jpg" alt="Ruud Gullit"></span>
+    <span class="lg" title="Ruud Geels"><img src="img/geels.jpg" alt="Ruud Geels"></span>
+    <span class="lg lg-bk" title="Hans van Breukelen"><img src="img/breukelen.jpg" alt="Hans van Breukelen"></span>
+    <span class="lg" title="Ruud Krol"><img src="img/krol.jpg" alt="Ruud Krol"></span>
+  </div>
+  <div class="legends-credit">Foto's: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></div>
+</div>
 
 <div class="wrap">
   <div class="tabs">
@@ -368,14 +394,13 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
       <div class="head"><h2>Wie voorspelt als wie?</h2><div class="chartbtns">
         <button id="simToto" class="cbtn on">Toto</button>
         <button id="simScore" class="cbtn">Exacte score</button></div></div>
-      <div class="sim-legend">
-        <span>minder gelijk</span>
-        <span class="sim-grad"></span>
-        <span>meer gelijk</span>
-        <span id="simReadout">beweeg over het vlak voor twee namen</span>
+      <div class="sim-legend"><span id="simReadout">beweeg over een stip voor de naam</span></div>
+      <div class="sim-wrap"><div id="simNet"></div></div>
+      <div class="pred-legend">Elke stip is een deelnemer; wie dichter bij elkaar staat (en met een lijntje verbonden is) voorspelde meer hetzelfde. De plaatsing komt uit MDS op basis van overeenkomst. Wissel tussen <b>toto</b> (1/X/2) en <b>exacte score</b>; beweeg over een stip voor de naam.</div>
+      <div class="sim-tops">
+        <div class="sim-top"><h3>Meest op elkaar lijkend</h3><ol id="simMost"></ol></div>
+        <div class="sim-top"><h3>Minst op elkaar lijkend</h3><ol id="simLeast"></ol></div>
       </div>
-      <div class="sim-wrap"><div id="simHeat"></div></div>
-      <div class="pred-legend">Elke deelnemer is een rij én een kolom; een rodere cel betekent dat dat tweetal vaker dezelfde voorspelling deed. Namen staan zo geordend (clustering) dat wie op elkaar lijkt naast elkaar komt &mdash; rode blokken zijn groepjes gelijkgestemden. Wissel tussen <b>toto</b> (1/X/2) en <b>exacte score</b>.</div>
     </div>
   </div>
 </div>
@@ -618,29 +643,47 @@ document.getElementById("predExpand").onclick = ()=>
 document.getElementById("predCollapse").onclick = ()=>
   document.querySelectorAll(".pred-match").forEach(d=>d.open = false);
 
-// ---- gelijkenis-heatmap -------------------------------------------------
-function simColor(v){ return `hsl(6,72%,${(96 - v*0.54).toFixed(1)}%)`; }
+// ---- gelijkenis-netwerk -------------------------------------------------
 let simMode = "toto";
 function renderSim(){
   const S = DATA.similarity && DATA.similarity[simMode];
-  const heat = document.getElementById("simHeat");
-  if(!S){ heat.innerHTML = "<p style='padding:12px;color:#897F70'>Geen gelijkenis-data.</p>"; return; }
-  const names = S.names, M = S.matrix, n = names.length, cell = 12, sz = n*cell;
-  let r = "";
-  for(let i=0;i<n;i++) for(let j=0;j<n;j++){
-    const v = M[i][j];
-    const fill = i===j ? "#E3DDCD" : simColor(v);
-    r += `<rect x="${j*cell}" y="${i*cell}" width="${cell-1}" height="${cell-1}" fill="${fill}" `+
-         `data-i="${i}" data-j="${j}"><title>${names[i]} ↔ ${names[j]}: ${v}%</title></rect>`;
+  const net = document.getElementById("simNet");
+  if(!S){ net.innerHTML = "<p style='padding:12px;color:#897F70'>Geen gelijkenis-data.</p>"; return; }
+  const names = S.names, nodes = S.nodes, edges = S.edges || [];
+  const W = 900, H = 680, pad = 60;
+  const X = v => (pad + v*(W-2*pad)), Y = v => (pad + v*(H-2*pad));
+  const P = nodes.map(p=>[X(p[0]), Y(p[1])]);
+  // declutter: duw overlappende namen uit elkaar (behoudt globale structuur)
+  const minD = 36;
+  for(let it=0; it<140; it++){
+    for(let i=0;i<P.length;i++) for(let j=i+1;j<P.length;j++){
+      let dx=P[j][0]-P[i][0], dy=P[j][1]-P[i][1];
+      const d=Math.hypot(dx,dy)||0.01;
+      if(d<minD){ const k=(minD-d)/2/d; dx*=k; dy*=k;
+        P[i][0]-=dx; P[i][1]-=dy; P[j][0]+=dx; P[j][1]+=dy; }
+    }
   }
-  heat.innerHTML = `<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" class="simsvg" `+
-    `role="img" aria-label="gelijkenis-heatmap">${r}</svg>`;
+  for(const p of P){ p[0]=Math.max(pad,Math.min(W-pad,p[0])); p[1]=Math.max(pad,Math.min(H-pad,p[1])); }
+  const lines = edges.map(([a,b,w])=>{
+    const sw = (0.4 + (w||0)/100 * 3.6).toFixed(2);   // 0% -> dun, 100% -> dik
+    return `<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" `+
+      `x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}" `+
+      `stroke-width="${sw}"><title>${names[a]} ↔ ${names[b]}: ${w}%</title></line>`;
+  }).join("");
+  const pts = P.map((c,i)=>
+    `<g class="nd" data-i="${i}"><text x="${c[0].toFixed(1)}" y="${c[1].toFixed(1)}">${names[i]}`+
+    `<title>${names[i]}</title></text></g>`).join("");
+  net.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="simnet" preserveAspectRatio="xMidYMid meet" `+
+    `role="img" aria-label="gelijkenis-netwerk">${lines}${pts}</svg>`;
   const ro = document.getElementById("simReadout");
-  heat.querySelector("svg").addEventListener("pointermove", e=>{
-    const t = e.target; if(t.tagName !== "rect") return;
-    const i = +t.dataset.i, j = +t.dataset.j;
-    ro.textContent = i===j ? names[i] : `${names[i]} ↔ ${names[j]}: ${M[i][j]}%`;
+  net.querySelector("svg").addEventListener("pointermove", e=>{
+    const g = e.target.closest(".nd"); if(!g) return;
+    ro.textContent = names[+g.dataset.i];
   });
+  const fill = (id, arr)=>{ document.getElementById(id).innerHTML =
+    arr.map(([a,b,p])=>`<li>${a} &amp; ${b}<span class="pct">${p}%</span></li>`).join(""); };
+  fill("simMost", S.most || []);
+  fill("simLeast", S.least || []);
 }
 function setSim(mode){
   simMode = mode;
