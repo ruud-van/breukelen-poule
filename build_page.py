@@ -286,8 +286,8 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <span class="lg" title="Ruud van Nistelrooij"><img src="img/nistelrooy.jpg" alt="Ruud van Nistelrooij"></span>
     <span class="lg" title="Ruud Gullit"><img src="img/gullit.jpg" alt="Ruud Gullit"></span>
     <span class="lg" title="Ruud Geels"><img src="img/geels.jpg" alt="Ruud Geels"></span>
+    <span class="lg" title="Van Morrison"><img src="img/morrison.jpg" alt="Van Morrison"></span>
     <span class="lg lg-bk" title="Hans van Breukelen"><img src="img/breukelen.jpg" alt="Hans van Breukelen"></span>
-    <span class="lg" title="Ruud Krol"><img src="img/krol.jpg" alt="Ruud Krol"></span>
   </div>
   <div class="legends-credit">Foto's: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></div>
 </div>
@@ -299,7 +299,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <button id="tabSim" class="tab">Gelijkenis</button>
   </div>
   <div id="view-stand">
-  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 20 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2000 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule. Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
+  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 20 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2000 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat los van de stand in de Breukelen WK-poule (alle correspondentie daarover via email). Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
   <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt - fingers crossed!</div>
   <div class="tickets" id="tickets"></div>
 
