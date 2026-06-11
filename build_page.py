@@ -179,6 +179,17 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   .pred-grp .pred-names{grid-column:1/-1}
 }
 
+/* gelijkenis-heatmap */
+.sim-legend{display:flex;align-items:center;gap:10px;padding:10px 16px 0;font-size:11.5px;
+  color:var(--muted);flex-wrap:wrap}
+.sim-grad{width:120px;height:10px;border-radius:2px;
+  background:linear-gradient(90deg,hsl(6,68%,96%),hsl(6,72%,42%));border:1px solid var(--rule)}
+#simReadout{font-family:"Space Mono",monospace;color:var(--ink);margin-left:auto}
+.sim-wrap{padding:12px 16px 16px;overflow:auto}
+.simsvg{max-width:100%;height:auto;display:block}
+.simsvg rect{shape-rendering:crispEdges}
+.simsvg rect:hover{stroke:var(--ink);stroke-width:1}
+
 /* odds-popover */
 .odtip{position:fixed;z-index:60;background:#fff;border:1px solid var(--ink);border-radius:4px;
   box-shadow:0 10px 30px rgba(0,0,0,.20);padding:13px 15px;width:308px;max-width:calc(100vw - 24px);
@@ -259,9 +270,10 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   <div class="tabs">
     <button id="tabStand" class="tab on">Stand</button>
     <button id="tabPreds" class="tab">Voorspellingen</button>
+    <button id="tabSim" class="tab">Gelijkenis</button>
   </div>
   <div id="view-stand">
-  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 25 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2500 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule. Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
+  <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 20 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2000 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat volledig los van de door Ruud beheerde WK-poule. Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
   <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt - fingers crossed!</div>
   <div class="tickets" id="tickets"></div>
 
@@ -350,6 +362,22 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
       <div id="preds"></div>
     </div>
   </div>
+
+  <div id="view-sim" hidden>
+    <div class="panel" style="margin-top:18px">
+      <div class="head"><h2>Wie voorspelt als wie?</h2><div class="chartbtns">
+        <button id="simToto" class="cbtn on">Toto</button>
+        <button id="simScore" class="cbtn">Exacte score</button></div></div>
+      <div class="sim-legend">
+        <span>minder gelijk</span>
+        <span class="sim-grad"></span>
+        <span>meer gelijk</span>
+        <span id="simReadout">beweeg over het vlak voor twee namen</span>
+      </div>
+      <div class="sim-wrap"><div id="simHeat"></div></div>
+      <div class="pred-legend">Elke deelnemer is een rij én een kolom; een rodere cel betekent dat dat tweetal vaker dezelfde voorspelling deed. Namen staan zo geordend (clustering) dat wie op elkaar lijkt naast elkaar komt &mdash; rode blokken zijn groepjes gelijkgestemden. Wissel tussen <b>toto</b> (1/X/2) en <b>exacte score</b>.</div>
+    </div>
+  </div>
 </div>
 <div id="odtip" class="odtip" role="tooltip"></div>
 
@@ -409,7 +437,7 @@ document.getElementById("rows").innerHTML = DATA.participants.map(p=>{
 }).join("");
 
 // ---- odds-popover -------------------------------------------------------
-const STAKE_TOTO = 100, STAKE_SCORE = 25, CS_MAX = 5;
+const STAKE_TOTO = 100, STAKE_SCORE = 20, CS_MAX = 5;
 const tip = document.getElementById("odtip");
 let tipRow = null;
 
@@ -590,16 +618,53 @@ document.getElementById("predExpand").onclick = ()=>
 document.getElementById("predCollapse").onclick = ()=>
   document.querySelectorAll(".pred-match").forEach(d=>d.open = false);
 
-let predsRendered = false;
+// ---- gelijkenis-heatmap -------------------------------------------------
+function simColor(v){ return `hsl(6,72%,${(96 - v*0.54).toFixed(1)}%)`; }
+let simMode = "toto";
+function renderSim(){
+  const S = DATA.similarity && DATA.similarity[simMode];
+  const heat = document.getElementById("simHeat");
+  if(!S){ heat.innerHTML = "<p style='padding:12px;color:#897F70'>Geen gelijkenis-data.</p>"; return; }
+  const names = S.names, M = S.matrix, n = names.length, cell = 12, sz = n*cell;
+  let r = "";
+  for(let i=0;i<n;i++) for(let j=0;j<n;j++){
+    const v = M[i][j];
+    const fill = i===j ? "#E3DDCD" : simColor(v);
+    r += `<rect x="${j*cell}" y="${i*cell}" width="${cell-1}" height="${cell-1}" fill="${fill}" `+
+         `data-i="${i}" data-j="${j}"><title>${names[i]} ↔ ${names[j]}: ${v}%</title></rect>`;
+  }
+  heat.innerHTML = `<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" class="simsvg" `+
+    `role="img" aria-label="gelijkenis-heatmap">${r}</svg>`;
+  const ro = document.getElementById("simReadout");
+  heat.querySelector("svg").addEventListener("pointermove", e=>{
+    const t = e.target; if(t.tagName !== "rect") return;
+    const i = +t.dataset.i, j = +t.dataset.j;
+    ro.textContent = i===j ? names[i] : `${names[i]} ↔ ${names[j]}: ${M[i][j]}%`;
+  });
+}
+function setSim(mode){
+  simMode = mode;
+  document.getElementById("simToto").classList.toggle("on", mode==="toto");
+  document.getElementById("simScore").classList.toggle("on", mode==="score");
+  renderSim();
+}
+document.getElementById("simToto").onclick = ()=>setSim("toto");
+document.getElementById("simScore").onclick = ()=>setSim("score");
+
+let predsRendered = false, simRendered = false;
 function showView(v){
   document.getElementById("view-stand").hidden = v !== "stand";
   document.getElementById("view-preds").hidden = v !== "preds";
+  document.getElementById("view-sim").hidden = v !== "sim";
   document.getElementById("tabStand").classList.toggle("on", v==="stand");
   document.getElementById("tabPreds").classList.toggle("on", v==="preds");
+  document.getElementById("tabSim").classList.toggle("on", v==="sim");
   if(v==="preds" && !predsRendered){ renderPreds(); predsRendered = true; }
+  if(v==="sim" && !simRendered){ renderSim(); simRendered = true; }
 }
 document.getElementById("tabStand").onclick = ()=>showView("stand");
 document.getElementById("tabPreds").onclick = ()=>showView("preds");
+document.getElementById("tabSim").onclick = ()=>showView("sim");
 </script>
 </body>
 </html>"""

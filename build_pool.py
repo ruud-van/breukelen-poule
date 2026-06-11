@@ -17,8 +17,8 @@ from parse_all import parse_all
 ODDS_RAW = "wk_odds.json"
 MASTER = "WK_2026__allen_.xls"        # repo-relatief; meegecommit in de repo
 RESULTS_STATE = "results_state.json"  # output van results_fetch.py (echte uitslagen)
-START = 2500
-STAKE_TOTO, STAKE_SCORE = 100, 25
+START = 2000
+STAKE_TOTO, STAKE_SCORE = 100, 20
 OVERROUND_CS, LONGSHOT = 1.40, 0.12
 N_SIM = 4000
 GRID = 7   # correct-score odds opslaan voor 0..7 per team
@@ -230,6 +230,32 @@ for mi, m in enumerate(matches):
                       for pi, n in enumerate(names)]
     predictions.append(entry)
 data["predictions"] = predictions
+
+# ---- 11. gelijkenis-matrices (toto + exacte score) ------------------------
+# per paar deelnemers: % wedstrijden met dezelfde toto (1/X/2) resp. exacte score.
+# Namen geordend via hiërarchische clustering zodat gelijkende mensen naast
+# elkaar komen (rode blokken in de heatmap).
+from scipy.cluster.hierarchy import linkage, leaves_list
+from scipy.spatial.distance import squareform
+
+def _order(sim):
+    if len(sim) < 3:
+        return list(range(len(sim)))
+    d = 1.0 - sim
+    np.fill_diagonal(d, 0.0)
+    d = (d + d.T) / 2
+    return [int(i) for i in leaves_list(linkage(squareform(d, checks=False), method="average"))]
+
+toto_sim = (pred_toto[:, None, :] == pred_toto[None, :, :]).mean(2)
+score_sim = ((pred_h[:, None, :] == pred_h[None, :, :]) &
+             (pred_a[:, None, :] == pred_a[None, :, :])).mean(2)
+
+def _pack(sim):
+    order = _order(sim)
+    return {"names": [names[i] for i in order],
+            "matrix": [[int(round(100 * sim[i, j])) for j in order] for i in order]}
+
+data["similarity"] = {"toto": _pack(toto_sim), "score": _pack(score_sim)}
 
 json.dump(data, open("data.json", "w"), ensure_ascii=False, indent=1)
 print(f"\ndata.json geschreven. Gespeeld: {len(results)}/72.",
