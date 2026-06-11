@@ -142,7 +142,7 @@ for mi, m in enumerate(matches):
 
 played_idx = [r[0] for r in results]
 last_day = daykey(matches[played_idx[-1]]["datetime"]) if played_idx else None
-last_matchtime = matches[played_idx[-1]]["datetime"] if played_idx else None
+last_update = state.get("_updated_at")  # NL-tijdstip waarop de uitslag is verwerkt
 played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_idx}
 
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
@@ -197,7 +197,7 @@ data = {
     "demo": False,
     "demo_note": "echte deelnemers, echte odds en echte uitslagen",
     "start_budget": START, "n_participants": len(parts), "n_matches": 72,
-    "n_played": len(results), "last_matchday": last_day, "last_matchtime": last_matchtime,
+    "n_played": len(results), "last_matchday": last_day, "last_update": last_update,
     "played_labels": [f'{matches[mi]["home"]}-{matches[mi]["away"]}' for mi in played_idx],
     "participants": parts,
     "highlights": {"riser": {"name": riser["name"], "delta": riser["delta_last_day"]},

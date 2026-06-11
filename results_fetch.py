@@ -14,8 +14,18 @@ Teamnaam-koppeling loopt via to_nl uit odds_fetch (EN_TO_NL + FEED_ALIASES),
 dezelfde mapping als waarmee de odds zijn gekoppeld -> alle 48 teams vallen op
 de Nederlandse formuliernamen.
 """
-import json, urllib.request
+import os, json, datetime, urllib.request
 from odds_fetch import to_nl
+
+_NL_MONTHS = ["januari", "februari", "maart", "april", "mei", "juni",
+              "juli", "augustus", "september", "oktober", "november", "december"]
+
+
+def _now_nl():
+    """Huidige tijd in NL (CEST = UTC+2; het hele WK valt in de zomertijd)
+    als 'D maand HH:MM', bv. '11 juni 23:14'."""
+    nl = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=2)
+    return f"{nl.day} {_NL_MONTHS[nl.month - 1]} {nl:%H:%M}"
 
 # Hele groepsfase WK 2026 (11 t/m 27 juni); ruime marge, knock-out wordt
 # alsnog op season.slug uitgefilterd.
@@ -68,12 +78,21 @@ def fetch_espn():
 
 def main():
     results = fetch_espn()
-    state = {
+    matches = {
         f"{h}|{a}": {"home": h, "away": a, "hg": hg, "ag": ag}
         for (h, a, hg, ag) in results
     }
+    # "_updated_at" alleen verversen als de uitslagen écht wijzigen, zodat de
+    # bot niet elke cron-run een lege commit doet.
+    prev = json.load(open(STATE)) if os.path.exists(STATE) else {}
+    prev_updated = prev.pop("_updated_at", None)
+    state = dict(matches)
+    if matches:
+        keep = matches == prev and prev_updated
+        state["_updated_at"] = prev_updated if keep else _now_nl()
     json.dump(state, open(STATE, "w"), ensure_ascii=False, indent=1)
-    print(f"{len(state)} afgeronde groepswedstrijden weggeschreven naar {STATE}")
+    print(f"{len(matches)} afgeronde groepswedstrijden weggeschreven naar {STATE}"
+          + (f" (verwerkt: {state['_updated_at']})" if matches else ""))
 
 
 if __name__ == "__main__":
