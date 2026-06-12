@@ -444,8 +444,8 @@ document.getElementById("tickets").innerHTML = [
     kl?"op "+esc(kl.match):"&nbsp;"],
   ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", ""],
   ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", ""],
-  ["Gokken of op zeker", h.gokker.name, "mediaan odd "+String(h.gokker.med).replace(".",","), "gold",
-    "op zeker: "+esc(h.zeker.name)+" &middot; mediaan odd "+String(h.zeker.med).replace(".",",")],
+  ["Grootste gokker", h.gokker.name, "mediaan odd "+String(h.gokker.med).replace(".",","), "gold",
+    "meest op zeker: "+esc(h.zeker.name)+" &middot; mediaan odd "+String(h.zeker.med).replace(".",",")],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
   <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}</div>
   <div class="val ${t[3]}">${t[2]}</div>${t[4]?`<div class="sub">${t[4]}</div>`:""}</div>`).join("");
