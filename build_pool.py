@@ -155,6 +155,8 @@ played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_i
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
 parts = []
 klapper = None   # grootste netto-opbrengst op één wedstrijd: (net, naam, mi)
+match_net = {}      # mi -> totaal netto over alle deelnemers
+match_winners = {}  # mi -> [(naam, net)] van wie eraan verdiende
 for pi, n in enumerate(names):
     budget = START; series = [START]; seq = []; net_last = 0.0; correct = 0
     for (mi, ah, aa) in results:
@@ -166,6 +168,8 @@ for pi, n in enumerate(names):
         else: net += -STAKE_SCORE
         if net > 0 and (klapper is None or net > klapper[0]):
             klapper = (net, n, mi)
+        match_net[mi] = match_net.get(mi, 0.0) + net
+        if net > 0: match_winners.setdefault(mi, []).append((n, net))
         budget += net; series.append(round(budget, 2)); seq.append(ok)
         if daykey(matches[mi]["datetime"]) == last_day: net_last += net
     def longest(s, v):
@@ -188,8 +192,32 @@ for pi, n in enumerate(names):
                   "delta_last_day": round(net_last, 2)})
 parts.sort(key=lambda p: -p["budget"])
 for i, p in enumerate(parts): p["rank"] = i + 1
+
+# positieverschuiving t.o.v. vóór de laatste speeldag, met competition-ranking
+# (gelijke budgetten delen een plek) zodat de startsituatie geen pijltjes geeft.
+for p in parts:
+    p["_prev"] = round(p["budget"] - p["delta_last_day"], 2)
+for p in parts:
+    cur = 1 + sum(1 for q in parts if q["budget"] > p["budget"])
+    prev = 1 + sum(1 for q in parts if q["_prev"] > p["_prev"])
+    p["rank_delta"] = prev - cur
+for p in parts: del p["_prev"]
+
 riser = max(parts, key=lambda p: p["delta_last_day"])
 faller = min(parts, key=lambda p: p["delta_last_day"])
+
+# wedstrijd van de dag: de uitslag op de laatste speeldag waar voor het veld
+# als geheel het meeste geld omging (grootste absolute som van netto's).
+mod = None
+if results:
+    res_map = {mi: (ah, aa) for (mi, ah, aa) in results}
+    day_mis = [mi for mi in res_map if daykey(matches[mi]["datetime"]) == last_day]
+    mi_top = max(day_mis, key=lambda m: abs(match_net.get(m, 0.0)))
+    winners = sorted(match_winners.get(mi_top, []), key=lambda t: -t[1])
+    mod = {"home": matches[mi_top]["home"], "away": matches[mi_top]["away"],
+           "h": res_map[mi_top][0], "a": res_map[mi_top][1],
+           "total": round(match_net[mi_top], 2), "n_winners": len(winners),
+           "top": ([winners[0][0], round(winners[0][1], 2)] if winners else None)}
 
 # gokken of op zeker: mediaan eindstand-odd van alle 72 voorspellingen.
 # Hoog = structureel longshots invullen, laag = dicht op de consensus.
@@ -229,6 +257,7 @@ data = {
                                if klapper else None),
                    "gokker": gokker, "zeker": zeker},
     "boldness": {"gok": gok_top, "zeker": zeker_top},
+    "match_of_day": mod,
     "results": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
                  "datetime": matches[mi]["datetime"], "h": ah, "a": aa,
                  "toto": toto_of(ah, aa),

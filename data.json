@@ -30,7 +30,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 1
+   "rank": 1,
+   "rank_delta": 0
   },
   {
    "name": "Sofie",
@@ -48,7 +49,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 2
+   "rank": 2,
+   "rank_delta": 0
   },
   {
    "name": "Piet",
@@ -66,7 +68,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 3
+   "rank": 3,
+   "rank_delta": 17
   },
   {
    "name": "Robbie",
@@ -84,7 +87,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 4
+   "rank": 4,
+   "rank_delta": 17
   },
   {
    "name": "Jikke",
@@ -102,7 +106,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 5
+   "rank": 5,
+   "rank_delta": 17
   },
   {
    "name": "Kai",
@@ -120,7 +125,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 6
+   "rank": 6,
+   "rank_delta": 17
   },
   {
    "name": "Ad",
@@ -138,7 +144,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 7
+   "rank": 7,
+   "rank_delta": 17
   },
   {
    "name": "Chris Snijders",
@@ -156,7 +163,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 145.0,
-   "rank": 8
+   "rank": 8,
+   "rank_delta": -7
   },
   {
    "name": "Quentin",
@@ -174,7 +182,8 @@
    "current_streak": 1,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 9
+   "rank": 9,
+   "rank_delta": 41
   },
   {
    "name": "Emma",
@@ -192,7 +201,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 145.0,
-   "rank": 10
+   "rank": 10,
+   "rank_delta": 10
   },
   {
    "name": "Koen",
@@ -210,7 +220,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 145.0,
-   "rank": 11
+   "rank": 11,
+   "rank_delta": 10
   },
   {
    "name": "Rob Dekker",
@@ -228,7 +239,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 145.0,
-   "rank": 12
+   "rank": 12,
+   "rank_delta": 10
   },
   {
    "name": "Jolanda v. Honk",
@@ -246,7 +258,8 @@
    "current_streak": 1,
    "current_streak_type": "goed",
    "delta_last_day": 145.0,
-   "rank": 13
+   "rank": 13,
+   "rank_delta": 37
   },
   {
    "name": "Sanne",
@@ -264,7 +277,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 14
+   "rank": 14,
+   "rank_delta": -13
   },
   {
    "name": "Shanine",
@@ -282,7 +296,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 15
+   "rank": 15,
+   "rank_delta": -13
   },
   {
    "name": "Elwin Marin",
@@ -300,7 +315,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 16
+   "rank": 16,
+   "rank_delta": -13
   },
   {
    "name": "Yoni",
@@ -318,7 +334,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 17
+   "rank": 17,
+   "rank_delta": -13
   },
   {
    "name": "Ivo",
@@ -336,7 +353,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 18
+   "rank": 18,
+   "rank_delta": -13
   },
   {
    "name": "Paul",
@@ -354,7 +372,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 19
+   "rank": 19,
+   "rank_delta": -13
   },
   {
    "name": "Miguel",
@@ -372,7 +391,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 20
+   "rank": 20,
+   "rank_delta": -13
   },
   {
    "name": "Sandra",
@@ -390,7 +410,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 21
+   "rank": 21,
+   "rank_delta": -13
   },
   {
    "name": "Noortje",
@@ -408,7 +429,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 22
+   "rank": 22,
+   "rank_delta": -13
   },
   {
    "name": "Lukas",
@@ -426,7 +448,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 23
+   "rank": 23,
+   "rank_delta": -13
   },
   {
    "name": "Loes",
@@ -444,7 +467,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 24
+   "rank": 24,
+   "rank_delta": -13
   },
   {
    "name": "Ton",
@@ -462,7 +486,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 25
+   "rank": 25,
+   "rank_delta": -13
   },
   {
    "name": "Abel Baars",
@@ -480,7 +505,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 26
+   "rank": 26,
+   "rank_delta": -13
   },
   {
    "name": "Bartho v. Honk",
@@ -498,7 +524,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 27
+   "rank": 27,
+   "rank_delta": -13
   },
   {
    "name": "Faris B",
@@ -516,7 +543,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 28
+   "rank": 28,
+   "rank_delta": -13
   },
   {
    "name": "Tim van Weerde",
@@ -534,7 +562,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 29
+   "rank": 29,
+   "rank_delta": -13
   },
   {
    "name": "Vera",
@@ -552,7 +581,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 30
+   "rank": 30,
+   "rank_delta": -10
   },
   {
    "name": "Pelle",
@@ -570,7 +600,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 31
+   "rank": 31,
+   "rank_delta": -10
   },
   {
    "name": "Thijs",
@@ -588,7 +619,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 32
+   "rank": 32,
+   "rank_delta": -10
   },
   {
    "name": "Peter Hoff",
@@ -606,7 +638,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 33
+   "rank": 33,
+   "rank_delta": -10
   },
   {
    "name": "Tim",
@@ -624,7 +657,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 34
+   "rank": 34,
+   "rank_delta": -10
   },
   {
    "name": "Jose Marin",
@@ -642,7 +676,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 35
+   "rank": 35,
+   "rank_delta": -10
   },
   {
    "name": "Majorie",
@@ -660,7 +695,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 36
+   "rank": 36,
+   "rank_delta": -10
   },
   {
    "name": "Jorge",
@@ -678,7 +714,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 37
+   "rank": 37,
+   "rank_delta": -10
   },
   {
    "name": "Ingrid",
@@ -696,7 +733,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 38
+   "rank": 38,
+   "rank_delta": -10
   },
   {
    "name": "Romée",
@@ -714,7 +752,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 39
+   "rank": 39,
+   "rank_delta": -10
   },
   {
    "name": "Wil",
@@ -732,7 +771,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 40
+   "rank": 40,
+   "rank_delta": -10
   },
   {
    "name": "Bram",
@@ -750,7 +790,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 41
+   "rank": 41,
+   "rank_delta": -10
   },
   {
    "name": "Henk",
@@ -768,7 +809,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 42
+   "rank": 42,
+   "rank_delta": -10
   },
   {
    "name": "Fien",
@@ -786,7 +828,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 43
+   "rank": 43,
+   "rank_delta": -10
   },
   {
    "name": "Carolien",
@@ -804,7 +847,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 44
+   "rank": 44,
+   "rank_delta": -10
   },
   {
    "name": "Michael",
@@ -822,7 +866,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 45
+   "rank": 45,
+   "rank_delta": -10
   },
   {
    "name": "Wim",
@@ -840,7 +885,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 46
+   "rank": 46,
+   "rank_delta": -10
   },
   {
    "name": "Ester vd Wurf",
@@ -858,7 +904,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 47
+   "rank": 47,
+   "rank_delta": -10
   },
   {
    "name": "Jan v.Rijn",
@@ -876,7 +923,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 48
+   "rank": 48,
+   "rank_delta": -10
   },
   {
    "name": "Gijs Baars",
@@ -894,7 +942,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 49
+   "rank": 49,
+   "rank_delta": -10
   },
   {
    "name": "Florens v. Honk",
@@ -912,7 +961,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 50
+   "rank": 50,
+   "rank_delta": -10
   },
   {
    "name": "Jaap",
@@ -930,7 +980,8 @@
    "current_streak": 1,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 51
+   "rank": 51,
+   "rank_delta": -10
   },
   {
    "name": "Hans",
@@ -948,7 +999,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 52
+   "rank": 52,
+   "rank_delta": -2
   },
   {
    "name": "Yaëlle",
@@ -966,7 +1018,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 53
+   "rank": 53,
+   "rank_delta": -2
   },
   {
    "name": "Bengt",
@@ -984,7 +1037,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 54
+   "rank": 54,
+   "rank_delta": -2
   },
   {
    "name": "Ruud",
@@ -1002,7 +1056,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 55
+   "rank": 55,
+   "rank_delta": -2
   },
   {
    "name": "Patrick Severijn",
@@ -1020,7 +1075,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 56
+   "rank": 56,
+   "rank_delta": -2
   },
   {
    "name": "Rob Dubbers",
@@ -1038,7 +1094,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 57
+   "rank": 57,
+   "rank_delta": -2
   },
   {
    "name": "René vd Wurf",
@@ -1056,7 +1113,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 58
+   "rank": 58,
+   "rank_delta": -2
   }
  ],
  "highlights": {
@@ -1084,7 +1142,8 @@
    "current_streak": 2,
    "current_streak_type": "goed",
    "delta_last_day": 331.3,
-   "rank": 1
+   "rank": 1,
+   "rank_delta": 0
   },
   "cold": {
    "name": "Hans",
@@ -1102,7 +1161,8 @@
    "current_streak": 2,
    "current_streak_type": "fout",
    "delta_last_day": -120.0,
-   "rank": 52
+   "rank": 52,
+   "rank_delta": -2
   },
   "klapper": {
    "name": "Piet",
@@ -1162,6 +1222,18 @@
     "Ester vd Wurf",
     6.5
    ]
+  ]
+ },
+ "match_of_day": {
+  "home": "Zuid Korea",
+  "away": "Tsjechië",
+  "h": 2,
+  "a": 1,
+  "total": -2024.62,
+  "n_winners": 13,
+  "top": [
+   "Piet",
+   331.3
   ]
  },
  "results": [

@@ -103,7 +103,9 @@ thead th{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.1em
 th.r,td.r{text-align:right}
 tbody td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:middle}
 tbody tr:hover{background:#FBF9F2}
-.rank{font-family:"Archivo",sans-serif;font-weight:700;color:var(--muted);width:34px}
+.rank{font-family:"Archivo",sans-serif;font-weight:700;color:var(--muted);width:52px;white-space:nowrap}
+.mv{font-family:"Space Mono",monospace;font-size:9.5px;font-weight:400;color:var(--muted);margin-left:3px}
+.mv.up{color:var(--up)} .mv.down{color:var(--down)}
 tr.lead .rank{color:var(--brass)}
 .name{font-weight:600}
 tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-size:12px}
@@ -125,6 +127,9 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 .rrow.odp:hover{background:#FBF9F2}
 .rrow .sc{font-family:"Space Mono",monospace;font-weight:700}
 .rrow .od{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted)}
+.motd{padding:10px 16px;font-size:12.5px;line-height:1.55;background:#FBF6E7;
+  border-bottom:1px solid var(--rule);color:#3c372f}
+.motd b{font-family:"Space Mono",monospace}
 .t1{color:var(--up)} .t2{color:var(--down)} .tx{color:var(--brass)}
 .note{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--rule);padding-top:14px}
 
@@ -327,6 +332,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <div class="side">
       <div class="panel">
         <div class="head"><h2>Laatste uitslagen</h2><span class="hint" id="reslab"></span></div>
+        <div id="motd" hidden class="motd"></div>
         <div id="results" style="padding:4px 0 6px"></div>
       </div>
       <div class="panel">
@@ -468,8 +474,12 @@ function spark(series){
 // leaderboard
 document.getElementById("rows").innerHTML = DATA.participants.map(p=>{
   const du = p.delta_last_day>=0;
+  const rd = p.rank_delta||0;
+  const mv = rd>0?`<span class="mv up">&#9650;${rd}</span>`
+           : rd<0?`<span class="mv down">&#9660;${-rd}</span>`
+           : `<span class="mv">&middot;</span>`;
   return `<tr class="${p.rank===1?'lead':''}">
-    <td class="rank">${p.rank}</td>
+    <td class="rank">${p.rank}${mv}</td>
     <td class="name">${esc(p.name)}</td>
     <td>${spark(p.series)}</td>
     <td class="r budget">${eur(p.budget)}</td>
@@ -545,6 +555,25 @@ function fillRows(id, items){
 document.addEventListener("click", ()=>hideTip());
 window.addEventListener("resize", hideTip);
 window.addEventListener("scroll", ()=>{ if(tipRow) placeTip(tipRow); }, true);
+
+// wedstrijd van de dag
+const md = DATA.match_of_day;
+if(md){
+  const verb = md.total < 0
+    ? `kostte de poule samen <b>${eur(-md.total)}</b>`
+    : `leverde de poule samen <b>${eur(md.total)}</b> op`;
+  let who;
+  if(!md.n_winners) who = "niemand verdiende eraan";
+  else{
+    const name = `${esc(md.top[0])} (${sgn(md.top[1])})`;
+    const rest = md.n_winners - 1;
+    who = rest===0 ? `alleen ${name} zag het aankomen`
+        : `${name} en ${rest} ${rest===1?"andere deelnemer":"anderen"} verdienden eraan`;
+  }
+  const el = document.getElementById("motd");
+  el.innerHTML = `<b>${esc(md.home)} – ${esc(md.away)} ${md.h}–${md.a}</b> ${verb}; ${who}.`;
+  el.hidden = false;
+}
 
 // results + upcoming
 const resItems = DATA.results.slice().reverse()
