@@ -12,7 +12,7 @@ HTML = r"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha384-bs/nf9FbdNouRbMiFcrcZfLXYPKiPaGVGplVbv7dLGECccEXDW+S3zjqSKR5ZEaD" crossorigin="anonymous"></script>
 <style>
 :root{
   --felt:#1E8049; --felt2:#176B40; --paper:#F7F4ED; --ink:#1A1714;
@@ -411,6 +411,8 @@ const DATA = __DATA__;
 const eur = n => "€" + Math.round(n).toLocaleString("nl-NL");
 const sgn = n => (n>=0?"+":"−") + "€" + Math.abs(Math.round(n)).toLocaleString("nl-NL");
 const fmtOdd = o => (Number(o)>=10 ? Number(o).toFixed(1) : Number(o).toFixed(2));
+const esc = s => String(s).replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 document.getElementById("title").textContent = DATA.title;
 document.getElementById("subtitle").textContent = DATA.subtitle;
@@ -430,14 +432,14 @@ document.getElementById("tickets").innerHTML = [
   ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up"],
   ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down"],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
-  <div class="lab">${t[0]}</div><div class="who">${t[1]}</div>
+  <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}</div>
   <div class="val ${t[3]}">${t[2]}</div></div>`).join("");
 
 // sparkline
 function spark(series){
   const w=92,hh=26,pad=3,min=Math.min(...series),max=Math.max(...series);
   const rng=(max-min)||1;
-  const pts=series.map((v,i)=>[pad+i*(w-2*pad)/(series.length-1),
+  const pts=series.map((v,i)=>[pad+i*(w-2*pad)/Math.max(series.length-1,1),
      hh-pad-(v-min)/rng*(hh-2*pad)]);
   const up=series[series.length-1]>=series[0];
   const base=DATA.start_budget;
@@ -453,7 +455,7 @@ document.getElementById("rows").innerHTML = DATA.participants.map(p=>{
   const du = p.delta_last_day>=0;
   return `<tr class="${p.rank===1?'lead':''}">
     <td class="rank">${p.rank}</td>
-    <td class="name">${p.name}</td>
+    <td class="name">${esc(p.name)}</td>
     <td>${spark(p.series)}</td>
     <td class="r budget">${eur(p.budget)}</td>
     <td class="r"><span class="delta ${du?'up':'down'}">${sgn(p.delta_last_day)}</span></td>
@@ -468,7 +470,7 @@ let tipRow = null;
 
 function tipContent(title, od){
   const T = od.toto;
-  let s = `<div class="odtip-h">${title}</div>`;
+  let s = `<div class="odtip-h">${esc(title)}</div>`;
   s += `<div class="odtip-sec">Toto &middot; inzet &euro;${STAKE_TOTO}</div>`;
   s += `<table class="odtip-toto">`+
        [["1","thuis wint"],["X","gelijkspel"],["2","uit wint"]].map(([k,lab])=>
@@ -534,13 +536,13 @@ const resItems = DATA.results.slice().reverse()
   .filter(r=>r.datetime.split(" ").slice(0,2).join(" ")===DATA.last_matchday)
   .map(r=>({
     title:`${r.home} – ${r.away}`, odds:r.odds,
-    left:`<span>${r.home} – ${r.away}</span>`,
+    left:`<span>${esc(r.home)} – ${esc(r.away)}</span>`,
     right:`<span class="sc t${r.toto.toLowerCase()==='x'?'x':r.toto}">${r.h}–${r.a}</span>`}));
 fillRows("results", resItems);
 
 const upItems = DATA.upcoming.map(u=>({
   title:`${u.home} – ${u.away}`, odds:u.odds,
-  left:`<span>${u.home} – ${u.away}</span>`,
+  left:`<span>${esc(u.home)} – ${esc(u.away)}</span>`,
   right:`<span class="od">${fmtOdd(u.odds.toto["1"])} / ${fmtOdd(u.odds.toto["X"])} / ${fmtOdd(u.odds.toto["2"])}</span>`}));
 fillRows("upcoming", upItems);
 
@@ -592,7 +594,7 @@ function renderTop(){
   if(chart) chart.destroy();
   chart=new Chart(document.getElementById("chart"),{type:"line",data:{labels,datasets:ds},options:baseOpts(anim)});
 }
-function setBtn(id){ document.querySelectorAll(".cbtn").forEach(b=>b.classList.toggle("on",b.id===id)); }
+function setBtn(id){ document.querySelectorAll("#bAll,#bTop").forEach(b=>b.classList.toggle("on",b.id===id)); }
 document.getElementById("bAll").onclick=()=>{ setBtn("bAll"); renderAll(); };
 document.getElementById("bTop").onclick=()=>{ setBtn("bTop"); renderTop(); };
 renderAll();
@@ -621,13 +623,13 @@ function renderPreds(){
         else if(gr.tt===m.toto) cls += " toto";
       }
       const names = gr.ns.slice().sort((a,b)=>a.localeCompare(b,"nl"))
-        .map(n=>`<span class="pn" data-n="${n.toLowerCase()}">${n}</span>`).join(", ");
+        .map(n=>`<span class="pn" data-n="${esc(n.toLowerCase())}">${esc(n)}</span>`).join(", ");
       body += `<div class="${cls}"><div class="pred-score">${gr.hh}–${gr.aa}</div>`+
         `<div class="pred-bar"><span style="width:${Math.round(100*gr.n/maxn)}%"></span></div>`+
         `<div class="pred-cnt">${gr.n}×</div><div class="pred-names">${names}</div></div>`;
     });
     const res = m.played ? `<span class="pred-res">${m.h}–${m.a}</span>` : "";
-    html += `<details class="pred-match"><summary><span class="pred-tm">${m.home} – ${m.away}</span>`+
+    html += `<details class="pred-match"><summary><span class="pred-tm">${esc(m.home)} – ${esc(m.away)}</span>`+
       `${res}<span class="pred-meta">${groups.length} verschillende</span></summary>`+
       `<div class="pred-body">${body}</div></details>`;
   });
@@ -674,11 +676,11 @@ function renderSim(){
     const sw = (0.4 + (w||0)/100 * 3.6).toFixed(2);   // 0% -> dun, 100% -> dik
     return `<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" `+
       `x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}" `+
-      `stroke-width="${sw}"><title>${names[a]} ↔ ${names[b]}: ${w}%</title></line>`;
+      `stroke-width="${sw}"><title>${esc(names[a])} ↔ ${esc(names[b])}: ${w}%</title></line>`;
   }).join("");
   const pts = P.map((c,i)=>
-    `<g class="nd" data-i="${i}"><text x="${c[0].toFixed(1)}" y="${c[1].toFixed(1)}">${names[i]}`+
-    `<title>${names[i]}</title></text></g>`).join("");
+    `<g class="nd" data-i="${i}"><text x="${c[0].toFixed(1)}" y="${c[1].toFixed(1)}">${esc(names[i])}`+
+    `<title>${esc(names[i])}</title></text></g>`).join("");
   net.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="simnet" preserveAspectRatio="xMidYMid meet" `+
     `role="img" aria-label="gelijkenis-netwerk">${lines}${pts}</svg>`;
   const ro = document.getElementById("simReadout");
@@ -687,7 +689,7 @@ function renderSim(){
     ro.textContent = names[+g.dataset.i];
   });
   const fill = (id, arr)=>{ document.getElementById(id).innerHTML =
-    arr.map(([a,b,p])=>`<li>${a} &amp; ${b}<span class="pct">${p}%</span></li>`).join(""); };
+    arr.map(([a,b,p])=>`<li>${esc(a)} &amp; ${esc(b)}<span class="pct">${p}%</span></li>`).join(""); };
   fill("simMost", S.most || []);
   fill("simLeast", S.least || []);
 }

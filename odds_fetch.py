@@ -91,7 +91,7 @@ def fetch():
             problems.append(f"{home}-{away}: over/under op lijn {line} i.p.v. 2.5 (model gebruikt deze lijn)")
         odds[f"{home}|{away}"] = rec
 
-    json.dump({"frozen_at": datetime.datetime.utcnow().isoformat() + "Z", "matches": odds},
+    json.dump({"frozen_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "matches": odds},
               open("odds.json", "w"), ensure_ascii=False, indent=1)
     print(f"{len(odds)} wedstrijden bevroren in odds.json")
     if problems:

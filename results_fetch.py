@@ -86,6 +86,11 @@ def main():
     # bot niet elke cron-run een lege commit doet.
     prev = json.load(open(STATE)) if os.path.exists(STATE) else {}
     prev_updated = prev.pop("_updated_at", None)
+    # Uitslagen kunnen tijdens de groepsfase alleen groeien; minder dan vorige
+    # run betekent een kapotte/lege feed -> niets overschrijven, hard falen.
+    if len(matches) < len(prev):
+        raise SystemExit(f"WEIGEREN: feed gaf {len(matches)} uitslagen, "
+                         f"vorige run had er {len(prev)} — {STATE} blijft ongemoeid")
     state = dict(matches)
     if matches:
         keep = matches == prev and prev_updated

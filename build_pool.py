@@ -65,6 +65,8 @@ for m in matches:
     c = cons.get(key)
     if not c:
         unmatched.append(key); models.append(None); continue
+    if None in c["toto"].values():
+        raise SystemExit(f"BUILD GESTOPT: 1X2-odds incompleet voor {key}: {c['toto']}")
     fit = fit_match(c["toto"]["1"], c["toto"]["X"], c["toto"]["2"], c["over"], c["under"])
     fair, marg = correct_score_odds(fit["matrix"], OVERROUND_CS, LONGSHOT)
     models.append({
@@ -94,6 +96,11 @@ print(f"\nRealisme-fit over 72 wedstrijden: max residu gem. {np.mean(resids):.2e
 # ---- 5. voorspellingen naar arrays ---------------------------------------
 names = list(preds.keys())
 P = len(names)
+# Een gat in een formulier mag nooit stilzwijgend een 0-0-inzet worden.
+missing = [(n, mi) for n in names for mi in range(72) if mi not in preds[n]]
+if missing:
+    raise SystemExit(f"BUILD GESTOPT: {len(missing)} ontbrekende voorspellingen, "
+                     f"eerste: {missing[:5]}")
 pred_toto = np.zeros((P, 72), int)
 pred_toto_odd = np.ones((P, 72))
 pred_h = np.zeros((P, 72), int); pred_a = np.zeros((P, 72), int)
@@ -102,7 +109,7 @@ idx = {"1": 0, "X": 1, "2": 2}
 for pi, n in enumerate(names):
     for mi in range(72):
         mm = models[mi]
-        ph, pa = preds[n].get(mi, (0, 0))
+        ph, pa = preds[n][mi]
         ph, pa = min(ph, GRID), min(pa, GRID)
         pred_h[pi, mi], pred_a[pi, mi] = ph, pa
         t = toto_of(ph, pa); pred_toto[pi, mi] = idx[t]
