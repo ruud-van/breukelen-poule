@@ -388,7 +388,9 @@ document.getElementById("meta").innerHTML =
   `<div class="m"><b>${DATA.n_played}/${DATA.n_matches}</b><span>gespeeld</span></div>`+
   `<div class="m"><b>${DATA.last_update||DATA.last_matchday||"–"}</b><span>verwerkt t/m</span></div>`;
 document.getElementById("clab").textContent = `alle ${DATA.n_participants} deelnemers`;
-document.getElementById("reslab").textContent = DATA.last_matchday||"";
+const nRes = Math.min(3, DATA.results.length);
+document.getElementById("reslab").textContent =
+  nRes ? (nRes===1 ? "laatste wedstrijd" : `laatste ${nRes} wedstrijden`) : "";
 
 // tickets
 const h = DATA.highlights;
@@ -528,11 +530,10 @@ if(md){
 }
 
 // results + upcoming
-const resItems = DATA.results.slice().reverse()
-  .filter(r=>r.datetime.split(" ").slice(0,2).join(" ")===DATA.last_matchday)
+const resItems = DATA.results.slice(-3).reverse()
   .map(r=>({
     title:`${r.home} – ${r.away}`, odds:r.odds,
-    left:`<span>${esc(r.home)} – ${esc(r.away)}</span>`,
+    left:`<span>${esc(r.home)} – ${esc(r.away)} <span class="od">${esc(r.datetime.split(" ").slice(0,2).join(" "))}</span></span>`,
     right:`<span class="sc t${r.toto.toLowerCase()==='x'?'x':r.toto}">${r.h}–${r.a}</span>`}));
 fillRows("results", resItems);
 
