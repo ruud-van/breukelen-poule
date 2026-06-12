@@ -382,6 +382,7 @@ const sgn = n => (n>=0?"+":"−") + "€" + Math.abs(Math.round(n)).toLocaleStri
 const fmtOdd = o => (Number(o)>=10 ? Number(o).toFixed(1) : Number(o).toFixed(2));
 const esc = s => String(s).replace(/[&<>"']/g, c =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const padTime = t => t && t.length===4 ? "0"+t : (t||"");   // 3:00 -> 03:00
 
 document.getElementById("title").textContent = DATA.title;
 document.getElementById("subtitle").textContent = DATA.subtitle;
@@ -544,7 +545,7 @@ fillRows("results", resItems);
 
 const upItems = DATA.upcoming.map(u=>({
   title:`${u.home} – ${u.away}`, odds:u.odds,
-  left:`<span>${esc(u.home)} – ${esc(u.away)}</span>`,
+  left:`<span>${esc(u.home)} – ${esc(u.away)} <span class="od">${esc(u.datetime.split(" ").slice(0,2).join(" "))} ${padTime(u.datetime.split(" ")[2])}</span></span>`,
   right:`<span class="od">${fmtOdd(u.odds.toto["1"])} / ${fmtOdd(u.odds.toto["X"])} / ${fmtOdd(u.odds.toto["2"])}</span>`}));
 fillRows("upcoming", upItems);
 
@@ -637,7 +638,7 @@ function renderPreds(){
         `<div class="pred-cnt">${gr.n}×</div><div class="pred-names">${names}</div></div>`;
     });
     const res = m.played ? `<span class="pred-res">${m.h}–${m.a}</span>` : "";
-    const tijd = m.datetime.split(" ")[2] || "";
+    const tijd = padTime(m.datetime.split(" ")[2]);
     html += `<details class="pred-match"><summary><span class="pred-time">${tijd}</span>`+
       `<span class="pred-tm">${esc(m.home)} – ${esc(m.away)}</span>`+
       `${res}<span class="pred-meta">${groups.length} verschillende</span></summary>`+
