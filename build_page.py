@@ -133,27 +133,11 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 .t1{color:var(--up)} .t2{color:var(--down)} .tx{color:var(--brass)}
 .note{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--rule);padding-top:14px}
 
-/* spelregels */
-.rules{margin-top:22px}
-.rules summary{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
-  padding:16px 18px;cursor:pointer;list-style:none}
-.rules summary::-webkit-details-marker{display:none}
-.rules summary h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:16px;margin:0;letter-spacing:-.01em}
-.rules summary .rh{font-size:11.5px;color:var(--muted)}
-.rules-body{padding:0 18px 18px}
-.rules-intro{font-size:13px;color:#3c372f;margin:0 0 12px;line-height:1.6}
-.rules-cat{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--felt);font-weight:700;margin:16px 0 8px}
-.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.rule{border:1px solid var(--rule);border-radius:3px;padding:12px 14px;font-size:12.5px;
-  line-height:1.55;color:#3c372f;background:#FBF9F2}
-.rule-h{font-family:"Archivo",sans-serif;font-weight:700;font-size:13.5px;margin-bottom:4px;color:var(--ink)}
-.rules-src{font-size:12px;margin-top:14px}
-.rules-src a{color:var(--felt);font-weight:600;text-decoration:none}
-.rules-src a:hover{text-decoration:underline}
-.rules-note{font-size:11.5px;color:var(--muted);margin-top:12px;border-top:1px solid var(--rule);
-  padding-top:10px;line-height:1.5}
-@media(max-width:860px){.rules-grid{grid-template-columns:1fr}}
+/* link naar de spelregels-pagina */
+.rules-link{margin-top:22px;padding:15px 18px;font-size:13.5px;line-height:1.6}
+.rules-link a{color:#3c372f;text-decoration:none}
+.rules-link a b{font-family:"Archivo",sans-serif;color:var(--felt)}
+.rules-link a:hover b{text-decoration:underline}
 
 /* tabs */
 .tabs{display:flex;gap:8px;margin-top:22px}
@@ -351,43 +335,9 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     </div>
   </div>
 
-  <details class="rules panel" open>
-    <summary><h2>Nieuwe spelregels WK 2026</h2><span class="rh">FIFA / IFAB &middot; toernooirichtlijnen</span></summary>
-    <div class="rules-body">
-      <p class="rules-intro">Voor dit WK voeren FIFA en spelregelcommissie IFAB een reeks wijzigingen door, met de focus op meer effectieve speeltijd, het hard aanpakken van tijdrekken en meer sportiviteit. De belangrijkste:</p>
-
-      <div class="rules-cat">1 &middot; Harde aanpak van tijdrekken</div>
-      <div class="rules-grid">
-        <div class="rule"><div class="rule-h">Snellere wissels (10 sec)</div>Een gewisselde speler moet binnen 10 seconden via de kortste route van het veld. Lukt dat niet, dan mag de invaller pas bij het eerstvolgende dode spelmoment én na minimaal één minuut het veld in &mdash; tot die tijd speelt het team met 10 man.</div>
-        <div class="rule"><div class="rule-h">Doeltrap &amp; inworp (5 sec)</div>Vindt de scheidsrechter dat een doeltrap of inworp te lang duurt, dan telt hij van 5 af. Te laat? Een te lange inworp gaat naar de tegenstander; een te lange doeltrap levert de tegenstander een hoekschop op.</div>
-        <div class="rule"><div class="rule-h">Keeper: 8-secondenregel</div>De keeper mag de bal nog max. 8 seconden vasthouden (laatste 5 worden afgeteld). Te lang? Hoekschop voor de tegenstander (was: indirecte vrije trap na 6 sec).</div>
-        <div class="rule"><div class="rule-h">Minuut eruit na blessure</div>Een op het veld medisch verzorgde speler moet daarna verplicht één minuut buiten de lijnen wachten &mdash; tenzij de tegenstander voor de overtreding een kaart kreeg.</div>
-      </div>
-
-      <div class="rules-cat">2 &middot; Gedrag en communicatie</div>
-      <div class="rules-grid">
-        <div class="rule"><div class="rule-h">Mond afschermen &rarr; rood</div>Wie tijdens een confrontatie zijn mond bedekt (hand of shirt) om liplezen te voorkomen, riskeert een directe rode kaart. Bedoeld om verborgen beledigingen en racisme tegen te gaan.</div>
-        <div class="rule"><div class="rule-h">Alleen de aanvoerder spreekt</div>Alleen de aanvoerder mag bij een dispuut de scheidsrechter benaderen. Andere spelers die verhaal komen halen, krijgen direct geel.</div>
-        <div class="rule"><div class="rule-h">Veld verlaten uit protest &rarr; rood</div>Teams die uit protest demonstratief het veld verlaten (of stafleden die daartoe aanzetten) worden bestraft met rode kaarten.</div>
-      </div>
-
-      <div class="rules-cat">3 &middot; VAR en technologie</div>
-      <div class="rules-grid">
-        <div class="rule"><div class="rule-h">VAR krijgt meer bevoegdheden</div>De VAR mag nu ingrijpen bij een onterechte tweede gele kaart (en dus rood), bij een kaart aan de verkeerde speler/ploeg, bij een overduidelijk onterechte hoekschop, en bij een aanvallende overtreding vlak vóór een doelpunt.</div>
-        <div class="rule"><div class="rule-h">Semi-automatisch buitenspel</div>Staat een speler meer dan 10 cm buitenspel, dan krijgt de grensrechter direct een audiosignaal in zijn oortje &mdash; voor snellere beslissingen bij uitbraken.</div>
-        <div class="rule"><div class="rule-h">Bodycams &amp; omgeroepen VAR</div>Bodycams op de scheidsrechter zijn toegestaan, en VAR-beslissingen worden in het stadion omgeroepen.</div>
-      </div>
-
-      <div class="rules-cat">4 &middot; Spel en toernooi</div>
-      <div class="rules-grid">
-        <div class="rule"><div class="rule-h">Vaste drinkpauze</div>In beide helften is er een vaste pauze van circa 3 minuten voor een adempauze, ongeacht de weersomstandigheden.</div>
-        <div class="rule"><div class="rule-h">Geel kwijtgescholden na groepsfase</div>Gele kaarten worden ook na de groepsfase gewist (niet pas na de kwartfinales), zodat minder spelers schorsingen oplopen voor belangrijke duels.</div>
-        <div class="rule"><div class="rule-h">Geen geel na voordeel-doelpunt</div>Maakt een speler een normaal geel-waardige overtreding, maar geeft de scheidsrechter voordeel en valt daaruit direct een doelpunt, dan vervalt de gele kaart.</div>
-      </div>
-
-      <p class="rules-src">Bronnen: <a href="https://www.theifab.com/laws/" target="_blank" rel="noopener">IFAB &ndash; Laws of the Game 2025/26</a> &middot; <a href="https://inside.fifa.com/news/offside-decisions-referee-body-cams-innovation-world-cup-2026" target="_blank" rel="noopener">FIFA &ndash; vernieuwingen WK 2026</a> &middot; <a href="https://nos.nl/artikel/2612342-nieuwe-regel-op-wk-spelers-die-mond-bedekken-tijdens-confrontaties-kunnen-rood-krijgen" target="_blank" rel="noopener">NOS</a></p>
-    </div>
-  </details>
+  <div class="panel rules-link">
+    <a href="regels.html"><b>Nieuwe spelregels WK 2026</b> &mdash; snellere wissels, de 8-secondenregel voor keepers, meer VAR en meer. Lees alle wijzigingen &rarr;</a>
+  </div>
 
   <div class="note" id="note"></div>
   </div><!-- /view-stand -->
@@ -772,5 +722,99 @@ document.getElementById("tabSim").onclick = ()=>showView("sim");
 </body>
 </html>"""
 
+REGELS = r"""<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nieuwe spelregels WK 2026 &middot; Breukelen-bookmaker poule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --felt:#1E8049; --paper:#F7F4ED; --ink:#1A1714; --brass:#C8922A;
+  --rule:#E3DDCD; --muted:#897F70;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Public Sans",system-ui,sans-serif;line-height:1.5;
+  -webkit-font-smoothing:antialiased}
+.board{background:var(--felt);color:#F2EEDF}
+.board-in{max-width:880px;margin:0 auto;padding:30px 20px 26px}
+.board h1{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(24px,4vw,40px);
+  letter-spacing:-.02em;line-height:1;margin:0}
+.board .sub{font-family:"Space Mono",monospace;text-transform:uppercase;
+  letter-spacing:.28em;font-size:11px;color:var(--brass);margin-top:10px}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+.back{margin:18px 0 0;font-size:13px}
+.back a{color:var(--felt);font-weight:600;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.panel{background:#fff;border:1px solid var(--rule);border-radius:3px;margin-top:18px}
+.rules-body{padding:6px 18px 18px}
+.rules-intro{font-size:13.5px;color:#3c372f;margin:12px 0;line-height:1.6}
+.rules-cat{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--felt);font-weight:700;margin:16px 0 8px}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rule{border:1px solid var(--rule);border-radius:3px;padding:12px 14px;font-size:12.5px;
+  line-height:1.55;color:#3c372f;background:#FBF9F2}
+.rule-h{font-family:"Archivo",sans-serif;font-weight:700;font-size:13.5px;margin-bottom:4px;color:var(--ink)}
+.rules-src{font-size:12px;margin-top:14px}
+.rules-src a{color:var(--felt);font-weight:600;text-decoration:none}
+.rules-src a:hover{text-decoration:underline}
+@media(max-width:680px){.rules-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="board"><div class="board-in">
+  <h1>Nieuwe spelregels WK 2026</h1>
+  <div class="sub">FIFA / IFAB &middot; toernooirichtlijnen</div>
+</div></div>
+<div class="wrap">
+  <p class="back"><a href="index.html">&larr; Terug naar de poule</a></p>
+  <div class="panel">
+    <div class="rules-body">
+      <p class="rules-intro">Voor dit WK voeren FIFA en spelregelcommissie IFAB een reeks wijzigingen door, met de focus op meer effectieve speeltijd, het hard aanpakken van tijdrekken en meer sportiviteit. De belangrijkste:</p>
+
+      <div class="rules-cat">1 &middot; Harde aanpak van tijdrekken</div>
+      <div class="rules-grid">
+        <div class="rule"><div class="rule-h">Snellere wissels (10 sec)</div>Een gewisselde speler moet binnen 10 seconden via de kortste route van het veld. Lukt dat niet, dan mag de invaller pas bij het eerstvolgende dode spelmoment én na minimaal één minuut het veld in &mdash; tot die tijd speelt het team met 10 man.</div>
+        <div class="rule"><div class="rule-h">Doeltrap &amp; inworp (5 sec)</div>Vindt de scheidsrechter dat een doeltrap of inworp te lang duurt, dan telt hij van 5 af. Te laat? Een te lange inworp gaat naar de tegenstander; een te lange doeltrap levert de tegenstander een hoekschop op.</div>
+        <div class="rule"><div class="rule-h">Keeper: 8-secondenregel</div>De keeper mag de bal nog max. 8 seconden vasthouden (laatste 5 worden afgeteld). Te lang? Hoekschop voor de tegenstander (was: indirecte vrije trap na 6 sec).</div>
+        <div class="rule"><div class="rule-h">Minuut eruit na blessure</div>Een op het veld medisch verzorgde speler moet daarna verplicht één minuut buiten de lijnen wachten &mdash; tenzij de tegenstander voor de overtreding een kaart kreeg.</div>
+      </div>
+
+      <div class="rules-cat">2 &middot; Gedrag en communicatie</div>
+      <div class="rules-grid">
+        <div class="rule"><div class="rule-h">Mond afschermen &rarr; rood</div>Wie tijdens een confrontatie zijn mond bedekt (hand of shirt) om liplezen te voorkomen, riskeert een directe rode kaart. Bedoeld om verborgen beledigingen en racisme tegen te gaan.</div>
+        <div class="rule"><div class="rule-h">Alleen de aanvoerder spreekt</div>Alleen de aanvoerder mag bij een dispuut de scheidsrechter benaderen. Andere spelers die verhaal komen halen, krijgen direct geel.</div>
+        <div class="rule"><div class="rule-h">Veld verlaten uit protest &rarr; rood</div>Teams die uit protest demonstratief het veld verlaten (of stafleden die daartoe aanzetten) worden bestraft met rode kaarten.</div>
+      </div>
+
+      <div class="rules-cat">3 &middot; VAR en technologie</div>
+      <div class="rules-grid">
+        <div class="rule"><div class="rule-h">VAR krijgt meer bevoegdheden</div>De VAR mag nu ingrijpen bij een onterechte tweede gele kaart (en dus rood), bij een kaart aan de verkeerde speler/ploeg, bij een overduidelijk onterechte hoekschop, en bij een aanvallende overtreding vlak vóór een doelpunt.</div>
+        <div class="rule"><div class="rule-h">Semi-automatisch buitenspel</div>Staat een speler meer dan 10 cm buitenspel, dan krijgt de grensrechter direct een audiosignaal in zijn oortje &mdash; voor snellere beslissingen bij uitbraken.</div>
+        <div class="rule"><div class="rule-h">Bodycams &amp; omgeroepen VAR</div>Bodycams op de scheidsrechter zijn toegestaan, en VAR-beslissingen worden in het stadion omgeroepen.</div>
+      </div>
+
+      <div class="rules-cat">4 &middot; Spel en toernooi</div>
+      <div class="rules-grid">
+        <div class="rule"><div class="rule-h">Vaste drinkpauze</div>In beide helften is er een vaste pauze van circa 3 minuten voor een adempauze, ongeacht de weersomstandigheden.</div>
+        <div class="rule"><div class="rule-h">Geel kwijtgescholden na groepsfase</div>Gele kaarten worden ook na de groepsfase gewist (niet pas na de kwartfinales), zodat minder spelers schorsingen oplopen voor belangrijke duels.</div>
+        <div class="rule"><div class="rule-h">Geen geel na voordeel-doelpunt</div>Maakt een speler een normaal geel-waardige overtreding, maar geeft de scheidsrechter voordeel en valt daaruit direct een doelpunt, dan vervalt de gele kaart.</div>
+      </div>
+
+      <p class="rules-src">Bronnen: <a href="https://www.theifab.com/laws/" target="_blank" rel="noopener">IFAB &ndash; Laws of the Game 2025/26</a> &middot; <a href="https://inside.fifa.com/news/offside-decisions-referee-body-cams-innovation-world-cup-2026" target="_blank" rel="noopener">FIFA &ndash; vernieuwingen WK 2026</a> &middot; <a href="https://nos.nl/artikel/2612342-nieuwe-regel-op-wk-spelers-die-mond-bedekken-tijdens-confrontaties-kunnen-rood-krijgen" target="_blank" rel="noopener">NOS</a></p>
+    </div>
+  </div>
+  <p class="back"><a href="index.html">&larr; Terug naar de poule</a></p>
+</div>
+</body>
+</html>"""
+
 open("index.html", "w").write(HTML.replace("__DATA__", DATA))
+open("regels.html", "w").write(REGELS)
 print("index.html geschreven,", len(HTML), "tekens template")
+print("regels.html geschreven,", len(REGELS), "tekens")
