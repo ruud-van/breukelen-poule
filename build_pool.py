@@ -204,7 +204,18 @@ for p in parts:
 for p in parts: del p["_prev"]
 
 riser = max(parts, key=lambda p: p["delta_last_day"])
-faller = min(parts, key=lambda p: p["delta_last_day"])
+
+# tegen de stroom in: de goede toto-keuze die door de kleinste minderheid
+# (< 50% van het veld) werd gedaan, over alle gespeelde wedstrijden.
+contrarian = None
+for (mi, ah, aa) in results:
+    at = toto_of(ah, aa)
+    who_right = sorted(names[pi] for pi in range(P) if pred_toto[pi, mi] == idx[at])
+    if who_right and len(who_right) < P / 2 and \
+       (contrarian is None or len(who_right) < contrarian["count"]):
+        contrarian = {"match": f'{matches[mi]["home"]}–{matches[mi]["away"]}',
+                      "h": ah, "a": aa, "toto": at,
+                      "count": len(who_right), "names": who_right}
 
 # wedstrijd van de dag: de uitslag op de laatste speeldag waar voor het veld
 # als geheel het meeste geld omging (grootste absolute som van netto's).
@@ -249,7 +260,7 @@ data = {
     "played_labels": [f'{matches[mi]["home"]}-{matches[mi]["away"]}' for mi in played_idx],
     "participants": parts,
     "highlights": {"riser": {"name": riser["name"], "delta": riser["delta_last_day"]},
-                   "faller": {"name": faller["name"], "delta": faller["delta_last_day"]},
+                   "contrarian": contrarian,
                    "hot": max(parts, key=lambda p: p["longest_correct"]),
                    "cold": max(parts, key=lambda p: p["longest_wrong"]),
                    "klapper": ({"name": klapper[1], "net": round(klapper[0], 2),
