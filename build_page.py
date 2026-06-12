@@ -67,7 +67,7 @@ body{background:var(--paper);color:var(--ink);
 .legends-credit a{color:#CFE0D5}
 
 /* tickets */
-.tickets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
+.tickets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px}
 .ticket{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:15px 16px;position:relative;
   box-shadow:0 1px 0 rgba(0,0,0,.02)}
 .ticket::before,.ticket::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;
@@ -79,7 +79,9 @@ body{background:var(--paper);color:var(--ink);
 .ticket .who{font-family:"Archivo",sans-serif;font-weight:700;font-size:18px;margin:6px 0 2px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ticket .val{font-family:"Space Mono",monospace;font-weight:700;font-size:15px}
-.val.up{color:var(--up)} .val.down{color:var(--down)}
+.val.up{color:var(--up)} .val.down{color:var(--down)} .val.gold{color:var(--brass)}
+.ticket .sub{font-size:11px;color:var(--muted);margin-top:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* chart */
 .panel{background:#fff;border:1px solid var(--rule);border-radius:3px;margin-top:22px;overflow:hidden}
@@ -426,14 +428,19 @@ document.getElementById("reslab").textContent = DATA.last_matchday||"";
 
 // tickets
 const h = DATA.highlights;
+const kl = h.klapper;
 document.getElementById("tickets").innerHTML = [
-  ["Snelste stijger", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down"],
-  ["Snelste daler", h.faller.name, sgn(h.faller.delta), h.faller.delta>=0?"up":"down"],
-  ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up"],
-  ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down"],
+  ["Snelste stijger", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", ""],
+  ["Snelste daler", h.faller.name, sgn(h.faller.delta), h.faller.delta>=0?"up":"down", ""],
+  ["Grootste klapper", kl?kl.name:"–", kl?sgn(kl.net):"nog geen", kl?"up":"",
+    kl?"op "+esc(kl.match):"&nbsp;"],
+  ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", ""],
+  ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", ""],
+  ["Gokken of op zeker", h.gokker.name, "gem. odd "+String(h.gokker.avg).replace(".",","), "gold",
+    "op zeker: "+esc(h.zeker.name)+" &middot; gem. odd "+String(h.zeker.avg).replace(".",",")],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
   <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}</div>
-  <div class="val ${t[3]}">${t[2]}</div></div>`).join("");
+  <div class="val ${t[3]}">${t[2]}</div>${t[4]?`<div class="sub">${t[4]}</div>`:""}</div>`).join("");
 
 // sparkline
 function spark(series){

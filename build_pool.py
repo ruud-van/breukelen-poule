@@ -154,6 +154,7 @@ played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_i
 
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
 parts = []
+klapper = None   # grootste netto-opbrengst op één wedstrijd: (net, naam, mi)
 for pi, n in enumerate(names):
     budget = START; series = [START]; seq = []; net_last = 0.0; correct = 0
     for (mi, ah, aa) in results:
@@ -163,6 +164,8 @@ for pi, n in enumerate(names):
         if pred_h[pi, mi] == ah and pred_a[pi, mi] == aa:
             net += STAKE_SCORE * (pred_cs_odd[pi, mi] - 1)
         else: net += -STAKE_SCORE
+        if net > 0 and (klapper is None or net > klapper[0]):
+            klapper = (net, n, mi)
         budget += net; series.append(round(budget, 2)); seq.append(ok)
         if daykey(matches[mi]["datetime"]) == last_day: net_last += net
     def longest(s, v):
@@ -188,6 +191,13 @@ for i, p in enumerate(parts): p["rank"] = i + 1
 riser = max(parts, key=lambda p: p["delta_last_day"])
 faller = min(parts, key=lambda p: p["delta_last_day"])
 
+# gokken of op zeker: gemiddelde eindstand-odd van alle 72 voorspellingen.
+# Hoog = veel longshots ingevuld, laag = dicht op de consensus.
+avg_cs = pred_cs_odd.mean(axis=1)
+gi, zi = int(np.argmax(avg_cs)), int(np.argmin(avg_cs))
+gokker = {"name": names[gi], "avg": round(float(avg_cs[gi]), 1)}
+zeker = {"name": names[zi], "avg": round(float(avg_cs[zi]), 1)}
+
 # odds (toto-uitbetaling + correct-score 0..5) per wedstrijd, voor de hover-popover
 CS_MAX = 5
 def _odds_for(m):
@@ -210,7 +220,11 @@ data = {
     "highlights": {"riser": {"name": riser["name"], "delta": riser["delta_last_day"]},
                    "faller": {"name": faller["name"], "delta": faller["delta_last_day"]},
                    "hot": max(parts, key=lambda p: p["longest_correct"]),
-                   "cold": max(parts, key=lambda p: p["longest_wrong"])},
+                   "cold": max(parts, key=lambda p: p["longest_wrong"]),
+                   "klapper": ({"name": klapper[1], "net": round(klapper[0], 2),
+                                "match": f'{matches[klapper[2]]["home"]}–{matches[klapper[2]]["away"]}'}
+                               if klapper else None),
+                   "gokker": gokker, "zeker": zeker},
     "results": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
                  "datetime": matches[mi]["datetime"], "h": ah, "a": aa,
                  "toto": toto_of(ah, aa),
