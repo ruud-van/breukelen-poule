@@ -191,12 +191,15 @@ for i, p in enumerate(parts): p["rank"] = i + 1
 riser = max(parts, key=lambda p: p["delta_last_day"])
 faller = min(parts, key=lambda p: p["delta_last_day"])
 
-# gokken of op zeker: gemiddelde eindstand-odd van alle 72 voorspellingen.
-# Hoog = veel longshots ingevuld, laag = dicht op de consensus.
-avg_cs = pred_cs_odd.mean(axis=1)
-gi, zi = int(np.argmax(avg_cs)), int(np.argmin(avg_cs))
-gokker = {"name": names[gi], "avg": round(float(avg_cs[gi]), 1)}
-zeker = {"name": names[zi], "avg": round(float(avg_cs[zi]), 1)}
+# gokken of op zeker: mediaan eindstand-odd van alle 72 voorspellingen.
+# Hoog = structureel longshots invullen, laag = dicht op de consensus.
+# Mediaan i.p.v. gemiddelde: één extreme uitslag domineert anders alles.
+med_cs = np.median(pred_cs_odd, axis=1)
+bold_order = np.argsort(med_cs)
+gok_top = [[names[i], round(float(med_cs[i]), 1)] for i in bold_order[::-1][:5]]
+zeker_top = [[names[i], round(float(med_cs[i]), 1)] for i in bold_order[:5]]
+gokker = {"name": gok_top[0][0], "med": gok_top[0][1]}
+zeker = {"name": zeker_top[0][0], "med": zeker_top[0][1]}
 
 # odds (toto-uitbetaling + correct-score 0..5) per wedstrijd, voor de hover-popover
 CS_MAX = 5
@@ -225,6 +228,7 @@ data = {
                                 "match": f'{matches[klapper[2]]["home"]}–{matches[klapper[2]]["away"]}'}
                                if klapper else None),
                    "gokker": gokker, "zeker": zeker},
+    "boldness": {"gok": gok_top, "zeker": zeker_top},
     "results": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
                  "datetime": matches[mi]["datetime"], "h": ah, "a": aa,
                  "toto": toto_of(ah, aa),

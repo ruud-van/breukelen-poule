@@ -334,6 +334,14 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
         <div id="upcoming" style="padding:4px 0 6px"></div>
         <div class="odhint">De drie getallen zijn de odds voor winst, gelijkspel en verlies van de thuisploeg. Beweeg met de muis over een wedstrijd (of tik erop) voor alle odds en wat elke uitslag zou opleveren.</div>
       </div>
+      <div class="panel">
+        <div class="head"><h2>Gokken of op zeker</h2><span class="hint">mediaan eindstand-odd</span></div>
+        <div class="sim-tops" style="grid-template-columns:1fr;gap:8px;padding-top:10px">
+          <div class="sim-top"><h3>Grootste gokkers</h3><ol id="gokTop"></ol></div>
+          <div class="sim-top"><h3>Meest op zeker</h3><ol id="zekerTop"></ol></div>
+        </div>
+        <div class="odhint">De mediaan van de eindstand-odds van alle 72 voorspelde uitslagen: hoog betekent vaak onwaarschijnlijke scores invullen, laag betekent dicht op de verwachting van de bookmakers zitten.</div>
+      </div>
     </div>
   </div>
 
@@ -436,8 +444,8 @@ document.getElementById("tickets").innerHTML = [
     kl?"op "+esc(kl.match):"&nbsp;"],
   ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", ""],
   ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", ""],
-  ["Gokken of op zeker", h.gokker.name, "gem. odd "+String(h.gokker.avg).replace(".",","), "gold",
-    "op zeker: "+esc(h.zeker.name)+" &middot; gem. odd "+String(h.zeker.avg).replace(".",",")],
+  ["Gokken of op zeker", h.gokker.name, "mediaan odd "+String(h.gokker.med).replace(".",","), "gold",
+    "op zeker: "+esc(h.zeker.name)+" &middot; mediaan odd "+String(h.zeker.med).replace(".",",")],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
   <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}</div>
   <div class="val ${t[3]}">${t[2]}</div>${t[4]?`<div class="sub">${t[4]}</div>`:""}</div>`).join("");
@@ -552,6 +560,12 @@ const upItems = DATA.upcoming.map(u=>({
   left:`<span>${esc(u.home)} – ${esc(u.away)}</span>`,
   right:`<span class="od">${fmtOdd(u.odds.toto["1"])} / ${fmtOdd(u.odds.toto["X"])} / ${fmtOdd(u.odds.toto["2"])}</span>`}));
 fillRows("upcoming", upItems);
+
+// gokken-of-op-zeker top 5
+const fillBold = (id, arr)=>{ document.getElementById(id).innerHTML =
+  arr.map(([n,v])=>`<li>${esc(n)}<span class="pct">${String(v).replace(".",",")}</span></li>`).join(""); };
+fillBold("gokTop", DATA.boldness.gok);
+fillBold("zekerTop", DATA.boldness.zeker);
 
 document.getElementById("note").innerHTML =
   (DATA.demo_note ? DATA.demo_note.charAt(0).toUpperCase()+DATA.demo_note.slice(1)+"." : "");

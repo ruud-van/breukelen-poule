@@ -1110,13 +1110,59 @@
    "match": "Zuid Korea–Tsjechië"
   },
   "gokker": {
-   "name": "Jikke",
-   "avg": 138.9
+   "name": "Rob Dubbers",
+   "med": 17.4
   },
   "zeker": {
    "name": "Ruud",
-   "avg": 6.5
+   "med": 6.3
   }
+ },
+ "boldness": {
+  "gok": [
+   [
+    "Rob Dubbers",
+    17.4
+   ],
+   [
+    "Hans",
+    15.7
+   ],
+   [
+    "Yaëlle",
+    15.0
+   ],
+   [
+    "Jorge",
+    13.1
+   ],
+   [
+    "Pascalle",
+    11.4
+   ]
+  ],
+  "zeker": [
+   [
+    "Ruud",
+    6.3
+   ],
+   [
+    "Tim van Weerde",
+    6.5
+   ],
+   [
+    "Chris Snijders",
+    6.5
+   ],
+   [
+    "Elwin Marin",
+    6.5
+   ],
+   [
+    "Ester vd Wurf",
+    6.5
+   ]
+  ]
  },
  "results": [
   {
