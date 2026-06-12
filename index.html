@@ -565,9 +565,15 @@ function renderAll(){
   chart=new Chart(document.getElementById("chart"),{type:"line",data:{labels,datasets:ds},options:baseOpts()});
 }
 function renderTop(){
-  const np=labels.length, step=19000/np;
+  // Progressief "tekenen" van links naar rechts, maar met een vaste per-punt-stap
+  // en een korte totale duur, zodat het ook bij weinig speelrondes snel en
+  // betrouwbaar rendert (de oude 19000/np-stap maakte de grafiek seconden leeg).
+  const step=Math.min(260, 1400/Math.max(labels.length-1,1));
   const anim={
-    x:{type:"number",easing:"linear",duration:step,from:NaN,
+    x:{type:"number",easing:"linear",duration:step,
+       from(ctx){ if(ctx.index===0) return ctx.chart.scales.x.getPixelForValue(0);
+         const prev=ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index-1];
+         return prev? prev.getProps(["x"],true).x : ctx.chart.scales.x.getPixelForValue(0); },
        delay(ctx){ if(ctx.type!=="data"||ctx.xStarted) return 0; ctx.xStarted=true; return ctx.index*step; }},
     y:{type:"number",easing:"linear",duration:step,
        from(ctx){ if(ctx.index===0) return ctx.chart.scales.y.getPixelForValue(DATA.start_budget);
