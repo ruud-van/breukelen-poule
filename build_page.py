@@ -130,6 +130,8 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 .motd{padding:10px 16px;font-size:12.5px;line-height:1.55;background:#FBF6E7;
   border-bottom:1px solid var(--rule);color:#3c372f}
 .motd b{font-family:"Space Mono",monospace}
+.motd-lab{display:block;font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--brass);margin-bottom:2px}
 .t1{color:var(--up)} .t2{color:var(--down)} .tx{color:var(--brass)}
 .note{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--rule);padding-top:14px}
 
@@ -526,7 +528,8 @@ if(md){
         : `${name} en ${rest} ${rest===1?"andere deelnemer":"anderen"} verdienden eraan`;
   }
   const el = document.getElementById("motd");
-  el.innerHTML = `<b>${esc(md.home)} – ${esc(md.away)} ${md.h}–${md.a}</b> ${verb}; ${who}.`;
+  el.innerHTML = `<span class="motd-lab">Wedstrijd van de dag</span> `+
+    `<b>${esc(md.home)} – ${esc(md.away)} ${md.h}–${md.a}</b> ${verb}; ${who}.`;
   el.hidden = false;
 }
 
