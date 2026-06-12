@@ -277,7 +277,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <span class="lg" title="Ruud van Nistelrooij"><img src="img/nistelrooy.jpg" alt="Ruud van Nistelrooij"></span>
     <span class="lg" title="Ruud Gullit"><img src="img/gullit.jpg" alt="Ruud Gullit"></span>
     <span class="lg" title="Ruud Geels"><img src="img/geels.jpg" alt="Ruud Geels"></span>
-    <span class="lg" title="Van Morrison"><img src="img/morrison.jpg" alt="Van Morrison"></span>
+    <span class="lg" id="vmorr" title="Van Morrison"><img src="img/morrison.jpg" alt="Van Morrison"></span>
     <span class="lg lg-bk" title="Hans van Breukelen"><img src="img/breukelen.jpg" alt="Hans van Breukelen"></span>
   </div>
   <div class="legends-credit">Foto's: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></div>
@@ -291,7 +291,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   </div>
   <div id="view-stand">
   <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 20 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2000 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat los van de stand in de Breukelen WK-poule (alle correspondentie daarover via email). Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
-  <div class="upd">Wedstrijden worden dagelijks (geautomatiseerd) bijgewerkt - fingers crossed!</div>
+  <div class="upd">Uitslagen worden automatisch opgehaald om 02:10, 05:10, 08:10, 15:10 en 23:10 (NL-tijd). De planner van GitHub loopt soms uit, dus het kan af en toe wat langer duren voor een uitslag verschijnt - fingers crossed!</div>
   <div class="tickets" id="tickets"></div>
 
   <div class="panel">
@@ -715,6 +715,36 @@ function showView(v){
   if(v==="preds" && !predsRendered){ renderPreds(); predsRendered = true; }
   if(v==="sim" && !simRendered){ renderSim(); simRendered = true; }
 }
+// klik op Van Morrison: start de update-workflow handmatig (workflow_dispatch).
+// Het token wordt alleen lokaal in deze browser bewaard, nooit in de pagina.
+const vmorr = document.getElementById("vmorr");
+vmorr.style.cursor = "pointer";
+function vmFlash(color){
+  vmorr.style.boxShadow = "0 0 0 4px " + color;
+  setTimeout(()=>{ vmorr.style.boxShadow = ""; }, 1600);
+}
+vmorr.addEventListener("click", async ()=>{
+  let tok = localStorage.getItem("gh_dispatch_token");
+  if(!tok){
+    tok = prompt("GitHub-token met Actions-write op deze repo (wordt alleen in deze browser bewaard):");
+    if(!tok) return;
+    tok = tok.trim();
+    localStorage.setItem("gh_dispatch_token", tok);
+  }
+  try{
+    const r = await fetch("https://api.github.com/repos/ruud-van/breukelen-poule/actions/workflows/update-pool.yml/dispatches", {
+      method: "POST",
+      headers: {"Authorization": "Bearer " + tok, "Accept": "application/vnd.github+json"},
+      body: JSON.stringify({ref: "main"})
+    });
+    if(r.status === 204){ vmFlash("#C8922A"); }
+    else{
+      if(r.status === 401 || r.status === 403) localStorage.removeItem("gh_dispatch_token");
+      vmFlash("#C2402F");
+    }
+  }catch(e){ vmFlash("#C2402F"); }
+});
+
 document.getElementById("tabStand").onclick = ()=>showView("stand");
 document.getElementById("tabPreds").onclick = ()=>showView("preds");
 document.getElementById("tabSim").onclick = ()=>showView("sim");
