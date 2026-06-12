@@ -153,6 +153,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
   list-style:none;font-size:13px}
 .pred-match summary::-webkit-details-marker{display:none}
 .pred-match summary:hover{background:#FBF9F2}
+.pred-time{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);flex:none;width:40px}
 .pred-tm{font-weight:600}
 .pred-res{font-family:"Space Mono",monospace;font-weight:700;background:var(--chip);padding:1px 7px;border-radius:2px}
 .pred-meta{margin-left:auto;font-size:11px;color:var(--muted)}
@@ -631,7 +632,9 @@ function renderPreds(){
         `<div class="pred-cnt">${gr.n}×</div><div class="pred-names">${names}</div></div>`;
     });
     const res = m.played ? `<span class="pred-res">${m.h}–${m.a}</span>` : "";
-    html += `<details class="pred-match"><summary><span class="pred-tm">${esc(m.home)} – ${esc(m.away)}</span>`+
+    const tijd = m.datetime.split(" ")[2] || "";
+    html += `<details class="pred-match"><summary><span class="pred-time">${tijd}</span>`+
+      `<span class="pred-tm">${esc(m.home)} – ${esc(m.away)}</span>`+
       `${res}<span class="pred-meta">${groups.length} verschillende</span></summary>`+
       `<div class="pred-body">${body}</div></details>`;
   });
