@@ -396,11 +396,12 @@ document.getElementById("reslab").textContent =
 const h = DATA.highlights;
 const kl = h.klapper, ct = h.contrarian;
 document.getElementById("tickets").innerHTML = [
-  ["Snelste stijger", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", ""],
+  ["Snelste stijger vandaag", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", ""],
   ["Tegen de stroom in", ct?(ct.names[0]+(ct.count>1?" +"+(ct.count-1):"")):"–",
     ct?`${ct.count}/${DATA.n_participants} kozen ${ct.toto}`:"nog geen", ct?"gold":"",
     ct?esc(ct.match)+` (${ct.h}–${ct.a})`:"&nbsp;"],
-  ["Grootste klapper", kl?kl.name:"–", kl?sgn(kl.net):"nog geen", kl?"up":"",
+  ["Grootste wedstrijdklapper", kl?(kl.name+(kl.extra?" +"+kl.extra:"")):"–",
+    kl?sgn(kl.net):"nog geen", kl?"up":"",
     kl?"op "+esc(kl.match):"&nbsp;"],
   ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", ""],
   ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", ""],

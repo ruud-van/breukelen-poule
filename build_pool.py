@@ -154,7 +154,7 @@ played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_i
 
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
 parts = []
-klapper = None   # grootste netto-opbrengst op één wedstrijd: (net, naam, mi)
+klapper = None   # grootste netto-opbrengst op één wedstrijd: [net, [namen], mi]
 match_net = {}      # mi -> totaal netto over alle deelnemers
 match_winners = {}  # mi -> [(naam, net)] van wie eraan verdiende
 for pi, n in enumerate(names):
@@ -166,8 +166,11 @@ for pi, n in enumerate(names):
         if pred_h[pi, mi] == ah and pred_a[pi, mi] == aa:
             net += STAKE_SCORE * (pred_cs_odd[pi, mi] - 1)
         else: net += -STAKE_SCORE
-        if net > 0 and (klapper is None or net > klapper[0]):
-            klapper = (net, n, mi)
+        if net > 0:
+            if klapper is None or net > klapper[0] + 1e-6:
+                klapper = [net, [n], mi]
+            elif abs(net - klapper[0]) <= 1e-6 and mi == klapper[2]:
+                klapper[1].append(n)  # ex aequo: zelfde wedstrijd, zelfde bedrag
         match_net[mi] = match_net.get(mi, 0.0) + net
         if net > 0: match_winners.setdefault(mi, []).append((n, net))
         budget += net; series.append(round(budget, 2)); seq.append(ok)
@@ -263,7 +266,8 @@ data = {
                    "contrarian": contrarian,
                    "hot": max(parts, key=lambda p: p["longest_correct"]),
                    "cold": max(parts, key=lambda p: p["longest_wrong"]),
-                   "klapper": ({"name": klapper[1], "net": round(klapper[0], 2),
+                   "klapper": ({"name": sorted(klapper[1])[0], "extra": len(klapper[1]) - 1,
+                                "net": round(klapper[0], 2),
                                 "match": f'{matches[klapper[2]]["home"]}–{matches[klapper[2]]["away"]}'}
                                if klapper else None),
                    "gokker": gokker, "zeker": zeker},
