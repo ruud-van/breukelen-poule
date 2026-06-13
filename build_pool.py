@@ -153,10 +153,18 @@ last_update = state.get("_updated_at")  # NL-tijdstip waarop de uitslag is verwe
 
 # Bij ex aequo niet alfabetisch kiezen, maar deterministisch "random": stabiel
 # binnen dezelfde datastand (flipt dus niet bij elke 4-uurs build), per kaartje
-# anders geseed zodat niet overal dezelfde naam bovenkomt.
-def pick_tie(cands, salt):
+# anders geseed zodat niet overal dezelfde naam bovenkomt. Bij hooguit twee
+# anderen geven we die namen mee ("mates"), anders alleen het aantal ("extra").
+def tie(cands, salt):
     cands = sorted(cands)
-    return random.Random(f"{last_update}|{salt}").choice(cands)
+    rng = random.Random(f"{last_update}|{salt}")
+    chosen = rng.choice(cands)
+    others = [c for c in cands if c != chosen]
+    rng.shuffle(others)
+    d = {"name": chosen, "extra": len(others)}
+    if len(others) <= 2:
+        d["mates"] = others
+    return d
 played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_idx}
 
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
@@ -215,18 +223,16 @@ for p in parts:
 # snelste stijger vandaag: hoogste netto over de laatste speeldag (ex aequo telt mee).
 riser_max = max(p["delta_last_day"] for p in parts)
 riser_names = [p["name"] for p in parts if p["delta_last_day"] == riser_max]
-riser = {"name": pick_tie(riser_names, "riser"), "extra": len(riser_names) - 1,
-         "delta": riser_max}
+riser = {**tie(riser_names, "riser"), "delta": riser_max}
 
 # meeste plaatsen geklommen sinds vóór de laatste speeldag (alleen echte stijgers).
 climber = None
 climb_max = max((p["rank_delta"] for p in parts), default=0)
 if climb_max > 0:
     climb = [p for p in parts if p["rank_delta"] == climb_max]
-    chosen = pick_tie([p["name"] for p in climb], "climber")
-    cp = next(p for p in climb if p["name"] == chosen)
-    climber = {"name": chosen, "extra": len(climb) - 1, "places": climb_max,
-               "from": cp["_prev_rank"], "to": cp["_cur_rank"]}
+    t = tie([p["name"] for p in climb], "climber")
+    cp = next(p for p in climb if p["name"] == t["name"])
+    climber = {**t, "places": climb_max, "from": cp["_prev_rank"], "to": cp["_cur_rank"]}
 
 for p in parts:
     del p["_prev"], p["_cur_rank"], p["_prev_rank"]
@@ -235,7 +241,7 @@ for p in parts:
 def streak_hi(field, salt):
     m = max(p[field] for p in parts)
     nm = [p["name"] for p in parts if p[field] == m]
-    return {"name": pick_tie(nm, salt), "extra": len(nm) - 1, field: m}
+    return {**tie(nm, salt), field: m}
 hot = streak_hi("longest_correct", "hot")
 cold = streak_hi("longest_wrong", "cold")
 
@@ -251,7 +257,7 @@ for (mi, ah, aa) in results:
                       "h": ah, "a": aa, "toto": at,
                       "count": len(who_right), "names": who_right}
 if contrarian:
-    contrarian["name"] = pick_tie(contrarian["names"], "contrarian")
+    contrarian.update(tie(contrarian["names"], "contrarian"))
 
 # wedstrijd van de dag: de uitslag op de laatste speeldag waar voor het veld
 # als geheel het meeste geld omging (grootste absolute som van netto's).
@@ -297,7 +303,7 @@ data = {
                    "contrarian": contrarian,
                    "hot": hot,
                    "cold": cold,
-                   "klapper": ({"name": pick_tie(klapper[1], "klapper"), "extra": len(klapper[1]) - 1,
+                   "klapper": ({**tie(klapper[1], "klapper"),
                                 "net": round(klapper[0], 2),
                                 "match": f'{matches[klapper[2]]["home"]}–{matches[klapper[2]]["away"]}'}
                                if klapper else None),

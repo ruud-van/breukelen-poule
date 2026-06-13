@@ -400,24 +400,32 @@ document.getElementById("reslab").textContent =
 // tickets
 const h = DATA.highlights;
 const kl = h.klapper, ct = h.contrarian, cm = h.climber;
-// aantal mede-koplopers bij ex aequo: "+3 anderen" / "+1 ander"
-const oth = n => n>0 ? ` <span class="oth">+${n} ${n===1?"ander":"anderen"}</span>` : "";
-// [label, naam, waarde, kleur, subregel, #anderen]
+// naam + mede-koplopers bij ex aequo: hooguit twee anderen -> namen erbij,
+// daarboven "+N anderen".
+function whoNames(o){
+  if(!o) return "–";
+  if(o.mates && o.mates.length){
+    const all = [o.name, ...o.mates].map(esc);
+    return all.slice(0,-1).join(", ")+" en "+all[all.length-1];
+  }
+  return esc(o.name)+(o.extra>0?` <span class="oth">+${o.extra} ${o.extra===1?"ander":"anderen"}</span>`:"");
+}
+// [label, highlight-object, waarde, kleur, subregel]
 document.getElementById("tickets").innerHTML = [
-  ["Snelste stijger vandaag", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", "", h.riser.extra],
-  ["Tegen de stroom in", ct?ct.name:"–",
+  ["Snelste stijger vandaag", h.riser, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", ""],
+  ["Tegen de stroom in", ct,
     ct?`${ct.count}/${DATA.n_participants} kozen ${ct.toto}`:"nog geen", ct?"gold":"",
-    ct?esc(ct.match)+` (${ct.h}–${ct.a})`:"&nbsp;", ct?ct.count-1:0],
-  ["Grootste wedstrijdklapper", kl?kl.name:"–",
+    ct?esc(ct.match)+` (${ct.h}–${ct.a})`:"&nbsp;"],
+  ["Grootste wedstrijdklapper", kl,
     kl?sgn(kl.net):"nog geen", kl?"up":"",
-    kl?"op "+esc(kl.match):"&nbsp;", kl?kl.extra:0],
-  ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", "", h.hot.extra],
-  ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", "", h.cold.extra],
-  ["Meeste plaatsen geklommen", cm?cm.name:"–",
+    kl?"op "+esc(kl.match):"&nbsp;"],
+  ["Langste toto goed", h.hot, h.hot.longest_correct+" op rij", "up", ""],
+  ["Langste toto fout", h.cold, h.cold.longest_wrong+" op rij", "down", ""],
+  ["Meeste plaatsen geklommen", cm,
     cm?`+${cm.places} ${cm.places===1?"plaats":"plaatsen"}`:"nog geen", cm?"up":"",
-    cm?`van #${cm.from} naar #${cm.to}`:"&nbsp;", cm?cm.extra:0],
+    cm?`van #${cm.from} naar #${cm.to}`:"&nbsp;"],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
-  <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}${oth(t[5])}</div>
+  <div class="lab">${t[0]}</div><div class="who">${whoNames(t[1])}</div>
   <div class="val ${t[3]}">${t[2]}</div>${t[4]?`<div class="sub">${t[4]}</div>`:""}</div>`).join("");
 
 // sparkline
