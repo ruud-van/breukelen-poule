@@ -6,1180 +6,1239 @@
  "start_budget": 2000,
  "n_participants": 58,
  "n_matches": 72,
- "n_played": 3,
- "last_matchday": "12 juni",
- "last_update": "12 juni 23:12",
+ "n_played": 4,
+ "last_matchday": "13 juni",
+ "last_update": "13 juni 06:47",
  "played_labels": [
   "Mexico-Zuid Afrika",
   "Zuid Korea-Tsjechië",
-  "Canada-Bosnië&Herz."
+  "Canada-Bosnië&Herz.",
+  "VS-Paraguay"
  ],
  "participants": [
   {
+   "name": "Shanine",
+   "budget": 2453.12,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    2377.12,
+    2453.12
+   ],
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
+   "longest_wrong": 1,
+   "current_streak": 2,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 1,
+   "rank_delta": 1
+  },
+  {
+   "name": "Miguel",
+   "budget": 2453.12,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    2377.12,
+    2453.12
+   ],
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
+   "longest_wrong": 1,
+   "current_streak": 2,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 2,
+   "rank_delta": 1
+  },
+  {
+   "name": "Faris B",
+   "budget": 2453.12,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    2377.12,
+    2453.12
+   ],
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
+   "longest_wrong": 1,
+   "current_streak": 2,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 3,
+   "rank_delta": 1
+  },
+  {
    "name": "Emma",
-   "budget": 2537.92,
+   "budget": 2417.92,
    "series": [
     2000,
     2021.0,
     2166.0,
-    2537.92
+    2537.92,
+    2417.92
    ],
    "toto_correct": 3,
-   "toto_played": 3,
-   "hit_rate": 100.0,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 3,
-   "longest_wrong": 0,
-   "current_streak": 3,
-   "current_streak_type": "goed",
-   "delta_last_day": 516.92,
-   "rank": 1,
-   "rank_delta": 19
-  },
-  {
-   "name": "Shanine",
-   "budget": 2377.12,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    2377.12
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 2,
-   "rank_delta": -1
-  },
-  {
-   "name": "Elwin Marin",
-   "budget": 2377.12,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    2377.12
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 3,
-   "rank_delta": -1
-  },
-  {
-   "name": "Paul",
-   "budget": 2377.12,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    2377.12
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
    "rank": 4,
-   "rank_delta": -1
-  },
-  {
-   "name": "Miguel",
-   "budget": 2377.12,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    2377.12
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 5,
-   "rank_delta": -1
-  },
-  {
-   "name": "Faris B",
-   "budget": 2377.12,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    2377.12
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 6,
-   "rank_delta": -1
+   "rank_delta": -3
   },
   {
    "name": "Pascalle",
-   "budget": 2336.49,
+   "budget": 2412.49,
    "series": [
     2000,
     2125.19,
     2456.49,
-    2336.49
+    2336.49,
+    2412.49
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 7,
-   "rank_delta": -1
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 5,
+   "rank_delta": 2
   },
   {
    "name": "Sofie",
-   "budget": 2336.49,
+   "budget": 2412.49,
    "series": [
     2000,
     2125.19,
     2456.49,
-    2336.49
+    2336.49,
+    2412.49
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 8,
-   "rank_delta": -1
-  },
-  {
-   "name": "Vera",
-   "budget": 2272.92,
-   "series": [
-    2000,
-    2021.0,
-    1901.0,
-    2272.92
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
-   "longest_wrong": 1,
-   "current_streak": 1,
    "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 9,
-   "rank_delta": 11
+   "delta_last_day": 76.0,
+   "rank": 6,
+   "rank_delta": 2
   },
   {
    "name": "Bram",
-   "budget": 2272.92,
+   "budget": 2348.92,
    "series": [
     2000,
     2021.0,
     1901.0,
-    2272.92
+    2272.92,
+    2348.92
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
    "longest_wrong": 1,
-   "current_streak": 1,
+   "current_streak": 2,
    "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 10,
-   "rank_delta": 11
+   "delta_last_day": 76.0,
+   "rank": 7,
+   "rank_delta": 2
   },
   {
    "name": "Fien",
-   "budget": 2272.92,
+   "budget": 2348.92,
    "series": [
     2000,
     2021.0,
     1901.0,
-    2272.92
+    2272.92,
+    2348.92
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
    "longest_wrong": 1,
-   "current_streak": 1,
+   "current_streak": 2,
    "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 11,
-   "rank_delta": 11
+   "delta_last_day": 76.0,
+   "rank": 8,
+   "rank_delta": 2
   },
   {
    "name": "Abel Baars",
-   "budget": 2250.19,
+   "budget": 2326.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    2250.19
+    2250.19,
+    2326.19
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
    "longest_wrong": 1,
-   "current_streak": 1,
+   "current_streak": 2,
    "current_streak_type": "goed",
-   "delta_last_day": 125.0,
-   "rank": 12,
-   "rank_delta": -6
+   "delta_last_day": 76.0,
+   "rank": 9,
+   "rank_delta": 3
   },
   {
    "name": "Piet",
-   "budget": 2232.3,
+   "budget": 2308.3,
    "series": [
     2000,
     2021.0,
     2352.3,
-    2232.3
+    2232.3,
+    2308.3
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 13,
-   "rank_delta": 7
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 10,
+   "rank_delta": 3
   },
   {
    "name": "Robbie",
-   "budget": 2232.3,
+   "budget": 2308.3,
    "series": [
     2000,
     2021.0,
     2352.3,
-    2232.3
+    2232.3,
+    2308.3
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 14,
-   "rank_delta": 7
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 11,
+   "rank_delta": 3
   },
   {
    "name": "Jikke",
-   "budget": 2232.3,
+   "budget": 2308.3,
    "series": [
     2000,
     2021.0,
     2352.3,
-    2232.3
+    2232.3,
+    2308.3
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 15,
-   "rank_delta": 7
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 12,
+   "rank_delta": 3
   },
   {
    "name": "Kai",
-   "budget": 2232.3,
+   "budget": 2308.3,
    "series": [
     2000,
     2021.0,
     2352.3,
-    2232.3
+    2232.3,
+    2308.3
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 16,
-   "rank_delta": 7
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 13,
+   "rank_delta": 3
   },
   {
    "name": "Ad",
-   "budget": 2232.3,
+   "budget": 2308.3,
    "series": [
     2000,
     2021.0,
     2352.3,
-    2232.3
+    2232.3,
+    2308.3
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 14,
+   "rank_delta": 3
+  },
+  {
+   "name": "Elwin Marin",
+   "budget": 2257.12,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    2377.12,
+    2257.12
+   ],
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
+   "longest_correct": 1,
+   "longest_wrong": 1,
+   "current_streak": 1,
    "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 17,
-   "rank_delta": 7
+   "delta_last_day": -120.0,
+   "rank": 15,
+   "rank_delta": -13
+  },
+  {
+   "name": "Paul",
+   "budget": 2257.12,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    2377.12,
+    2257.12
+   ],
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
+   "longest_correct": 1,
+   "longest_wrong": 1,
+   "current_streak": 1,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 16,
+   "rank_delta": -13
   },
   {
    "name": "Chris Snijders",
-   "budget": 2150.19,
+   "budget": 2226.19,
    "series": [
     2000,
     2125.19,
     2270.19,
-    2150.19
+    2150.19,
+    2226.19
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 25.0,
-   "rank": 18,
-   "rank_delta": -12
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 17,
+   "rank_delta": 1
   },
   {
    "name": "Jaap",
-   "budget": 2146.0,
+   "budget": 2222.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    2146.0
+    2146.0,
+    2222.0
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 1,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
+   "longest_correct": 2,
    "longest_wrong": 1,
-   "current_streak": 1,
+   "current_streak": 2,
    "current_streak_type": "goed",
-   "delta_last_day": 125.0,
-   "rank": 19,
+   "delta_last_day": 76.0,
+   "rank": 18,
    "rank_delta": 1
   },
   {
-   "name": "Ruud",
-   "budget": 2131.92,
-   "series": [
-    2000,
-    1880.0,
-    1760.0,
-    2131.92
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 251.92,
-   "rank": 20,
-   "rank_delta": 30
-  },
-  {
    "name": "Quentin",
-   "budget": 2091.3,
+   "budget": 2167.3,
    "series": [
     2000,
     1880.0,
     2211.3,
-    2091.3
+    2091.3,
+    2167.3
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
+   "longest_correct": 1,
+   "longest_wrong": 1,
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 19,
+   "rank_delta": 2
+  },
+  {
+   "name": "Vera",
+   "budget": 2152.92,
+   "series": [
+    2000,
+    2021.0,
+    1901.0,
+    2272.92,
+    2152.92
+   ],
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 1,
    "current_streak": 1,
    "current_streak_type": "fout",
-   "delta_last_day": 211.3,
-   "rank": 21,
-   "rank_delta": 29
+   "delta_last_day": -120.0,
+   "rank": 20,
+   "rank_delta": -11
   },
   {
-   "name": "Koen",
-   "budget": 2046.0,
+   "name": "Rob Dekker",
+   "budget": 2122.0,
    "series": [
     2000,
     2021.0,
     2166.0,
-    2046.0
+    2046.0,
+    2122.0
    ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
+   "toto_correct": 3,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 2,
    "longest_wrong": 1,
    "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 21,
+   "rank_delta": 1
+  },
+  {
+   "name": "Ruud",
+   "budget": 2011.92,
+   "series": [
+    2000,
+    1880.0,
+    1760.0,
+    2131.92,
+    2011.92
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 2,
+   "current_streak": 1,
    "current_streak_type": "fout",
-   "delta_last_day": 25.0,
+   "delta_last_day": -120.0,
    "rank": 22,
    "rank_delta": -2
   },
   {
-   "name": "Rob Dekker",
-   "budget": 2046.0,
-   "series": [
-    2000,
-    2021.0,
-    2166.0,
-    2046.0
-   ],
-   "toto_correct": 2,
-   "toto_played": 3,
-   "hit_rate": 66.7,
-   "longest_correct": 2,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 25.0,
-   "rank": 23,
-   "rank_delta": -2
-  },
-  {
-   "name": "Hans",
-   "budget": 2005.0,
-   "series": [
-    2000,
-    1880.0,
-    1760.0,
-    2005.0
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 125.0,
-   "rank": 24,
-   "rank_delta": 26
-  },
-  {
-   "name": "Rob Dubbers",
-   "budget": 2005.0,
-   "series": [
-    2000,
-    1880.0,
-    1760.0,
-    2005.0
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 1,
-   "current_streak_type": "goed",
-   "delta_last_day": 125.0,
-   "rank": 25,
-   "rank_delta": 26
-  },
-  {
    "name": "Jolanda v. Honk",
-   "budget": 1905.0,
+   "budget": 1981.0,
    "series": [
     2000,
     1880.0,
     2025.0,
-    1905.0
+    1905.0,
+    1981.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 1,
    "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": 25.0,
-   "rank": 26,
-   "rank_delta": 24
-  },
-  {
-   "name": "Sanne",
-   "budget": 1885.19,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    1885.19
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 27,
-   "rank_delta": -21
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 23,
+   "rank_delta": 3
   },
   {
    "name": "Yoni",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 28,
-   "rank_delta": -21
-  },
-  {
-   "name": "Ivo",
-   "budget": 1885.19,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    1885.19
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 29,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 24,
+   "rank_delta": 3
   },
   {
    "name": "Sandra",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 30,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 25,
+   "rank_delta": 3
   },
   {
    "name": "Noortje",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 31,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 26,
+   "rank_delta": 3
   },
   {
    "name": "Lukas",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 32,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 27,
+   "rank_delta": 3
   },
   {
    "name": "Loes",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 33,
-   "rank_delta": -21
-  },
-  {
-   "name": "Ton",
-   "budget": 1885.19,
-   "series": [
-    2000,
-    2125.19,
-    2005.19,
-    1885.19
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 34,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 28,
+   "rank_delta": 3
   },
   {
    "name": "Bartho v. Honk",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 35,
-   "rank_delta": -21
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 29,
+   "rank_delta": 3
   },
   {
    "name": "Tim van Weerde",
-   "budget": 1885.19,
+   "budget": 1961.19,
    "series": [
     2000,
     2125.19,
     2005.19,
-    1885.19
+    1885.19,
+    1961.19
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
+   "longest_wrong": 2,
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 30,
+   "rank_delta": 3
+  },
+  {
+   "name": "Koen",
+   "budget": 1926.0,
+   "series": [
+    2000,
+    2021.0,
+    2166.0,
+    2046.0,
+    1926.0
+   ],
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
+   "longest_correct": 2,
    "longest_wrong": 2,
    "current_streak": 2,
    "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 36,
-   "rank_delta": -21
+   "delta_last_day": -120.0,
+   "rank": 31,
+   "rank_delta": -9
+  },
+  {
+   "name": "Hans",
+   "budget": 1885.0,
+   "series": [
+    2000,
+    1880.0,
+    1760.0,
+    2005.0,
+    1885.0
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 2,
+   "current_streak": 1,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 32,
+   "rank_delta": -8
+  },
+  {
+   "name": "Rob Dubbers",
+   "budget": 1885.0,
+   "series": [
+    2000,
+    1880.0,
+    1760.0,
+    2005.0,
+    1885.0
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 2,
+   "current_streak": 1,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 33,
+   "rank_delta": -8
   },
   {
    "name": "Pelle",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 37,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 34,
+   "rank_delta": 3
   },
   {
    "name": "Thijs",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 38,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 35,
+   "rank_delta": 3
   },
   {
    "name": "Peter Hoff",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 39,
-   "rank_delta": -17
-  },
-  {
-   "name": "Tim",
-   "budget": 1781.0,
-   "series": [
-    2000,
-    2021.0,
-    1901.0,
-    1781.0
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 40,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 36,
+   "rank_delta": 3
   },
   {
    "name": "Jose Marin",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 41,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 37,
+   "rank_delta": 3
   },
   {
    "name": "Majorie",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 42,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 38,
+   "rank_delta": 3
   },
   {
    "name": "Jorge",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 43,
-   "rank_delta": -17
-  },
-  {
-   "name": "Ingrid",
-   "budget": 1781.0,
-   "series": [
-    2000,
-    2021.0,
-    1901.0,
-    1781.0
-   ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
-   "longest_correct": 1,
-   "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 44,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 39,
+   "rank_delta": 3
   },
   {
    "name": "Romée",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 45,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 40,
+   "rank_delta": 3
   },
   {
    "name": "Wil",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 46,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 41,
+   "rank_delta": 3
   },
   {
    "name": "Henk",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 47,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 42,
+   "rank_delta": 3
   },
   {
    "name": "Carolien",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 48,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 43,
+   "rank_delta": 3
   },
   {
    "name": "Michael",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 49,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 44,
+   "rank_delta": 3
   },
   {
    "name": "Wim",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 50,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 45,
+   "rank_delta": 3
   },
   {
    "name": "Ester vd Wurf",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 51,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 46,
+   "rank_delta": 3
   },
   {
    "name": "Jan v.Rijn",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 52,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 47,
+   "rank_delta": 3
   },
   {
    "name": "Gijs Baars",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 53,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 48,
+   "rank_delta": 3
   },
   {
    "name": "Florens v. Honk",
-   "budget": 1781.0,
+   "budget": 1857.0,
    "series": [
     2000,
     2021.0,
     1901.0,
-    1781.0
+    1781.0,
+    1857.0
    ],
-   "toto_correct": 1,
-   "toto_played": 3,
-   "hit_rate": 33.3,
+   "toto_correct": 2,
+   "toto_played": 4,
+   "hit_rate": 50.0,
    "longest_correct": 1,
    "longest_wrong": 2,
-   "current_streak": 2,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 54,
-   "rank_delta": -17
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 49,
+   "rank_delta": 3
   },
   {
-   "name": "Yaëlle",
-   "budget": 1640.0,
+   "name": "Sanne",
+   "budget": 1765.19,
    "series": [
     2000,
-    1880.0,
-    1760.0,
-    1640.0
+    2125.19,
+    2005.19,
+    1885.19,
+    1765.19
    ],
-   "toto_correct": 0,
-   "toto_played": 3,
-   "hit_rate": 0.0,
-   "longest_correct": 0,
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
    "longest_wrong": 3,
    "current_streak": 3,
    "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 55,
-   "rank_delta": -5
+   "delta_last_day": -120.0,
+   "rank": 50,
+   "rank_delta": -23
   },
   {
-   "name": "Bengt",
-   "budget": 1640.0,
+   "name": "Ivo",
+   "budget": 1765.19,
    "series": [
     2000,
-    1880.0,
-    1760.0,
-    1640.0
+    2125.19,
+    2005.19,
+    1885.19,
+    1765.19
    ],
-   "toto_correct": 0,
-   "toto_played": 3,
-   "hit_rate": 0.0,
-   "longest_correct": 0,
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
    "longest_wrong": 3,
    "current_streak": 3,
    "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 56,
-   "rank_delta": -5
+   "delta_last_day": -120.0,
+   "rank": 51,
+   "rank_delta": -23
+  },
+  {
+   "name": "Ton",
+   "budget": 1765.19,
+   "series": [
+    2000,
+    2125.19,
+    2005.19,
+    1885.19,
+    1765.19
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 3,
+   "current_streak": 3,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 52,
+   "rank_delta": -23
   },
   {
    "name": "Patrick Severijn",
-   "budget": 1640.0,
+   "budget": 1716.0,
    "series": [
     2000,
     1880.0,
     1760.0,
-    1640.0
+    1640.0,
+    1716.0
    ],
-   "toto_correct": 0,
-   "toto_played": 3,
-   "hit_rate": 0.0,
-   "longest_correct": 0,
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
    "longest_wrong": 3,
-   "current_streak": 3,
-   "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 57,
-   "rank_delta": -5
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 53,
+   "rank_delta": 2
   },
   {
    "name": "René vd Wurf",
-   "budget": 1640.0,
+   "budget": 1716.0,
    "series": [
     2000,
     1880.0,
     1760.0,
-    1640.0
+    1640.0,
+    1716.0
    ],
-   "toto_correct": 0,
-   "toto_played": 3,
-   "hit_rate": 0.0,
-   "longest_correct": 0,
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 3,
+   "current_streak": 1,
+   "current_streak_type": "goed",
+   "delta_last_day": 76.0,
+   "rank": 54,
+   "rank_delta": 2
+  },
+  {
+   "name": "Tim",
+   "budget": 1661.0,
+   "series": [
+    2000,
+    2021.0,
+    1901.0,
+    1781.0,
+    1661.0
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
    "longest_wrong": 3,
    "current_streak": 3,
    "current_streak_type": "fout",
-   "delta_last_day": -240.0,
+   "delta_last_day": -120.0,
+   "rank": 55,
+   "rank_delta": -18
+  },
+  {
+   "name": "Ingrid",
+   "budget": 1661.0,
+   "series": [
+    2000,
+    2021.0,
+    1901.0,
+    1781.0,
+    1661.0
+   ],
+   "toto_correct": 1,
+   "toto_played": 4,
+   "hit_rate": 25.0,
+   "longest_correct": 1,
+   "longest_wrong": 3,
+   "current_streak": 3,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 56,
+   "rank_delta": -18
+  },
+  {
+   "name": "Yaëlle",
+   "budget": 1520.0,
+   "series": [
+    2000,
+    1880.0,
+    1760.0,
+    1640.0,
+    1520.0
+   ],
+   "toto_correct": 0,
+   "toto_played": 4,
+   "hit_rate": 0.0,
+   "longest_correct": 0,
+   "longest_wrong": 4,
+   "current_streak": 4,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 57,
+   "rank_delta": -2
+  },
+  {
+   "name": "Bengt",
+   "budget": 1520.0,
+   "series": [
+    2000,
+    1880.0,
+    1760.0,
+    1640.0,
+    1520.0
+   ],
+   "toto_correct": 0,
+   "toto_played": 4,
+   "hit_rate": 0.0,
+   "longest_correct": 0,
+   "longest_wrong": 4,
+   "current_streak": 4,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
    "rank": 58,
-   "rank_delta": -5
+   "rank_delta": -2
   }
  ],
  "highlights": {
   "riser": {
-   "name": "Emma",
-   "delta": 516.92
+   "name": "Shanine",
+   "delta": 76.0
   },
   "contrarian": {
    "match": "Zuid Korea–Tsjechië",
@@ -1205,43 +1264,45 @@
   },
   "hot": {
    "name": "Emma",
-   "budget": 2537.92,
+   "budget": 2417.92,
    "series": [
     2000,
     2021.0,
     2166.0,
-    2537.92
+    2537.92,
+    2417.92
    ],
    "toto_correct": 3,
-   "toto_played": 3,
-   "hit_rate": 100.0,
+   "toto_played": 4,
+   "hit_rate": 75.0,
    "longest_correct": 3,
-   "longest_wrong": 0,
-   "current_streak": 3,
-   "current_streak_type": "goed",
-   "delta_last_day": 516.92,
-   "rank": 1,
-   "rank_delta": 19
+   "longest_wrong": 1,
+   "current_streak": 1,
+   "current_streak_type": "fout",
+   "delta_last_day": -120.0,
+   "rank": 4,
+   "rank_delta": -3
   },
   "cold": {
    "name": "Yaëlle",
-   "budget": 1640.0,
+   "budget": 1520.0,
    "series": [
     2000,
     1880.0,
     1760.0,
-    1640.0
+    1640.0,
+    1520.0
    ],
    "toto_correct": 0,
-   "toto_played": 3,
+   "toto_played": 4,
    "hit_rate": 0.0,
    "longest_correct": 0,
-   "longest_wrong": 3,
-   "current_streak": 3,
+   "longest_wrong": 4,
+   "current_streak": 4,
    "current_streak_type": "fout",
-   "delta_last_day": -240.0,
-   "rank": 55,
-   "rank_delta": -5
+   "delta_last_day": -120.0,
+   "rank": 57,
+   "rank_delta": -2
   },
   "klapper": {
    "name": "Bram",
@@ -1305,15 +1366,15 @@
   ]
  },
  "match_of_day": {
-  "home": "Zuid Korea",
-  "away": "Tsjechië",
-  "h": 2,
+  "home": "VS",
+  "away": "Paraguay",
+  "h": 4,
   "a": 1,
-  "total": -2024.62,
-  "n_winners": 13,
+  "total": 1468.0,
+  "n_winners": 43,
   "top": [
    "Piet",
-   331.3
+   76.0
   ]
  },
  "results": [
@@ -1475,13 +1536,14 @@
      "5-5": 10187.85
     }
    }
-  }
- ],
- "upcoming": [
+  },
   {
    "home": "VS",
    "away": "Paraguay",
    "datetime": "13 juni 3:00",
+   "h": 4,
+   "a": 1,
+   "toto": "1",
    "odds": {
     "toto": {
      "1": 1.96,
@@ -1527,7 +1589,9 @@
      "5-5": 10131.78
     }
    }
-  },
+  }
+ ],
+ "upcoming": [
   {
    "home": "Quatar",
    "away": "Zwitserland",
@@ -1875,6 +1939,56 @@
      "5-3": 2340.69,
      "5-4": 7132.04,
      "5-5": 26446.24
+    }
+   }
+  },
+  {
+   "home": "Zweden",
+   "away": "Tunesië",
+   "datetime": "15 juni 04:00",
+   "odds": {
+    "toto": {
+     "1": 1.92,
+     "X": 3.4,
+     "2": 4.34
+    },
+    "cs": {
+     "0-0": 7.41,
+     "0-1": 9.65,
+     "0-2": 18.01,
+     "0-3": 52.51,
+     "0-4": 197.18,
+     "0-5": 901.09,
+     "1-0": 5.99,
+     "1-1": 5.96,
+     "1-2": 12.86,
+     "1-3": 37.5,
+     "1-4": 140.82,
+     "1-5": 643.51,
+     "2-0": 7.47,
+     "2-1": 8.29,
+     "2-2": 16.91,
+     "2-3": 49.29,
+     "2-4": 185.08,
+     "2-5": 845.77,
+     "3-0": 14.04,
+     "3-1": 15.56,
+     "3-2": 31.75,
+     "3-3": 92.55,
+     "3-4": 347.55,
+     "3-5": 1588.21,
+     "4-0": 33.95,
+     "4-1": 37.64,
+     "4-2": 76.79,
+     "4-3": 223.87,
+     "4-4": 840.65,
+     "4-5": 3841.59,
+     "5-0": 99.93,
+     "5-1": 110.79,
+     "5-2": 226.06,
+     "5-3": 659.0,
+     "5-4": 2474.57,
+     "5-5": 11308.22
     }
    }
   }
@@ -2787,7 +2901,10 @@
    "home": "VS",
    "away": "Paraguay",
    "datetime": "13 juni 3:00",
-   "played": false,
+   "played": true,
+   "h": 4,
+   "a": 1,
+   "toto": "1",
    "preds": [
     {
      "n": "Piet",
