@@ -558,7 +558,7 @@ fillRows("results", resItems);
 
 const upItems = DATA.upcoming.map(u=>({
   title:`${u.home} – ${u.away}`, odds:u.odds,
-  left:`<span>${esc(u.home)} – ${esc(u.away)} <span class="od">${esc(u.datetime.split(" ").slice(0,2).join(" "))} ${padTime(u.datetime.split(" ")[2])}</span></span>`,
+  left:`<span>${esc(u.home)} – ${esc(u.away)} <span class="od">${padTime(u.datetime.split(" ")[2])}</span></span>`,
   right:`<span class="od">${fmtOdd(u.odds.toto["1"])} / ${fmtOdd(u.odds.toto["X"])} / ${fmtOdd(u.odds.toto["2"])}</span>`}));
 fillRows("upcoming", upItems);
 
