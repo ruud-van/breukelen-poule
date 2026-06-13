@@ -1237,7 +1237,8 @@
  ],
  "highlights": {
   "riser": {
-   "name": "Shanine",
+   "name": "René vd Wurf",
+   "extra": 42,
    "delta": 76.0
   },
   "contrarian": {
@@ -1260,63 +1261,31 @@
     "Rob Dekker",
     "Robbie",
     "Sofie"
-   ]
+   ],
+   "name": "Pascalle"
   },
   "hot": {
    "name": "Emma",
-   "budget": 2417.92,
-   "series": [
-    2000,
-    2021.0,
-    2166.0,
-    2537.92,
-    2417.92
-   ],
-   "toto_correct": 3,
-   "toto_played": 4,
-   "hit_rate": 75.0,
-   "longest_correct": 3,
-   "longest_wrong": 1,
-   "current_streak": 1,
-   "current_streak_type": "fout",
-   "delta_last_day": -120.0,
-   "rank": 4,
-   "rank_delta": -3
+   "extra": 0,
+   "longest_correct": 3
   },
   "cold": {
    "name": "Yaëlle",
-   "budget": 1520.0,
-   "series": [
-    2000,
-    1880.0,
-    1760.0,
-    1640.0,
-    1520.0
-   ],
-   "toto_correct": 0,
-   "toto_played": 4,
-   "hit_rate": 0.0,
-   "longest_correct": 0,
-   "longest_wrong": 4,
-   "current_streak": 4,
-   "current_streak_type": "fout",
-   "delta_last_day": -120.0,
-   "rank": 57,
-   "rank_delta": -2
+   "extra": 1,
+   "longest_wrong": 4
   },
   "klapper": {
-   "name": "Bram",
+   "name": "Miguel",
    "extra": 9,
    "net": 371.92,
    "match": "Canada–Bosnië&Herz."
   },
-  "gokker": {
-   "name": "Rob Dubbers",
-   "med": 17.4
-  },
-  "zeker": {
-   "name": "Ruud",
-   "med": 6.3
+  "climber": {
+   "name": "Henk",
+   "extra": 29,
+   "places": 3,
+   "from": 37,
+   "to": 34
   }
  },
  "boldness": {
@@ -23782,7 +23751,7 @@
     ],
     [
      4,
-     50,
+     10,
      75
     ],
     [
@@ -23792,7 +23761,7 @@
     ],
     [
      6,
-     38,
+     33,
      78
     ],
     [
@@ -23811,13 +23780,13 @@
      64
     ],
     [
+     7,
      10,
-     47,
      88
     ],
     [
+     0,
      11,
-     54,
      64
     ],
     [
@@ -23892,12 +23861,12 @@
     ],
     [
      26,
-     53,
+     33,
      83
     ],
     [
      27,
-     33,
+     47,
      74
     ],
     [
@@ -23907,7 +23876,7 @@
     ],
     [
      29,
-     49,
+     52,
      75
     ],
     [
@@ -23991,7 +23960,7 @@
      85
     ],
     [
-     33,
+     26,
      50,
      82
     ],
@@ -24011,7 +23980,7 @@
      78
     ],
     [
-     50,
+     14,
      55,
      72
     ],
@@ -24021,7 +23990,7 @@
      75
     ],
     [
-     47,
+     10,
      57,
      83
     ]
@@ -24429,7 +24398,7 @@
     ],
     [
      11,
-     39,
+     43,
      21
     ],
     [
@@ -24459,7 +24428,7 @@
     ],
     [
      17,
-     50,
+     49,
      18
     ],
     [
@@ -24504,7 +24473,7 @@
     ],
     [
      27,
-     53,
+     47,
      29
     ],
     [
@@ -24636,6 +24605,11 @@
      10,
      56,
      25
+    ],
+    [
+     47,
+     57,
+     38
     ]
    ],
    "most": [

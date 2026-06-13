@@ -78,6 +78,7 @@ body{background:var(--paper);color:var(--ink);
   text-transform:uppercase;color:var(--muted)}
 .ticket .who{font-family:"Archivo",sans-serif;font-weight:700;font-size:18px;margin:6px 0 2px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ticket .who .oth{font-weight:400;font-size:12px;color:var(--muted)}
 .ticket .val{font-family:"Space Mono",monospace;font-weight:700;font-size:15px}
 .val.up{color:var(--up)} .val.down{color:var(--down)} .val.gold{color:var(--brass)}
 .ticket .sub{font-size:11px;color:var(--muted);margin-top:3px;
@@ -398,21 +399,25 @@ document.getElementById("reslab").textContent =
 
 // tickets
 const h = DATA.highlights;
-const kl = h.klapper, ct = h.contrarian;
+const kl = h.klapper, ct = h.contrarian, cm = h.climber;
+// aantal mede-koplopers bij ex aequo: "+3 anderen" / "+1 ander"
+const oth = n => n>0 ? ` <span class="oth">+${n} ${n===1?"ander":"anderen"}</span>` : "";
+// [label, naam, waarde, kleur, subregel, #anderen]
 document.getElementById("tickets").innerHTML = [
-  ["Snelste stijger vandaag", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", ""],
-  ["Tegen de stroom in", ct?(ct.names[0]+(ct.count>1?" +"+(ct.count-1):"")):"–",
+  ["Snelste stijger vandaag", h.riser.name, sgn(h.riser.delta), h.riser.delta>=0?"up":"down", "", h.riser.extra],
+  ["Tegen de stroom in", ct?ct.name:"–",
     ct?`${ct.count}/${DATA.n_participants} kozen ${ct.toto}`:"nog geen", ct?"gold":"",
-    ct?esc(ct.match)+` (${ct.h}–${ct.a})`:"&nbsp;"],
-  ["Grootste wedstrijdklapper", kl?(kl.name+(kl.extra?" +"+kl.extra:"")):"–",
+    ct?esc(ct.match)+` (${ct.h}–${ct.a})`:"&nbsp;", ct?ct.count-1:0],
+  ["Grootste wedstrijdklapper", kl?kl.name:"–",
     kl?sgn(kl.net):"nog geen", kl?"up":"",
-    kl?"op "+esc(kl.match):"&nbsp;"],
-  ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", ""],
-  ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", ""],
-  ["Grootste gokker", h.gokker.name, "mediaan odd "+String(h.gokker.med).replace(".",","), "gold",
-    "meest op zeker: "+esc(h.zeker.name)+" &middot; mediaan odd "+String(h.zeker.med).replace(".",",")],
+    kl?"op "+esc(kl.match):"&nbsp;", kl?kl.extra:0],
+  ["Langste toto goed", h.hot.name, h.hot.longest_correct+" op rij", "up", "", h.hot.extra],
+  ["Langste toto fout", h.cold.name, h.cold.longest_wrong+" op rij", "down", "", h.cold.extra],
+  ["Meeste plaatsen geklommen", cm?cm.name:"–",
+    cm?`+${cm.places} ${cm.places===1?"plaats":"plaatsen"}`:"nog geen", cm?"up":"",
+    cm?`van #${cm.from} naar #${cm.to}`:"&nbsp;", cm?cm.extra:0],
 ].map((t,i)=>`<div class="ticket fade" style="animation-delay:${i*60}ms">
-  <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}</div>
+  <div class="lab">${t[0]}</div><div class="who">${esc(t[1])}${oth(t[5])}</div>
   <div class="val ${t[3]}">${t[2]}</div>${t[4]?`<div class="sub">${t[4]}</div>`:""}</div>`).join("");
 
 // sparkline

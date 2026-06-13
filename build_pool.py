@@ -8,7 +8,7 @@ Productie-build voor de Breukelen-bookmaker pool op ECHTE data.
 - berekent budget/standen/streaks op de ECHTE gespeelde wedstrijden
 - schrijft data.json voor de pagina
 """
-import json, os, statistics, datetime
+import json, os, statistics, datetime, random
 import numpy as np
 from odds_model import fit_match, correct_score_odds, MAXG
 from odds_fetch import to_nl
@@ -150,6 +150,13 @@ for mi, m in enumerate(matches):
 played_idx = [r[0] for r in results]
 last_day = daykey(matches[played_idx[-1]]["datetime"]) if played_idx else None
 last_update = state.get("_updated_at")  # NL-tijdstip waarop de uitslag is verwerkt
+
+# Bij ex aequo niet alfabetisch kiezen, maar deterministisch "random": stabiel
+# binnen dezelfde datastand (flipt dus niet bij elke 4-uurs build), per kaartje
+# anders geseed zodat niet overal dezelfde naam bovenkomt.
+def pick_tie(cands, salt):
+    cands = sorted(cands)
+    return random.Random(f"{last_update}|{salt}").choice(cands)
 played_keys = {f'{matches[mi]["home"]}|{matches[mi]["away"]}' for mi in played_idx}
 
 # ---- 8. stand/streaks per deelnemer op de echte uitslagen ----------------
@@ -201,12 +208,36 @@ for i, p in enumerate(parts): p["rank"] = i + 1
 for p in parts:
     p["_prev"] = round(p["budget"] - p["delta_last_day"], 2)
 for p in parts:
-    cur = 1 + sum(1 for q in parts if q["budget"] > p["budget"])
-    prev = 1 + sum(1 for q in parts if q["_prev"] > p["_prev"])
-    p["rank_delta"] = prev - cur
-for p in parts: del p["_prev"]
+    p["_cur_rank"] = 1 + sum(1 for q in parts if q["budget"] > p["budget"])
+    p["_prev_rank"] = 1 + sum(1 for q in parts if q["_prev"] > p["_prev"])
+    p["rank_delta"] = p["_prev_rank"] - p["_cur_rank"]
 
-riser = max(parts, key=lambda p: p["delta_last_day"])
+# snelste stijger vandaag: hoogste netto over de laatste speeldag (ex aequo telt mee).
+riser_max = max(p["delta_last_day"] for p in parts)
+riser_names = [p["name"] for p in parts if p["delta_last_day"] == riser_max]
+riser = {"name": pick_tie(riser_names, "riser"), "extra": len(riser_names) - 1,
+         "delta": riser_max}
+
+# meeste plaatsen geklommen sinds vóór de laatste speeldag (alleen echte stijgers).
+climber = None
+climb_max = max((p["rank_delta"] for p in parts), default=0)
+if climb_max > 0:
+    climb = [p for p in parts if p["rank_delta"] == climb_max]
+    chosen = pick_tie([p["name"] for p in climb], "climber")
+    cp = next(p for p in climb if p["name"] == chosen)
+    climber = {"name": chosen, "extra": len(climb) - 1, "places": climb_max,
+               "from": cp["_prev_rank"], "to": cp["_cur_rank"]}
+
+for p in parts:
+    del p["_prev"], p["_cur_rank"], p["_prev_rank"]
+
+# langste toto goed/fout (all-time-max, ex aequo telt mee).
+def streak_hi(field, salt):
+    m = max(p[field] for p in parts)
+    nm = [p["name"] for p in parts if p[field] == m]
+    return {"name": pick_tie(nm, salt), "extra": len(nm) - 1, field: m}
+hot = streak_hi("longest_correct", "hot")
+cold = streak_hi("longest_wrong", "cold")
 
 # tegen de stroom in: de goede toto-keuze die door de kleinste minderheid
 # (< 50% van het veld) werd gedaan, over alle gespeelde wedstrijden.
@@ -219,6 +250,8 @@ for (mi, ah, aa) in results:
         contrarian = {"match": f'{matches[mi]["home"]}–{matches[mi]["away"]}',
                       "h": ah, "a": aa, "toto": at,
                       "count": len(who_right), "names": who_right}
+if contrarian:
+    contrarian["name"] = pick_tie(contrarian["names"], "contrarian")
 
 # wedstrijd van de dag: de uitslag op de laatste speeldag waar voor het veld
 # als geheel het meeste geld omging (grootste absolute som van netto's).
@@ -240,8 +273,6 @@ med_cs = np.median(pred_cs_odd, axis=1)
 bold_order = np.argsort(med_cs)
 gok_top = [[names[i], round(float(med_cs[i]), 1)] for i in bold_order[::-1][:5]]
 zeker_top = [[names[i], round(float(med_cs[i]), 1)] for i in bold_order[:5]]
-gokker = {"name": gok_top[0][0], "med": gok_top[0][1]}
-zeker = {"name": zeker_top[0][0], "med": zeker_top[0][1]}
 
 # odds (toto-uitbetaling + correct-score 0..5) per wedstrijd, voor de hover-popover
 CS_MAX = 5
@@ -262,15 +293,15 @@ data = {
     "n_played": len(results), "last_matchday": last_day, "last_update": last_update,
     "played_labels": [f'{matches[mi]["home"]}-{matches[mi]["away"]}' for mi in played_idx],
     "participants": parts,
-    "highlights": {"riser": {"name": riser["name"], "delta": riser["delta_last_day"]},
+    "highlights": {"riser": riser,
                    "contrarian": contrarian,
-                   "hot": max(parts, key=lambda p: p["longest_correct"]),
-                   "cold": max(parts, key=lambda p: p["longest_wrong"]),
-                   "klapper": ({"name": sorted(klapper[1])[0], "extra": len(klapper[1]) - 1,
+                   "hot": hot,
+                   "cold": cold,
+                   "klapper": ({"name": pick_tie(klapper[1], "klapper"), "extra": len(klapper[1]) - 1,
                                 "net": round(klapper[0], 2),
                                 "match": f'{matches[klapper[2]]["home"]}–{matches[klapper[2]]["away"]}'}
                                if klapper else None),
-                   "gokker": gokker, "zeker": zeker},
+                   "climber": climber},
     "boldness": {"gok": gok_top, "zeker": zeker_top},
     "match_of_day": mod,
     "results": [{"home": matches[mi]["home"], "away": matches[mi]["away"],
