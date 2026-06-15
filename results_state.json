@@ -77,5 +77,11 @@
   "hg": 0,
   "ag": 0
  },
- "_updated_at": "15 juni 20:01"
+ "België|Egypte": {
+  "home": "België",
+  "away": "Egypte",
+  "hg": 1,
+  "ag": 1
+ },
+ "_updated_at": "15 juni 23:21"
 }
