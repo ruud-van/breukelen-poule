@@ -59,5 +59,17 @@
   "hg": 2,
   "ag": 2
  },
- "_updated_at": "15 juni 00:04"
+ "Ivoorkust|Ecuador": {
+  "home": "Ivoorkust",
+  "away": "Ecuador",
+  "hg": 1,
+  "ag": 0
+ },
+ "Zweden|Tunesië": {
+  "home": "Zweden",
+  "away": "Tunesië",
+  "hg": 5,
+  "ag": 1
+ },
+ "_updated_at": "15 juni 06:58"
 }
