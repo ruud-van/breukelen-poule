@@ -101,5 +101,11 @@
   "hg": 3,
   "ag": 1
  },
- "_updated_at": "16 juni 23:18"
+ "Irak|Noorwegen": {
+  "home": "Irak",
+  "away": "Noorwegen",
+  "hg": 1,
+  "ag": 4
+ },
+ "_updated_at": "17 juni 07:10"
 }
