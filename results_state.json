@@ -131,5 +131,17 @@
   "hg": 4,
   "ag": 2
  },
- "_updated_at": "18 juni 00:19"
+ "Ghana|Panama": {
+  "home": "Ghana",
+  "away": "Panama",
+  "hg": 1,
+  "ag": 0
+ },
+ "Oezbekistan|Colombia": {
+  "home": "Oezbekistan",
+  "away": "Colombia",
+  "hg": 1,
+  "ag": 3
+ },
+ "_updated_at": "18 juni 06:59"
 }
