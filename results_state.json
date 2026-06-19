@@ -167,5 +167,11 @@
   "hg": 1,
   "ag": 0
  },
- "_updated_at": "19 juni 07:22"
+ "VS|Australië": {
+  "home": "VS",
+  "away": "Australië",
+  "hg": 2,
+  "ag": 0
+ },
+ "_updated_at": "19 juni 23:16"
 }
