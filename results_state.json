@@ -155,5 +155,17 @@
   "hg": 4,
   "ag": 1
  },
- "_updated_at": "18 juni 23:29"
+ "Canada|Quatar": {
+  "home": "Canada",
+  "away": "Quatar",
+  "hg": 6,
+  "ag": 0
+ },
+ "Mexico|Zuid Korea": {
+  "home": "Mexico",
+  "away": "Zuid Korea",
+  "hg": 1,
+  "ag": 0
+ },
+ "_updated_at": "19 juni 07:22"
 }
