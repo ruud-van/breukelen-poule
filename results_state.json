@@ -173,5 +173,17 @@
   "hg": 2,
   "ag": 0
  },
- "_updated_at": "19 juni 23:16"
+ "Schotland|Marokko": {
+  "home": "Schotland",
+  "away": "Marokko",
+  "hg": 0,
+  "ag": 1
+ },
+ "Brazilië|Haiti": {
+  "home": "Brazilië",
+  "away": "Haiti",
+  "hg": 3,
+  "ag": 0
+ },
+ "_updated_at": "20 juni 06:39"
 }
