@@ -185,5 +185,11 @@
   "hg": 3,
   "ag": 0
  },
- "_updated_at": "20 juni 06:39"
+ "Turkije|Paraguay": {
+  "home": "Turkije",
+  "away": "Paraguay",
+  "hg": 0,
+  "ag": 1
+ },
+ "_updated_at": "20 juni 11:36"
 }
