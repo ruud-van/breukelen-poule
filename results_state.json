@@ -191,5 +191,11 @@
   "hg": 0,
   "ag": 1
  },
- "_updated_at": "20 juni 11:36"
+ "Nederland|Zweden": {
+  "home": "Nederland",
+  "away": "Zweden",
+  "hg": 5,
+  "ag": 1
+ },
+ "_updated_at": "20 juni 23:03"
 }
