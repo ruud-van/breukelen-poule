@@ -203,5 +203,11 @@
   "hg": 2,
   "ag": 1
  },
- "_updated_at": "21 juni 00:21"
+ "Ecuador|Curacao": {
+  "home": "Ecuador",
+  "away": "Curacao",
+  "hg": 0,
+  "ag": 0
+ },
+ "_updated_at": "21 juni 07:16"
 }
