@@ -227,5 +227,17 @@
   "hg": 0,
   "ag": 0
  },
- "_updated_at": "22 juni 00:22"
+ "Uruguay|Kaapverdië": {
+  "home": "Uruguay",
+  "away": "Kaapverdië",
+  "hg": 2,
+  "ag": 2
+ },
+ "Nieuw Zeeland|Egypte": {
+  "home": "Nieuw Zeeland",
+  "away": "Egypte",
+  "hg": 1,
+  "ag": 3
+ },
+ "_updated_at": "22 juni 07:28"
 }
