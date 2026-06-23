@@ -245,5 +245,17 @@
   "hg": 2,
   "ag": 0
  },
- "_updated_at": "22 juni 21:26"
+ "Frankrijk|Irak": {
+  "home": "Frankrijk",
+  "away": "Irak",
+  "hg": 3,
+  "ag": 0
+ },
+ "Noorwegen|Senegal": {
+  "home": "Noorwegen",
+  "away": "Senegal",
+  "hg": 3,
+  "ag": 2
+ },
+ "_updated_at": "23 juni 06:18"
 }
