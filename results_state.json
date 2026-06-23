@@ -263,5 +263,17 @@
   "hg": 1,
   "ag": 2
  },
- "_updated_at": "23 juni 09:43"
+ "Portugal|Oezbekistan": {
+  "home": "Portugal",
+  "away": "Oezbekistan",
+  "hg": 5,
+  "ag": 0
+ },
+ "Engeland|Ghana": {
+  "home": "Engeland",
+  "away": "Ghana",
+  "hg": 0,
+  "ag": 0
+ },
+ "_updated_at": "24 juni 00:22"
 }
