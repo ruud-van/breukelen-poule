@@ -287,5 +287,17 @@
   "hg": 1,
   "ag": 0
  },
- "_updated_at": "24 juni 06:23"
+ "Bosnië&Herz.|Quatar": {
+  "home": "Bosnië&Herz.",
+  "away": "Quatar",
+  "hg": 3,
+  "ag": 1
+ },
+ "Zwitserland|Canada": {
+  "home": "Zwitserland",
+  "away": "Canada",
+  "hg": 2,
+  "ag": 1
+ },
+ "_updated_at": "25 juni 00:38"
 }
