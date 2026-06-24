@@ -275,5 +275,17 @@
   "hg": 0,
   "ag": 0
  },
- "_updated_at": "24 juni 00:22"
+ "Panama|Kroatië": {
+  "home": "Panama",
+  "away": "Kroatië",
+  "hg": 0,
+  "ag": 1
+ },
+ "Colombia|Congo": {
+  "home": "Colombia",
+  "away": "Congo",
+  "hg": 1,
+  "ag": 0
+ },
+ "_updated_at": "24 juni 06:23"
 }
