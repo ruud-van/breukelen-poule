@@ -299,5 +299,29 @@
   "hg": 2,
   "ag": 1
  },
- "_updated_at": "25 juni 00:38"
+ "Marokko|Haiti": {
+  "home": "Marokko",
+  "away": "Haiti",
+  "hg": 4,
+  "ag": 2
+ },
+ "Schotland|Brazilië": {
+  "home": "Schotland",
+  "away": "Brazilië",
+  "hg": 0,
+  "ag": 3
+ },
+ "Tsjechië|Mexico": {
+  "home": "Tsjechië",
+  "away": "Mexico",
+  "hg": 0,
+  "ag": 3
+ },
+ "Zuid Afrika|Zuid Korea": {
+  "home": "Zuid Afrika",
+  "away": "Zuid Korea",
+  "hg": 1,
+  "ag": 0
+ },
+ "_updated_at": "25 juni 06:21"
 }
