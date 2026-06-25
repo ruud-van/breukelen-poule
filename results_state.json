@@ -323,5 +323,17 @@
   "hg": 1,
   "ag": 0
  },
- "_updated_at": "25 juni 06:21"
+ "Curacao|Ivoorkust": {
+  "home": "Curacao",
+  "away": "Ivoorkust",
+  "hg": 0,
+  "ag": 2
+ },
+ "Ecuador|Duitsland": {
+  "home": "Ecuador",
+  "away": "Duitsland",
+  "hg": 2,
+  "ag": 1
+ },
+ "_updated_at": "26 juni 00:44"
 }
