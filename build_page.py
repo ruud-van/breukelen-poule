@@ -1,7 +1,10 @@
-import json
+import json, os
 
 d = json.load(open("data.json"))
 DATA = json.dumps(d, ensure_ascii=False)
+
+ko = json.load(open("knockout.json")) if os.path.exists("knockout.json") else {"rounds": [], "third": None}
+KO = json.dumps(ko, ensure_ascii=False)
 
 HTML = r"""<!DOCTYPE html>
 <html lang="nl">
@@ -227,6 +230,33 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .fade{opacity:0;transform:translateY(6px);animation:f .5s ease forwards}
 @keyframes f{to{opacity:1;transform:none}}
+/* knock-out bracket */
+.ko-legend{font-size:12.5px;color:var(--muted);line-height:1.5;padding:10px 14px 0}
+.ko-scroll{overflow-x:auto;padding:10px 14px 6px;-webkit-overflow-scrolling:touch}
+.ko-bracket{position:relative;display:flex;gap:30px;width:max-content;min-width:100%}
+.ko-lines{position:absolute;inset:0;pointer-events:none;z-index:0}
+.ko-lines path{fill:none;stroke:var(--rule);stroke-width:2}
+.ko-round{display:flex;flex-direction:column;flex:0 0 168px;position:relative;z-index:1}
+.ko-rtitle{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brass);text-align:center;padding:2px 0 8px}
+.ko-col{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:8px}
+.ko-m{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:4px 7px 5px;
+  position:relative}
+.ko-m.done{border-color:#cdbf9b}
+.ko-when{font-family:"Space Mono",monospace;font-size:8.5px;color:var(--muted);
+  margin-bottom:2px;letter-spacing:.02em}
+.ko-row{display:flex;justify-content:space-between;align-items:center;gap:6px;
+  font-size:12.5px;color:var(--ink);padding:1px 0}
+.ko-row+.ko-row{border-top:1px solid #f0ece1}
+.ko-row .ko-tn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ko-row .ko-sc{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);
+  min-width:12px;text-align:right}
+.ko-row.ph .ko-tn{color:#b3aa97;font-style:italic}
+.ko-row.win .ko-tn{font-weight:600;color:var(--brass)}
+.ko-row.win .ko-sc{color:var(--brass);font-weight:700}
+.ko-third{max-width:200px;margin:16px 14px 4px}
+.ko-third .ko-rtitle{text-align:left}
+.ko-empty{color:var(--muted);font-size:13px;padding:18px 14px}
 </style>
 </head>
 <body>
@@ -292,6 +322,7 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
     <button id="tabStand" class="tab on">Stand</button>
     <button id="tabPreds" class="tab">Voorspellingen</button>
     <button id="tabSim" class="tab">Gelijkenis</button>
+    <button id="tabKO" class="tab">Na de groepsfase</button>
   </div>
   <div id="view-stand">
   <div class="intro">In dit overzicht zie je wat alle Breukelen poule deelnemers zouden hebben verdiend (of niet) als ze voor iedere groepswedstrijd een bedrag van 100 euro in hadden gezet op de toto-uitslag en 20 euro op de eindstand ten tijde van indiening van hun formulier. Opbrengsten zijn op basis van daadwerkelijk odds van online bookmakers. Er is uitgegaan van een startbudget van 2000 euro. <span class="nb">(NB gokken brengt aanzienlijke risico's met zich mee.)</span> &#128578;<span class="los">De stand op deze pagina staat los van de stand in de Breukelen WK-poule (alle correspondentie daarover via email). Slechts bedoeld om een indruk te krijgen van wie mogelijk zijn baan of uitkering op kan zeggen en een aardige zakcent bij kan verdienen met voetbalgokken.</span></div>
@@ -373,11 +404,21 @@ tr.lead .name::after{content:"\2605";color:var(--brass);margin-left:7px;font-siz
       </div>
     </div>
   </div>
+
+  <div id="view-ko" hidden>
+    <div class="panel" style="margin-top:18px">
+      <div class="head"><h2>Schema knock-outfase</h2><span class="hint" id="koUpd"></span></div>
+      <div class="ko-legend">Het toernooischema vanaf de laatste 32. Landen en uitslagen vullen zich automatisch in naarmate het toernooi vordert; de <b style="color:var(--brass)">winnaar</b> van een gespeeld duel gaat een ronde door. Tijden in NL-tijd. Veeg horizontaal om alle rondes te zien.</div>
+      <div class="ko-scroll"><div id="koBracket" class="ko-bracket"></div></div>
+      <div id="koThird" class="ko-third"></div>
+    </div>
+  </div>
 </div>
 <div id="odtip" class="odtip" role="tooltip"></div>
 
 <script>
 const DATA = __DATA__;
+const KO = __KO__;
 const eur = n => "€" + Math.round(n).toLocaleString("nl-NL");
 const sgn = n => (n>=0?"+":"−") + "€" + Math.abs(Math.round(n)).toLocaleString("nl-NL");
 const fmtOdd = o => (Number(o)>=10 ? Number(o).toFixed(1) : Number(o).toFixed(2));
@@ -731,11 +772,14 @@ function showView(v){
   document.getElementById("view-stand").hidden = v !== "stand";
   document.getElementById("view-preds").hidden = v !== "preds";
   document.getElementById("view-sim").hidden = v !== "sim";
+  document.getElementById("view-ko").hidden = v !== "ko";
   document.getElementById("tabStand").classList.toggle("on", v==="stand");
   document.getElementById("tabPreds").classList.toggle("on", v==="preds");
   document.getElementById("tabSim").classList.toggle("on", v==="sim");
+  document.getElementById("tabKO").classList.toggle("on", v==="ko");
   if(v==="preds" && !predsRendered){ renderPreds(); predsRendered = true; }
   if(v==="sim" && !simRendered){ renderSim(); simRendered = true; }
+  if(v==="ko"){ if(!koRendered){ renderKO(); koRendered = true; } koConnect(); }
 }
 // klik op Van Morrison: start de update-workflow handmatig (workflow_dispatch).
 // Het token wordt alleen lokaal in deze browser bewaard, nooit in de pagina.
@@ -770,6 +814,71 @@ vmorr.addEventListener("click", async ()=>{
 document.getElementById("tabStand").onclick = ()=>showView("stand");
 document.getElementById("tabPreds").onclick = ()=>showView("preds");
 document.getElementById("tabSim").onclick = ()=>showView("sim");
+document.getElementById("tabKO").onclick = ()=>showView("ko");
+
+// ---- knock-out bracket --------------------------------------------------
+let koRendered = false;
+function koTeamRow(t, played){
+  if(!t) t = {name:"", resolved:false, score:null, winner:false};
+  const ph = !t.resolved;
+  const nm = t.name ? t.name : "n.t.b.";
+  const sc = (played && t.score!==null) ? t.score : "";
+  return `<div class="ko-row${t.winner?' win':''}${ph?' ph':''}">`+
+         `<span class="ko-tn">${nm}</span><span class="ko-sc">${sc}</span></div>`;
+}
+function koMatchBox(m){
+  const played = m.completed;
+  const t = m.teams || [null,null];
+  return `<div class="ko-m${played?' done':''}">`+
+         `<div class="ko-when">${m.dt||""}</div>`+
+         koTeamRow(t[0], played) + koTeamRow(t[1], played) + `</div>`;
+}
+function renderKO(){
+  const rounds = (KO && KO.rounds) || [];
+  const wrap = document.getElementById("koBracket");
+  if(!rounds.length){ wrap.innerHTML = '<div class="ko-empty">Het schema verschijnt zodra de knock-outfase bekend is.</div>'; return; }
+  let html = "";
+  rounds.forEach(r=>{
+    html += `<div class="ko-round" data-key="${r.key}"><div class="ko-rtitle">${r.title}</div>`+
+            `<div class="ko-col">` + r.matches.map(koMatchBox).join("") + `</div></div>`;
+  });
+  wrap.innerHTML = html + `<svg class="ko-lines" aria-hidden="true"></svg>`;
+  // troostfinale los eronder
+  const tw = document.getElementById("koThird");
+  if(KO.third){ tw.innerHTML = `<div class="ko-rtitle">Troostfinale</div>` + koMatchBox(KO.third); }
+  else { tw.innerHTML = ""; }
+  const upd = (KO && KO._updated_at) ? ("bijgewerkt " + KO._updated_at) : "";
+  document.getElementById("koUpd").textContent = upd;
+}
+// verbindingslijnen tekenen tussen ronde k (positie i) en de twee
+// toeleverende wedstrijden 2i / 2i+1 in de vorige ronde.
+function koConnect(){
+  const bracket = document.getElementById("koBracket");
+  const svg = bracket && bracket.querySelector(".ko-lines");
+  if(!svg) return;
+  const cols = [...bracket.querySelectorAll(".ko-col")];
+  const br = bracket.getBoundingClientRect();
+  svg.setAttribute("width", bracket.scrollWidth);
+  svg.setAttribute("height", bracket.scrollHeight);
+  svg.setAttribute("viewBox", `0 0 ${bracket.scrollWidth} ${bracket.scrollHeight}`);
+  const rc = el => { const r = el.getBoundingClientRect();
+    return {l:r.left-br.left, r:r.right-br.left, y:r.top-br.top+r.height/2}; };
+  let paths = "";
+  for(let k=1;k<cols.length;k++){
+    const prev = [...cols[k-1].children];
+    const cur = [...cols[k].children];
+    cur.forEach((box,i)=>{
+      const a = prev[2*i], b = prev[2*i+1];
+      if(!a||!b) return;
+      const pa = rc(a), pb = rc(b), pc = rc(box);
+      const midX = (pa.r + pc.l)/2;
+      paths += `<path d="M${pa.r} ${pa.y} H${midX} V${pb.y} H${pb.r}"/>`;
+      paths += `<path d="M${midX} ${(pa.y+pb.y)/2} H${pc.l}"/>`;
+    });
+  }
+  svg.innerHTML = paths;
+}
+window.addEventListener("resize", ()=>{ if(!document.getElementById("view-ko").hidden) koConnect(); });
 </script>
 </body>
 </html>"""
@@ -866,7 +975,7 @@ body{background:var(--paper);color:var(--ink);
 </body>
 </html>"""
 
-open("index.html", "w").write(HTML.replace("__DATA__", DATA))
+open("index.html", "w").write(HTML.replace("__DATA__", DATA).replace("__KO__", KO))
 open("regels.html", "w").write(REGELS)
 print("index.html geschreven,", len(HTML), "tekens template")
 print("regels.html geschreven,", len(REGELS), "tekens")
