@@ -347,5 +347,17 @@
   "hg": 1,
   "ag": 3
  },
- "_updated_at": "26 juni 03:18"
+ "Paraguay|Australië": {
+  "home": "Paraguay",
+  "away": "Australië",
+  "hg": 0,
+  "ag": 0
+ },
+ "Turkije|VS": {
+  "home": "Turkije",
+  "away": "VS",
+  "hg": 3,
+  "ag": 2
+ },
+ "_updated_at": "26 juni 06:37"
 }
