@@ -335,5 +335,17 @@
   "hg": 2,
   "ag": 1
  },
- "_updated_at": "26 juni 00:44"
+ "Japan|Zweden": {
+  "home": "Japan",
+  "away": "Zweden",
+  "hg": 1,
+  "ag": 1
+ },
+ "Tunesië|Nederland": {
+  "home": "Tunesië",
+  "away": "Nederland",
+  "hg": 1,
+  "ag": 3
+ },
+ "_updated_at": "26 juni 03:18"
 }
