@@ -225,8 +225,8 @@
        "winner": false
       },
       {
-       "name": "Winnaar groep G",
-       "resolved": false,
+       "name": "België",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -276,8 +276,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep G",
-       "resolved": false,
+       "name": "Egypte",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -639,5 +639,5 @@
    }
   ]
  },
- "_updated_at": "27 juni 06:14"
+ "_updated_at": "27 juni 10:49"
 }
