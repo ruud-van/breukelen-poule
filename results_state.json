@@ -383,5 +383,17 @@
   "hg": 0,
   "ag": 1
  },
- "_updated_at": "27 juni 06:14"
+ "Egypte|Iran": {
+  "home": "Egypte",
+  "away": "Iran",
+  "hg": 1,
+  "ag": 1
+ },
+ "Nieuw Zeeland|België": {
+  "home": "Nieuw Zeeland",
+  "away": "België",
+  "hg": 1,
+  "ag": 5
+ },
+ "_updated_at": "27 juni 10:00"
 }
