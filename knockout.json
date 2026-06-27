@@ -10,13 +10,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Canada",
+       "name": "Zuid Afrika",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Zuid Afrika",
+       "name": "Canada",
        "resolved": true,
        "score": null,
        "winner": false
@@ -29,13 +29,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Marokko",
+       "name": "Nederland",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Nederland",
+       "name": "Marokko",
        "resolved": true,
        "score": null,
        "winner": false
@@ -48,13 +48,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Japan",
+       "name": "Brazilië",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Brazilië",
+       "name": "Japan",
        "resolved": true,
        "score": null,
        "winner": false
@@ -67,13 +67,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Noorwegen",
+       "name": "Ivoorkust",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Ivoorkust",
+       "name": "Noorwegen",
        "resolved": true,
        "score": null,
        "winner": false
@@ -86,14 +86,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep L",
+       "name": "Nr. 2 groep K",
        "resolved": false,
        "score": null,
        "winner": false
       },
       {
-       "name": "Nr. 2 groep K",
-       "resolved": false,
+       "name": "Kroatië",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -105,14 +105,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep J",
-       "resolved": false,
+       "name": "Spanje",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Spanje",
-       "resolved": true,
+       "name": "Nr. 2 groep J",
+       "resolved": false,
        "score": null,
        "winner": false
       }
@@ -124,13 +124,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Bosnië&Herz.",
+       "name": "VS",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "VS",
+       "name": "Bosnië&Herz.",
        "resolved": true,
        "score": null,
        "winner": false
@@ -143,13 +143,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (E/H/I/J/K)",
-       "resolved": false,
+       "name": "Engeland",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Winnaar groep L",
+       "name": "Nr. 3 (E/H/I/J/K)",
        "resolved": false,
        "score": null,
        "winner": false
@@ -162,13 +162,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Paraguay",
+       "name": "Duitsland",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Duitsland",
+       "name": "Paraguay",
        "resolved": true,
        "score": null,
        "winner": false
@@ -181,13 +181,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (C/E/F/H/I)",
-       "resolved": false,
+       "name": "Mexico",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Mexico",
+       "name": "Ecuador",
        "resolved": true,
        "score": null,
        "winner": false
@@ -200,13 +200,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Zweden",
+       "name": "Frankrijk",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Frankrijk",
+       "name": "Zweden",
        "resolved": true,
        "score": null,
        "winner": false
@@ -219,14 +219,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (A/E/H/I/J)",
-       "resolved": false,
+       "name": "België",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "België",
-       "resolved": true,
+       "name": "Nr. 3 (A/E/H/I/J)",
+       "resolved": false,
        "score": null,
        "winner": false
       }
@@ -238,14 +238,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (E/F/G/I/J)",
-       "resolved": false,
+       "name": "Zwitserland",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Zwitserland",
-       "resolved": true,
+       "name": "Nr. 3 (E/F/G/I/J)",
+       "resolved": false,
        "score": null,
        "winner": false
       }
@@ -257,13 +257,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Kaapverdië",
+       "name": "Argentinië",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Argentinië",
+       "name": "Kaapverdië",
        "resolved": true,
        "score": null,
        "winner": false
@@ -276,13 +276,13 @@
      "completed": false,
      "teams": [
       {
-       "name": "Egypte",
+       "name": "Australië",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Australië",
+       "name": "Egypte",
        "resolved": true,
        "score": null,
        "winner": false
@@ -295,14 +295,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (D/E/I/J/L)",
+       "name": "Winnaar groep K",
        "resolved": false,
        "score": null,
        "winner": false
       },
       {
-       "name": "Winnaar groep K",
-       "resolved": false,
+       "name": "Ghana",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -639,5 +639,5 @@
    }
   ]
  },
- "_updated_at": "27 juni 10:49"
+ "_updated_at": "28 juni 01:52"
 }

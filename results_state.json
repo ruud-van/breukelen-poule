@@ -395,5 +395,17 @@
   "hg": 1,
   "ag": 5
  },
- "_updated_at": "27 juni 10:00"
+ "Kroatië|Ghana": {
+  "home": "Kroatië",
+  "away": "Ghana",
+  "hg": 2,
+  "ag": 1
+ },
+ "Panama|Engeland": {
+  "home": "Panama",
+  "away": "Engeland",
+  "hg": 0,
+  "ag": 2
+ },
+ "_updated_at": "28 juni 01:52"
 }
