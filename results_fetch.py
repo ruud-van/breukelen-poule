@@ -179,8 +179,10 @@ def fetch_knockout():
             return {"num": num, "dt": "", "completed": False, "teams": [None, None]}
         comp = (e.get("competitions") or [{}])[0]
         completed = bool((comp.get("status") or {}).get("type", {}).get("completed"))
+        # Thuis-ploeg bovenaan: ESPN markeert in knock-outs de hoger geplaatste
+        # ploeg als "home"; media/schema's tonen die eerst ("Nederland - Marokko").
         cs = sorted(comp.get("competitors", []),
-                    key=lambda c: 0 if c.get("homeAway") == "away" else 1)
+                    key=lambda c: 0 if c.get("homeAway") == "home" else 1)
         teams = []
         for c in cs:
             name, resolved = _nl_team((c.get("team") or {}).get("displayName", ""))
