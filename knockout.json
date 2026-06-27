@@ -67,8 +67,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep I",
-       "resolved": false,
+       "name": "Noorwegen",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -111,8 +111,8 @@
        "winner": false
       },
       {
-       "name": "Winnaar groep H",
-       "resolved": false,
+       "name": "Spanje",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -162,8 +162,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (A/B/C/D/F)",
-       "resolved": false,
+       "name": "Paraguay",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -200,14 +200,14 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 3 (C/D/F/G/H)",
-       "resolved": false,
+       "name": "Zweden",
+       "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Winnaar groep I",
-       "resolved": false,
+       "name": "Frankrijk",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -257,8 +257,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep H",
-       "resolved": false,
+       "name": "Kaapverdië",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -639,5 +639,5 @@
    }
   ]
  },
- "_updated_at": "26 juni 18:59"
+ "_updated_at": "27 juni 06:14"
 }

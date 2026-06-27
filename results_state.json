@@ -371,5 +371,17 @@
   "hg": 5,
   "ag": 0
  },
- "_updated_at": "27 juni 00:22"
+ "Kaapverdië|Saoedi Arabië": {
+  "home": "Kaapverdië",
+  "away": "Saoedi Arabië",
+  "hg": 0,
+  "ag": 0
+ },
+ "Uruguay|Spanje": {
+  "home": "Uruguay",
+  "away": "Spanje",
+  "hg": 0,
+  "ag": 1
+ },
+ "_updated_at": "27 juni 06:14"
 }
