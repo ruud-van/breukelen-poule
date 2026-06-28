@@ -5,6 +5,44 @@
    "title": "Laatste 32",
    "matches": [
     {
+     "num": 2,
+     "dt": "29 juni 22:30",
+     "completed": false,
+     "teams": [
+      {
+       "name": "Duitsland",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      },
+      {
+       "name": "Paraguay",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "num": 5,
+     "dt": "30 juni 23:00",
+     "completed": false,
+     "teams": [
+      {
+       "name": "Frankrijk",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      },
+      {
+       "name": "Zweden",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      }
+     ]
+    },
+    {
      "num": 1,
      "dt": "28 juni 21:00",
      "completed": false,
@@ -36,44 +74,6 @@
       },
       {
        "name": "Marokko",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      }
-     ]
-    },
-    {
-     "num": 2,
-     "dt": "29 juni 19:00",
-     "completed": false,
-     "teams": [
-      {
-       "name": "Brazilië",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "Japan",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      }
-     ]
-    },
-    {
-     "num": 5,
-     "dt": "30 juni 19:00",
-     "completed": false,
-     "teams": [
-      {
-       "name": "Ivoorkust",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "Noorwegen",
        "resolved": true,
        "score": null,
        "winner": false
@@ -139,17 +139,17 @@
     },
     {
      "num": 10,
-     "dt": "1 juli 18:00",
+     "dt": "1 juli 22:00",
      "completed": false,
      "teams": [
       {
-       "name": "Engeland",
+       "name": "België",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Congo",
+       "name": "Senegal",
        "resolved": true,
        "score": null,
        "winner": false
@@ -158,17 +158,17 @@
     },
     {
      "num": 4,
-     "dt": "29 juni 22:30",
+     "dt": "29 juni 19:00",
      "completed": false,
      "teams": [
       {
-       "name": "Duitsland",
+       "name": "Brazilië",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Paraguay",
+       "name": "Japan",
        "resolved": true,
        "score": null,
        "winner": false
@@ -177,6 +177,25 @@
     },
     {
      "num": 6,
+     "dt": "30 juni 19:00",
+     "completed": false,
+     "teams": [
+      {
+       "name": "Ivoorkust",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      },
+      {
+       "name": "Noorwegen",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "num": 7,
      "dt": "1 juli 03:00",
      "completed": false,
      "teams": [
@@ -195,18 +214,18 @@
      ]
     },
     {
-     "num": 7,
-     "dt": "30 juni 23:00",
+     "num": 8,
+     "dt": "1 juli 18:00",
      "completed": false,
      "teams": [
       {
-       "name": "Frankrijk",
+       "name": "Engeland",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Zweden",
+       "name": "Congo",
        "resolved": true,
        "score": null,
        "winner": false
@@ -214,18 +233,37 @@
      ]
     },
     {
-     "num": 8,
-     "dt": "1 juli 22:00",
+     "num": 14,
+     "dt": "4 juli 00:00",
      "completed": false,
      "teams": [
       {
-       "name": "België",
+       "name": "Argentinië",
        "resolved": true,
        "score": null,
        "winner": false
       },
       {
-       "name": "Senegal",
+       "name": "Kaapverdië",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      }
+     ]
+    },
+    {
+     "num": 16,
+     "dt": "3 juli 20:00",
+     "completed": false,
+     "teams": [
+      {
+       "name": "Australië",
+       "resolved": true,
+       "score": null,
+       "winner": false
+      },
+      {
+       "name": "Egypte",
        "resolved": true,
        "score": null,
        "winner": false
@@ -253,44 +291,6 @@
     },
     {
      "num": 15,
-     "dt": "4 juli 00:00",
-     "completed": false,
-     "teams": [
-      {
-       "name": "Argentinië",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "Kaapverdië",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      }
-     ]
-    },
-    {
-     "num": 14,
-     "dt": "3 juli 20:00",
-     "completed": false,
-     "teams": [
-      {
-       "name": "Australië",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "Egypte",
-       "resolved": true,
-       "score": null,
-       "winner": false
-      }
-     ]
-    },
-    {
-     "num": 16,
      "dt": "4 juli 03:30",
      "completed": false,
      "teams": [
@@ -316,7 +316,7 @@
    "matches": [
     {
      "num": 1,
-     "dt": "4 juli 19:00",
+     "dt": "4 juli 23:00",
      "completed": false,
      "teams": [
       {
@@ -335,7 +335,7 @@
     },
     {
      "num": 2,
-     "dt": "4 juli 23:00",
+     "dt": "4 juli 19:00",
      "completed": false,
      "teams": [
       {
@@ -430,7 +430,7 @@
     },
     {
      "num": 7,
-     "dt": "7 juli 22:00",
+     "dt": "7 juli 18:00",
      "completed": false,
      "teams": [
       {
@@ -449,7 +449,7 @@
     },
     {
      "num": 8,
-     "dt": "7 juli 18:00",
+     "dt": "7 juli 22:00",
      "completed": false,
      "teams": [
       {
@@ -639,5 +639,5 @@
    }
   ]
  },
- "_updated_at": "28 juni 06:47"
+ "_updated_at": "28 juni 12:10"
 }
