@@ -63,19 +63,31 @@ KO_SLUG = {"round-of-32": "r32", "round-of-16": "r16", "quarterfinals": "qf",
 KO_TITLE = {"r32": "Laatste 32", "r16": "Laatste 16", "qf": "Kwartfinale",
             "sf": "Halve finale", "fin": "Finale", "p3": "Troostfinale"}
 
-# Vaste bracketboom WK 2026 (afgeleid uit ESPN's wedstrijdnamen; wedstrijden
-# binnen een ronde genummerd op oplopend ESPN-id). Per knooppunt de twee
-# toeleverende wedstrijden [boven, onder]. De troostfinale (p3) staat los.
+# Officiele bracketboom WK 2026 (FIFA-wedstrijdnummers 73-104, hier omgezet
+# naar ronde-lokale nummers = FIFA-nummer minus de rondebasis). Per knooppunt
+# de twee toeleverende wedstrijden [boven, onder]. De troostfinale (p3) staat los.
+# LET OP: ESPN nummert wedstrijden binnen een ronde volgens deze FIFA-nummering,
+# NIET op ESPN-id — daarom koppelen we R32 via de groepsplek van de thuisploeg
+# (KO_HOME_SLOT) en de latere rondes via hun "Winner van wedstrijd N"-verwijzingen.
 KO_FEEDERS = {
     ("fin", 1): [("sf", 1), ("sf", 2)],
     ("sf", 1): [("qf", 1), ("qf", 2)], ("sf", 2): [("qf", 3), ("qf", 4)],
     ("qf", 1): [("r16", 1), ("r16", 2)], ("qf", 2): [("r16", 5), ("r16", 6)],
     ("qf", 3): [("r16", 3), ("r16", 4)], ("qf", 4): [("r16", 7), ("r16", 8)],
-    ("r16", 1): [("r32", 1), ("r32", 3)], ("r16", 2): [("r32", 2), ("r32", 5)],
+    ("r16", 1): [("r32", 2), ("r32", 5)], ("r16", 2): [("r32", 1), ("r32", 3)],
     ("r16", 3): [("r32", 4), ("r32", 6)], ("r16", 4): [("r32", 7), ("r32", 8)],
     ("r16", 5): [("r32", 11), ("r32", 12)], ("r16", 6): [("r32", 9), ("r32", 10)],
-    ("r16", 7): [("r32", 13), ("r32", 15)], ("r16", 8): [("r32", 14), ("r32", 16)],
+    ("r16", 7): [("r32", 14), ("r32", 16)], ("r16", 8): [("r32", 13), ("r32", 15)],
 }
+
+# Thuis-plek (groepswinnaar 1X / nummer-2 2X) per FIFA-R32-wedstrijd 73-88.
+# De thuisploeg is de hoger geplaatste; hiermee koppelen we elke ESPN-R32-
+# wedstrijd aan zijn FIFA-nummer en dus aan R32-nummer (FIFA - 72).
+KO_HOME_SLOT = {73: "2A", 74: "1E", 75: "1F", 76: "1C", 77: "1I", 78: "2E",
+                79: "1A", 80: "1L", 81: "1D", 82: "1G", 83: "2K", 84: "1H",
+                85: "1B", 86: "1J", 87: "1K", 88: "2D"}
+KO_SLOT2NUM = {slot: fifa - 72 for fifa, slot in KO_HOME_SLOT.items()}
+STAND_URL = "https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings"
 
 
 def _ko_order():
@@ -162,16 +174,68 @@ def _nl_team(dn):
     return (dn, True)  # onbekende, maar ogenschijnlijk echte naam: tonen
 
 
+def _home_slot(name, team2slot):
+    """Groepsplek (1X/2X) van een R32-thuisploeg, uit placeholder of standen."""
+    m = re.match(r"Group ([A-Z]) Winner$", name)
+    if m:
+        return "1" + m.group(1)
+    m = re.match(r"Group ([A-Z]) 2nd Place$", name)
+    if m:
+        return "2" + m.group(1)
+    return team2slot.get(name)
+
+
+def _team_slots():
+    """team-displayName -> groepsplek (1X/2X) uit de ESPN-groepsstanden."""
+    out = {}
+    try:
+        stand = _get(STAND_URL)
+    except Exception:
+        return out
+    for g in stand.get("children", []):
+        letter = g.get("name", "").replace("Group ", "").strip()
+        for ent in ((g.get("standings") or {}).get("entries") or []):
+            rank = (ent.get("note") or {}).get("rank")
+            if rank in (1, 2):
+                out[(ent.get("team") or {}).get("displayName", "")] = f"{rank}{letter}"
+    return out
+
+
 def fetch_knockout():
     """Bracket-payload {rounds:[...], third:{...}} uit de ESPN-knock-outfeed."""
     raw = _get(KO_URL)
     evs = raw.get("events", [])
+    by_slug = {}
+    for e in evs:
+        key = KO_SLUG.get((e.get("season") or {}).get("slug"))
+        if key:
+            by_slug.setdefault(key, []).append(e)
+
     bynum = {}
-    for slug, key in KO_SLUG.items():
-        lst = sorted((e for e in evs if (e.get("season") or {}).get("slug") == slug),
-                     key=lambda e: int(e["id"]))
-        for i, e in enumerate(lst, 1):
-            bynum[(key, i)] = e
+    # R32: nummer = FIFA - 72, via de groepsplek van de thuisploeg.
+    team2slot = _team_slots()
+    for e in by_slug.get("r32", []):
+        cs = e["competitions"][0]["competitors"]
+        home = next((c for c in cs if c.get("homeAway") == "home"), None)
+        slot = _home_slot((home or {}).get("team", {}).get("displayName", ""), team2slot)
+        n = KO_SLOT2NUM.get(slot)
+        if n:
+            bynum[("r32", n)] = e
+    # R16/QF/SF: nummer via koppeling van de "Winner van wedstrijd N"-verwijzingen
+    # (ronde-lokale nummers) aan de officiele boom.
+    refpat = re.compile(r"(?:Round of 32|Round of 16|Quarterfinal) (\d+) Winner")
+    for key in ("r16", "qf", "sf"):
+        official = {n: frozenset(b for _, b in KO_FEEDERS[(k, n)])
+                    for (k, n) in KO_FEEDERS if k == key}
+        for e in by_slug.get(key, []):
+            refs = frozenset(int(x) for x in refpat.findall(e.get("name", "")))
+            for n, fs in official.items():
+                if fs == refs:
+                    bynum[(key, n)] = e
+                    break
+    for key in ("fin", "p3"):
+        if by_slug.get(key):
+            bynum[(key, 1)] = by_slug[key][0]
 
     def match(key, num):
         e = bynum.get((key, num))
