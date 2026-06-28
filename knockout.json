@@ -45,19 +45,19 @@
     {
      "num": 1,
      "dt": "28 juni 21:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Zuid Afrika",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       },
       {
        "name": "Canada",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 1,
+       "winner": true
       }
      ]
     },
@@ -335,21 +335,11 @@
     },
     {
      "num": 2,
-     "dt": "4 juli 19:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -639,5 +629,5 @@
    }
   ]
  },
- "_updated_at": "28 juni 12:10"
+ "_updated_at": "29 juni 00:13"
 }
