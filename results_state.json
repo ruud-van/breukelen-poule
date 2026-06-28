@@ -407,5 +407,29 @@
   "hg": 0,
   "ag": 2
  },
- "_updated_at": "28 juni 01:52"
+ "Colombia|Portugal": {
+  "home": "Colombia",
+  "away": "Portugal",
+  "hg": 0,
+  "ag": 0
+ },
+ "Congo|Oezbekistan": {
+  "home": "Congo",
+  "away": "Oezbekistan",
+  "hg": 3,
+  "ag": 1
+ },
+ "Algerije|Oostenrijk": {
+  "home": "Algerije",
+  "away": "Oostenrijk",
+  "hg": 3,
+  "ag": 3
+ },
+ "Jordanië|Argentinië": {
+  "home": "Jordanië",
+  "away": "Argentinië",
+  "hg": 1,
+  "ag": 3
+ },
+ "_updated_at": "28 juni 06:47"
 }

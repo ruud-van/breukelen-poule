@@ -86,8 +86,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Nr. 2 groep K",
-       "resolved": false,
+       "name": "Portugal",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -111,8 +111,8 @@
        "winner": false
       },
       {
-       "name": "Nr. 2 groep J",
-       "resolved": false,
+       "name": "Oostenrijk",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -149,8 +149,8 @@
        "winner": false
       },
       {
-       "name": "Nr. 3 (E/H/I/J/K)",
-       "resolved": false,
+       "name": "Congo",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -225,8 +225,8 @@
        "winner": false
       },
       {
-       "name": "Nr. 3 (A/E/H/I/J)",
-       "resolved": false,
+       "name": "Senegal",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -244,8 +244,8 @@
        "winner": false
       },
       {
-       "name": "Nr. 3 (E/F/G/I/J)",
-       "resolved": false,
+       "name": "Algerije",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -295,8 +295,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "Winnaar groep K",
-       "resolved": false,
+       "name": "Colombia",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -639,5 +639,5 @@
    }
   ]
  },
- "_updated_at": "28 juni 01:52"
+ "_updated_at": "28 juni 06:47"
 }
