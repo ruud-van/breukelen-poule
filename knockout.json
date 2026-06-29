@@ -159,18 +159,18 @@
     {
      "num": 4,
      "dt": "29 juni 19:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Brazilië",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Japan",
        "resolved": true,
-       "score": null,
+       "score": 1,
        "winner": false
       }
      ]
@@ -382,21 +382,11 @@
     },
     {
      "num": 3,
-     "dt": "5 juli 22:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -629,5 +619,5 @@
    }
   ]
  },
- "_updated_at": "29 juni 00:13"
+ "_updated_at": "30 juni 00:19"
 }
