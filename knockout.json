@@ -178,19 +178,19 @@
     {
      "num": 6,
      "dt": "30 juni 19:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Ivoorkust",
        "resolved": true,
-       "score": null,
+       "score": 1,
        "winner": false
       },
       {
        "name": "Noorwegen",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       }
      ]
     },
@@ -609,5 +609,5 @@
    }
   ]
  },
- "_updated_at": "30 juni 06:22"
+ "_updated_at": "1 juli 00:37"
 }
