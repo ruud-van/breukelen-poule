@@ -216,18 +216,18 @@
     {
      "num": 8,
      "dt": "1 juli 18:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Engeland",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Congo",
        "resolved": true,
-       "score": null,
+       "score": 1,
        "winner": false
       }
      ]
@@ -599,5 +599,5 @@
    }
   ]
  },
- "_updated_at": "1 juli 06:51"
+ "_updated_at": "2 juli 00:38"
 }
