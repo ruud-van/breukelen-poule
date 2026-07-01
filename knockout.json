@@ -26,18 +26,18 @@
     {
      "num": 5,
      "dt": "30 juni 23:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Frankrijk",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 3,
+       "winner": true
       },
       {
        "name": "Zweden",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -196,19 +196,19 @@
     },
     {
      "num": 7,
-     "dt": "1 juli 03:00",
-     "completed": false,
+     "dt": "1 juli 04:00",
+     "completed": true,
      "teams": [
       {
        "name": "Mexico",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Ecuador",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -381,21 +381,11 @@
     },
     {
      "num": 4,
-     "dt": "6 juli 02:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -609,5 +599,5 @@
    }
   ]
  },
- "_updated_at": "1 juli 00:37"
+ "_updated_at": "1 juli 06:51"
 }
