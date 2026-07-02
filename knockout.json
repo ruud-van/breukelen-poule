@@ -102,18 +102,18 @@
     {
      "num": 12,
      "dt": "2 juli 21:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Spanje",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 3,
+       "winner": true
       },
       {
        "name": "Oostenrijk",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -334,21 +334,11 @@
     },
     {
      "num": 5,
-     "dt": "6 juli 21:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -589,5 +579,5 @@
    }
   ]
  },
- "_updated_at": "2 juli 06:19"
+ "_updated_at": "3 juli 00:17"
 }
