@@ -121,18 +121,18 @@
     {
      "num": 9,
      "dt": "2 juli 02:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "VS",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Bosnië&Herz.",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -140,18 +140,18 @@
     {
      "num": 10,
      "dt": "1 juli 22:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "België",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 3,
+       "winner": true
       },
       {
        "name": "Senegal",
        "resolved": true,
-       "score": null,
+       "score": 2,
        "winner": false
       }
      ]
@@ -353,21 +353,11 @@
     },
     {
      "num": 6,
-     "dt": "7 juli 02:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -599,5 +589,5 @@
    }
   ]
  },
- "_updated_at": "2 juli 00:38"
+ "_updated_at": "2 juli 06:19"
 }
