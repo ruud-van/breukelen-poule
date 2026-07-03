@@ -83,18 +83,18 @@
     {
      "num": 11,
      "dt": "3 juli 01:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Portugal",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Kroatië",
        "resolved": true,
-       "score": null,
+       "score": 1,
        "winner": false
       }
      ]
@@ -579,5 +579,5 @@
    }
   ]
  },
- "_updated_at": "3 juli 00:17"
+ "_updated_at": "3 juli 06:05"
 }
