@@ -273,18 +273,18 @@
     {
      "num": 13,
      "dt": "3 juli 05:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Zwitserland",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 2,
+       "winner": true
       },
       {
        "name": "Algerije",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -389,21 +389,11 @@
     },
     {
      "num": 8,
-     "dt": "7 juli 22:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     }
    ]
@@ -579,5 +569,5 @@
    }
   ]
  },
- "_updated_at": "3 juli 06:05"
+ "_updated_at": "3 juli 11:33"
 }
