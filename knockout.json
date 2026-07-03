@@ -254,19 +254,19 @@
     {
      "num": 16,
      "dt": "3 juli 20:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Australië",
        "resolved": true,
-       "score": null,
+       "score": 1,
        "winner": false
       },
       {
        "name": "Egypte",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 1,
+       "winner": true
       }
      ]
     },
@@ -370,21 +370,11 @@
     },
     {
      "num": 7,
-     "dt": "7 juli 18:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -569,5 +559,5 @@
    }
   ]
  },
- "_updated_at": "3 juli 11:33"
+ "_updated_at": "4 juli 00:14"
 }
