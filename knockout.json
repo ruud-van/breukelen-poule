@@ -394,21 +394,11 @@
    "matches": [
     {
      "num": 1,
-     "dt": "9 juli 22:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     },
     {
@@ -559,5 +549,5 @@
    }
   ]
  },
- "_updated_at": "4 juli 05:58"
+ "_updated_at": "5 juli 00:08"
 }
