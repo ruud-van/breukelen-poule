@@ -235,18 +235,18 @@
     {
      "num": 14,
      "dt": "4 juli 00:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Argentinië",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 3,
+       "winner": true
       },
       {
        "name": "Kaapverdië",
        "resolved": true,
-       "score": null,
+       "score": 2,
        "winner": false
       }
      ]
@@ -292,18 +292,18 @@
     {
      "num": 15,
      "dt": "4 juli 03:30",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Colombia",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 1,
+       "winner": true
       },
       {
        "name": "Ghana",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -559,5 +559,5 @@
    }
   ]
  },
- "_updated_at": "4 juli 00:14"
+ "_updated_at": "4 juli 05:58"
 }
