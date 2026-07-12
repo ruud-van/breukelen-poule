@@ -445,21 +445,11 @@
     },
     {
      "num": 2,
-     "dt": "15 juli 21:00",
+     "dt": "",
      "completed": false,
      "teams": [
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      },
-      {
-       "name": "",
-       "resolved": false,
-       "score": null,
-       "winner": false
-      }
+      null,
+      null
      ]
     }
    ]
@@ -509,5 +499,5 @@
    }
   ]
  },
- "_updated_at": "10 juli 00:42"
+ "_updated_at": "12 juli 05:52"
 }
