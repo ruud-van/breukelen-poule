@@ -464,8 +464,8 @@
      "completed": false,
      "teams": [
       {
-       "name": "",
-       "resolved": false,
+       "name": "Spanje",
+       "resolved": true,
        "score": null,
        "winner": false
       },
@@ -486,8 +486,8 @@
   "completed": false,
   "teams": [
    {
-    "name": "",
-    "resolved": false,
+    "name": "Frankrijk",
+    "resolved": true,
     "score": null,
     "winner": false
    },
@@ -499,5 +499,5 @@
    }
   ]
  },
- "_updated_at": "12 juli 05:52"
+ "_updated_at": "15 juli 00:10"
 }
