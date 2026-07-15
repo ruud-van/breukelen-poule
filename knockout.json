@@ -470,8 +470,8 @@
        "winner": false
       },
       {
-       "name": "",
-       "resolved": false,
+       "name": "Argentinië",
+       "resolved": true,
        "score": null,
        "winner": false
       }
@@ -492,12 +492,12 @@
     "winner": false
    },
    {
-    "name": "",
-    "resolved": false,
+    "name": "Engeland",
+    "resolved": true,
     "score": null,
     "winner": false
    }
   ]
  },
- "_updated_at": "15 juli 00:10"
+ "_updated_at": "16 juli 00:11"
 }
