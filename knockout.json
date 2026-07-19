@@ -483,21 +483,21 @@
  "third": {
   "num": 1,
   "dt": "18 juli 23:00",
-  "completed": false,
+  "completed": true,
   "teams": [
    {
     "name": "Frankrijk",
     "resolved": true,
-    "score": null,
+    "score": 4,
     "winner": false
    },
    {
     "name": "Engeland",
     "resolved": true,
-    "score": null,
-    "winner": false
+    "score": 6,
+    "winner": true
    }
   ]
  },
- "_updated_at": "16 juli 00:11"
+ "_updated_at": "19 juli 05:49"
 }
