@@ -461,18 +461,18 @@
     {
      "num": 1,
      "dt": "19 juli 21:00",
-     "completed": false,
+     "completed": true,
      "teams": [
       {
        "name": "Spanje",
        "resolved": true,
-       "score": null,
-       "winner": false
+       "score": 1,
+       "winner": true
       },
       {
        "name": "Argentinië",
        "resolved": true,
-       "score": null,
+       "score": 0,
        "winner": false
       }
      ]
@@ -499,5 +499,5 @@
    }
   ]
  },
- "_updated_at": "19 juli 05:49"
+ "_updated_at": "20 juli 00:06"
 }
